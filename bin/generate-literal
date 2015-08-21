@@ -1,0 +1,72 @@
+#!/usr/bin/ruby
+
+require 'set'
+require_relative '../lib/helper'
+
+parser_filename = 'mysql.y.rb'
+lexer_filename = 'mysql.rex.rb'
+output_filename = 'parser.output'
+
+START = 0
+STOP = -1
+
+def prepare_autogen(filename)
+  FileUtil.read_three_parts(
+    filename,
+    '# BEGIN LITERAL (AUTO-GENERATED)',
+    '# END LITERAL (AUTO-GENERATED)'
+  )
+end
+
+def diff(new_list, old_list)
+  new_set = new_list.to_set
+  old_set = old_list.to_set
+  added = new_set - old_set
+  removed = old_set - new_set
+  if !added.empty?
+    puts "\n\n======= ADDED ======="
+    added.each do |t|
+      puts t
+    end
+    puts "\n\n"
+  end
+  if !removed.empty?
+    puts "\n\n======= REMOVED ======="
+    removed.each do |t|
+      puts t
+    end
+    puts "\n\n"
+  end
+end
+
+old_lex, lines_before_lex, lines_after_lex = prepare_autogen(lexer_filename)
+old_parse, lines_before_parse, lines_after_parse = prepare_autogen(parser_filename)
+arr = FileUtil.read_three_parts(
+  output_filename,
+  '**Terminals, with rules where they appear',
+  '--------- State ---------'
+)[0].map { |line|
+  result = /\s+(\w+)\s+\(/.match(line)
+  result ? result[1] : ''
+}.select { |line| !line.empty? }.sort.reverse.reject { |w| w == 'error' }
+
+literals = arr.reject { |w|
+  w == "S" || w.start_with?("S_") || w.start_with?("L_")
+}
+
+File.open(lexer_filename, 'w') do |f|
+  new_lex = literals.map{ |t| ":A_NIL #{t}\\b { [:#{t}, text] }\n" }
+  diff(new_lex, old_lex)
+  f.write((lines_before_lex + new_lex + lines_after_lex).join)
+end
+
+File.open(parser_filename, 'w') do |f|
+  name = 'dot'
+  new_parse = (["  #{name} :\n",
+                "    #{arr[0]} { call(:#{name}, :#{arr[0]}, val) }\n"] +
+               arr[START+1..STOP].map{ |t|
+                 "  | #{t} { call(:#{name}, :#{t}, val) }\n"
+               })
+  diff(new_parse, old_parse)
+  f.write((lines_before_parse + new_parse + lines_after_parse).join)
+end

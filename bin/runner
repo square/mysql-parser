@@ -1,0 +1,13 @@
+#!/usr/bin/ruby
+
+require_relative '../lib/mysql-parser'
+
+while true do
+  begin
+    print "> "
+    puts (MySQLParser.new.parse ARGF.read)
+  rescue => e
+    puts e
+    puts e.backtrace
+  end
+end

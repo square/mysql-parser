@@ -1,0 +1,73 @@
+#!/usr/bin/ruby
+
+require_relative '../lib/helper'
+
+parser_filename = 'mysql.y.rb'
+output_filename = 'parser.output'
+
+arr = FileUtil.read_three_parts(
+  output_filename,
+  '**Terminals, with rules where they appear',
+  '--------- State ---------'
+)[0].map { |line|
+  result = /\s+(\w+)\s+\(/.match(line)
+  result ? result[1] : ''
+}.select { |line| !line.empty? }.sort.reverse.reject { |w| w == 'error' }
+
+literals = arr.reject { |w| /^[A-Z\d_]+$/ =~ w }
+if !literals.empty?
+  $stderr.puts literals
+  raise 'unrecognized literals'
+end
+
+lines = []
+
+File.open(parser_filename, 'r') do |f|
+  f.each_line do |line|
+    lines << line
+  end
+end
+
+raw_content = lines.join
+  .gsub(/^---- header.*/m, '') # elimate code section
+
+content = raw_content
+content = content.gsub(/#.*?$/m, '') # eliminate comments
+
+res = /:\s[^{]*?\|/m.match(content)
+if res
+  $stderr.puts res
+  raise 'First case should have action'
+end
+
+res = /\|[^{]*?\|/m.match(content)
+if res
+  $stderr.puts res
+  raise 'Middle case should have action'
+end
+
+res = /\|[^{]*?:\s/m.match(content)
+if res
+  $stderr.puts res
+  raise 'Last case should have action'
+end
+
+res = /:\s[^{]*?:/m.match(content)
+if res
+  $stderr.puts res
+  raise 'One case should have action'
+end
+
+content = content.gsub(/call\(:(.*?), (.*?), val\)/, '\1')
+
+# this scan will not match "dot" which is the last rule
+# this is okay as "dot" is auto generated and is always correct.
+content.scan(/(?=^\s*(\S*?)(\s*?:\s[^:]+))/m).each do |group|
+  all_branches = group[1].count "{"
+  count_matched = group[1].scan(/\{\s*#{group[0]}/).count
+  count_raise = group[1].scan(/\{\s*raise/).count
+  if all_branches != count_matched + count_raise
+    $stderr.puts "#{group}"
+    raise 'name does not match action symbol'
+  end
+end
