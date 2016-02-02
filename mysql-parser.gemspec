@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'mysql-parser'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.summary     = "MySQL parser"
   s.description = "Used for parsing SQL commands"
   s.authors     = ["Sorawee Porncharoenwase", "Michael Finch"]

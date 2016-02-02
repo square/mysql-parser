@@ -892,13 +892,13 @@ rule
     { call(:r_datatype, :DECIMAL, val) }
   | NUMERIC S r_opt_datatype_number
     { call(:r_datatype, :NUMERIC, val) }
-  | DATE S
+  | DATE S r_opt_datatype_int
     { call(:r_datatype, :DATE, val) }
-  | TIME S
+  | TIME S r_opt_datatype_int
     { call(:r_datatype, :TIME, val) }
-  | TIMESTAMP S
+  | TIMESTAMP S r_opt_datatype_int
     { call(:r_datatype, :TIMESTAMP, val) }
-  | DATETIME S
+  | DATETIME S r_opt_datatype_int
     { call(:r_datatype, :DATETIME, val) }
   | YEAR S
     { call(:r_datatype, :YEAR, val) }
