@@ -8,11 +8,12 @@ rule
   }
 
   r_commands :
-    r_ALTER_TABLE  { call(:r_commands, :ALTER_TABLE, val) }
-  | r_CREATE_TABLE { call(:r_commands, :CREATE_TABLE, val) }
-  | r_DROP_TABLE   { call(:r_commands, :DROP_TABLE, val) }
-  | r_DROP_VIEW    { call(:r_commands, :DROP_VIEW, val) }
-  | r_CREATE_VIEW  { call(:r_commands, :CREATE_VIEW, val) }
+    r_ALTER_TABLE    { call(:r_commands, :ALTER_TABLE, val) }
+  | r_CREATE_TABLE   { call(:r_commands, :CREATE_TABLE, val) }
+  | r_DROP_TABLE     { call(:r_commands, :DROP_TABLE, val) }
+  | r_DROP_VIEW      { call(:r_commands, :DROP_VIEW, val) }
+  | r_CREATE_VIEW    { call(:r_commands, :CREATE_VIEW, val) }
+  | r_TRUNCATE_TABLE { call(:r_commands, :TRUNCATE_TABLE, val) }
 
   # ===========================
   # ======= CREATE VIEW =======
@@ -84,6 +85,14 @@ rule
     r_opt_RESTRICT_or_CASCADE
     { call(:r_DROP_TABLE, nil, val) }
 
+  # ========================
+  # ======= TRUNCATE =======
+  # ========================
+
+  r_TRUNCATE_TABLE :
+    TRUNCATE S r_opt_TABLE r_tbl_name
+    { call(:r_TRUNCATE_TABLE, nil, val) }
+
   # ============================
   # ======= CREATE TABLE =======
   # ============================
@@ -114,6 +123,11 @@ rule
     { call(:r_opt_TEMPORARY, :empty, val) }
   | TEMPORARY S
     { call(:r_opt_TEMPORARY, :body, val) }
+
+  r_opt_TABLE :
+    { call(:r_opt_TABLE, :empty, val) }
+  | TABLE S
+    { call(:r_opt_TABLE, :body, val) }
 
   r_opt_IF_NOT_EXISTS :
     { call(:r_opt_IF_NOT_EXISTS, :empty, val) }
