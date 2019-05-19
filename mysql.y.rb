@@ -212,7 +212,7 @@ rule
     { call(:r_shared_create_alter, :FULLTEXT, val) }
   | SPATIAL S r_opt_INDEX_or_KEY r_opt_index_name r_alter_index_opt
     { call(:r_shared_create_alter, :SPATIAL, val) }
-  | r_opt_CONSTRAINT_with_val FOREIGN S KEY S r_opt_index_name r_alter_index_opt
+  | r_opt_CONSTRAINT_with_val FOREIGN S KEY S r_opt_index_name r_alter_index_opt r_REFERENCES_definition
     { call(:r_shared_create_alter, :FOREIGN_KEY, val) }
 
   r_alter_specification :
@@ -526,11 +526,10 @@ rule
   | STORAGE S DEFAULT S
     { call(:r_opt_STORAGE, :DEFAULT, val) }
 
-  r_opt_REFERENCES_definition :
-    { call(:r_opt_REFERENCES_definition, :empty, val) }
-  | REFERENCES S r_tbl_name left_paren r_comma_separated_index_col_name
+  r_REFERENCES_definition :
+    REFERENCES S r_tbl_name left_paren r_comma_separated_index_col_name
     right_paren r_opt_MATCH r_opt_ON_DELETE_and_UPDATE
-    { call(:r_opt_REFERENCES_definition, :body, val) }
+    { call(:r_REFERENCES_definition, :body, val) }
 
   r_opt_MATCH :
     { call(:r_opt_MATCH, :empty, val) }
