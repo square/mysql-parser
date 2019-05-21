@@ -94,6 +94,11 @@ class MySQLParserTester
       test.to eq(' alter table `add` add column abc DATE ')
     end
 
+    it 'tests alter add foreign keys' do
+      @result = @evaluator.parse('alter table `child` add constraint `fk` foreign key (`parent_id`) references `parent` (`id`)')
+      test.to eq(' alter table `child` add constraint `fk` foreign key ( `parent_id` ) references `parent` ( `id` ) ')
+    end
+
     it 'tests for bad keyword' do
       expect{
         @evaluator.parse('alter table select add column abc DATE')
@@ -232,6 +237,16 @@ Address varchar ( 255 ) , City varchar ( 255 ) ) ")
           .select { |v| v.name == :string }
           .length
       ).to eq(4)
+    end
+
+    it 'tests for create index' do
+      @result = @evaluator.parse("CREATE INDEX abc ON bogus (a, b)")
+      test.to eq(" CREATE INDEX abc ON bogus ( a , b ) ")
+    end
+
+    it 'tests for drop index' do
+      @result = @evaluator.parse("DROP INDEX abc ON bogus")
+      test.to eq(" DROP INDEX abc ON bogus ")
     end
   end
 end
