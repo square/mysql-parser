@@ -14,6 +14,8 @@ rule
   | r_DROP_VIEW      { call(:r_commands, :DROP_VIEW, val) }
   | r_CREATE_VIEW    { call(:r_commands, :CREATE_VIEW, val) }
   | r_TRUNCATE_TABLE { call(:r_commands, :TRUNCATE_TABLE, val) }
+  | r_CREATE_INDEX   { call(:r_commands, :CREATE_INDEX, val) }
+  | r_DROP_INDEX   { call(:r_commands, :DROP_INDEX, val) }
 
   # ===========================
   # ======= CREATE VIEW =======
@@ -152,16 +154,16 @@ rule
   # =====================
 
   r_ALTER_TABLE :
-    ALTER S r_ONLINE_OFFLINE r_opt_IGNORE TABLE S r_tbl_name
+    ALTER S r_opt_ONLINE_OFFLINE r_opt_IGNORE TABLE S r_tbl_name
     r_opt_alter_commands r_opt_after_alter r_opt_PARTITION_options
     { call(:r_ALTER_TABLE, nil, val) }
 
-  r_ONLINE_OFFLINE :
-    { call(:r_ONLINE_OFFLINE, :empty, val) }
+  r_opt_ONLINE_OFFLINE :
+    { call(:r_opt_ONLINE_OFFLINE, :empty, val) }
   | ONLINE S
-    { call(:r_ONLINE_OFFLINE, :ONLINE, val) }
+    { call(:r_opt_ONLINE_OFFLINE, :ONLINE, val) }
   | OFFLINE S
-    { call(:r_ONLINE_OFFLINE, :OFFLINE, val) }
+    { call(:r_opt_ONLINE_OFFLINE, :OFFLINE, val) }
 
   r_opt_IGNORE :
     { call(:r_opt_IGNORE, :empty, val) }
@@ -418,6 +420,39 @@ rule
     r_opt_UNIQUE_or_PRIMARY r_opt_COMMENT_with_val r_opt_COLUMN_FORMAT
     r_opt_STORAGE r_opt_COLUMN_ON_UPDATE
     { call(:r_column_definition, nil, val) }
+
+  # ============================
+  # ======= CREATE INDEX =======
+  # ============================
+
+  r_CREATE_INDEX :
+    CREATE S r_opt_ONLINE_OFFLINE r_opt_UNIQUE_or_FULLTEXT_or_SPATIAL
+    INDEX S r_index_name r_opt_index_type ON S r_tbl_name
+    left_paren r_comma_separated_index_col_name right_paren
+    r_opt_index_option
+    { call(:r_CREATE_INDEX, nil, val) }
+
+  r_opt_UNIQUE_or_FULLTEXT_or_SPATIAL :
+    { call(:r_opt_UNIQUE_or_FULLTEXT_or_SPATIAL, :empty, val) }
+  | UNIQUE S
+    { call(:r_opt_UNIQUE_or_FULLTEXT_or_SPATIAL, :UNIQUE, val) }
+  | FULLTEXT S
+    { call(:r_opt_UNIQUE_or_FULLTEXT_or_SPATIAL, :FULLTEXT, val) }
+  | SPATIAL S
+    { call(:r_opt_UNIQUE_or_FULLTEXT_or_SPATIAL, :SPATIAL, val) }
+
+  r_opt_index_option :
+    { call(:r_opt_index_option, :empty, val) }
+  | r_index_option
+    { call(:r_opt_index_option, :index_option, val) }
+
+  # ==========================
+  # ======= DROP INDEX =======
+  # ==========================
+
+  r_DROP_INDEX :
+    DROP S INDEX S r_opt_ONLINE_OFFLINE r_index_name ON S r_tbl_name
+    { call(:r_DROP_INDEX, nil, val) }
 
   # ========================
   # ======= DATATYPE =======

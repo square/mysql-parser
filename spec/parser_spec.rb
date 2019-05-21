@@ -238,5 +238,15 @@ Address varchar ( 255 ) , City varchar ( 255 ) ) ")
           .length
       ).to eq(4)
     end
+
+    it 'tests for create index' do
+      @result = @evaluator.parse("CREATE INDEX abc ON bogus (a, b)")
+      test.to eq(" CREATE INDEX abc ON bogus ( a , b ) ")
+    end
+
+    it 'tests for drop index' do
+      @result = @evaluator.parse("DROP INDEX abc ON bogus")
+      test.to eq(" DROP INDEX abc ON bogus ")
+    end
   end
 end
