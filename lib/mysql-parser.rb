@@ -1,3 +1,3 @@
-require_relative 'lexer'
-require_relative 'parser'
-require_relative 'ast'
+require_relative 'mysql-parser/lexer'
+require_relative 'mysql-parser/parser'
+require_relative 'mysql-parser/ast'

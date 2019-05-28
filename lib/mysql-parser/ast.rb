@@ -1,4 +1,6 @@
-class MySQLParser
+require 'racc/parser'
+
+class MySQLParser < Racc::Parser
   class AST
     def initialize(a_name, a_subname, a_val)
       @name = a_name

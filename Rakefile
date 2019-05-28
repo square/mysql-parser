@@ -8,12 +8,12 @@ end
 
 desc "Generate Lexer"
 task :lexer do
-  `rex mysql.rex.rb -o lib/lexer.rb`
+  `rex mysql.rex.rb -o lib/mysql-parser/lexer.rb`
 end
 
 desc "Generate Parser"
 task :parser do
-  `racc -t -v -O parser.output mysql.y.rb -o lib/parser.rb`
+  `racc -t -v -O parser.output mysql.y.rb -o lib/mysql-parser/parser.rb`
 end
 
 desc "Generate literal"
@@ -38,6 +38,6 @@ task :generate => [:lexer, :parser, :sanity_check, :generate_literal,
 
 desc "Clean up"
 task :cleanup do
-  `rm lib/lexer.rb`
-  `rm lib/parser.rb`
+  `rm lib/mysql-parser/lexer.rb`
+  `rm lib/mysql-parser/parser.rb`
 end
