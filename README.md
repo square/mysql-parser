@@ -63,8 +63,11 @@ predictable.
 
 #### Debugging
 
-Debugging `mysql.y.rb` can be done by setting `@yydebug` to `true` in
-`initialize`.
+Debugging `mysql.y.rb` can be done by passing `true` as `debug` argument.
+
+```ruby
+MySQLParser.new(debug: true)
+```
 
 #### Literals
 

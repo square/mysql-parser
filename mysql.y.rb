@@ -1283,8 +1283,8 @@ end
   end
 
 ---- inner
-  def initialize
-    #@yydebug = true
+  def initialize(debug: false)
+    @yydebug = debug
     @phooks = Hash.new
     @pstate = Hash.new
   end

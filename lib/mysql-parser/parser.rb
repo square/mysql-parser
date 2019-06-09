@@ -16,8 +16,8 @@ require 'racc/parser.rb'
 class MySQLParser < Racc::Parser
 
 module_eval(<<'...end mysql.y.rb/module_eval...', 'mysql.y.rb', 1286)
-  def initialize
-    #@yydebug = true
+  def initialize(debug: false)
+    @yydebug = debug
     @phooks = Hash.new
     @pstate = Hash.new
   end
