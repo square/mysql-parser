@@ -94,6 +94,16 @@ class MySQLParserTester
       test.to eq(' alter table `add` add column abc DATE ')
     end
 
+    it 'tests alter add columns with attributes' do
+      @result = @evaluator.parse("alter table `add` add column abc DATE default '2019-06-10' NOT NULL")
+      test.to eq(" alter table `add` add column abc DATE default '2019-06-10' NOT NULL ")
+    end
+
+    it 'tests alter add columns with attributes in a different order' do
+      @result = @evaluator.parse("alter table `add` add column abc DATE NOT NULL default '2019-06-10'")
+      test.to eq(" alter table `add` add column abc DATE NOT NULL default '2019-06-10' ")
+    end
+
     it 'tests alter add foreign keys' do
       @result = @evaluator.parse('alter table `child` add constraint `fk` foreign key (`parent_id`) references `parent` (`id`)')
       test.to eq(' alter table `child` add constraint `fk` foreign key ( `parent_id` ) references `parent` ( `id` ) ')

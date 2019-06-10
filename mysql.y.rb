@@ -416,10 +416,22 @@ rule
     { call(:r_opt_COLUMN, :body, val) }
 
   r_column_definition :
-    r_datatype r_opt_NULL_status r_opt_DEFAULT_with_val r_opt_AUTO_INCREMENT
-    r_opt_UNIQUE_or_PRIMARY r_opt_COMMENT_with_val r_opt_COLUMN_FORMAT
-    r_opt_STORAGE r_opt_COLUMN_ON_UPDATE
+    r_datatype r_opt_column_attribute
     { call(:r_column_definition, nil, val) }
+
+  r_opt_column_attribute :
+    { call(:r_opt_column_attribute, :empty, val) }
+  | r_space_separated_column_attribute { call(:r_opt_column_attribute, :column_attributes, val) }
+
+  r_column_attribute :
+    r_NULL_status { call(:r_column_attribute, :NULL_status, val) }
+  | r_DEFAULT_with_val { call(:r_column_attribute, :DEFAULT, val) }
+  | r_AUTO_INCREMENT { call(:r_column_attribute, :AUTO_INCREMENT, val) }
+  | r_UNIQUE_or_PRIMARY { call(:r_column_attribute, :UNIQUE_or_PRIMARY, val) }
+  | r_COMMENT_with_val { call(:r_column_attribute, :COMMENT, val) }
+  | r_COLUMN_FORMAT { call(:r_column_attribute, :COLUMN_FORMAT, val) }
+  | r_STORAGE { call(:r_column_attribute, :STORAGE, val) }
+  | r_COLUMN_ON_UPDATE { call(:r_column_attribute, :COLUMN_ON_UPDATE, val) }
 
   # ============================
   # ======= CREATE INDEX =======
@@ -510,56 +522,49 @@ rule
   | BINARY S
     { call(:r_opt_BINARY, :body, val) }
 
-  r_opt_NULL_status :
-    { call(:r_opt_NULL_status, :empty, val) }
-  | NOT S null
-    { call(:r_opt_NULL_status, :NOT_NULL, val) }
+  r_NULL_status :
+    NOT S null
+    { call(:r_NULL_status, :NOT_NULL, val) }
   | null
-    { call(:r_opt_NULL_status, :NULL, val) }
+    { call(:r_NULL_status, :NULL, val) }
 
-  r_opt_DEFAULT_with_val :
-    { call(:r_opt_DEFAULT_with_val, :empty, val) }
-  | DEFAULT S value
-    { call(:r_opt_DEFAULT_with_val, :body, val) }
+  r_DEFAULT_with_val :
+    DEFAULT S value
+    { call(:r_DEFAULT_with_val, :body, val) }
 
-  r_opt_AUTO_INCREMENT :
-    { call(:r_opt_AUTO_INCREMENT, :empty, val) }
-  | AUTO_INCREMENT S
-    { call(:r_opt_AUTO_INCREMENT, :body, val) }
+  r_AUTO_INCREMENT :
+    AUTO_INCREMENT S
+    { call(:r_AUTO_INCREMENT, :body, val) }
 
-  r_opt_UNIQUE_or_PRIMARY :
-    { call(:r_opt_UNIQUE_or_PRIMARY, :empty, val) }
-  | UNIQUE S
-    { call(:r_opt_UNIQUE_or_PRIMARY, :UNIQUE, val) }
+  r_UNIQUE_or_PRIMARY :
+    UNIQUE S
+    { call(:r_UNIQUE_or_PRIMARY, :UNIQUE, val) }
   | UNIQUE S KEY S
-    { call(:r_opt_UNIQUE_or_PRIMARY, :UNIQUE_KEY, val) }
+    { call(:r_UNIQUE_or_PRIMARY, :UNIQUE_KEY, val) }
   | PRIMARY S
-    { call(:r_opt_UNIQUE_or_PRIMARY, :PRIMARY, val) }
+    { call(:r_UNIQUE_or_PRIMARY, :PRIMARY, val) }
   | PRIMARY S KEY S
-    { call(:r_opt_UNIQUE_or_PRIMARY, :PRIMARY_KEY, val) }
+    { call(:r_UNIQUE_or_PRIMARY, :PRIMARY_KEY, val) }
 
-  r_opt_COMMENT_with_val :
-    { call(:r_opt_COMMENT_with_val, :empty, val) }
-  | COMMENT S string
-    { call(:r_opt_COMMENT_with_val, :body, val) }
+  r_COMMENT_with_val :
+    COMMENT S string
+    { call(:r_COMMENT_with_val, :body, val) }
 
-  r_opt_COLUMN_FORMAT :
-    { call(:r_opt_COLUMN_FORMAT, :empty, val) }
-  | COLUMN_FORMAT S FIXED S
-    { call(:r_opt_COLUMN_FORMAT, :FIXED, val) }
+  r_COLUMN_FORMAT :
+    COLUMN_FORMAT S FIXED S
+    { call(:r_COLUMN_FORMAT, :FIXED, val) }
   | COLUMN_FORMAT S DYNAMIC S
-    { call(:r_opt_COLUMN_FORMAT, :DYNAMIC, val) }
+    { call(:r_COLUMN_FORMAT, :DYNAMIC, val) }
   | COLUMN_FORMAT S DEFAULT S
-    { call(:r_opt_COLUMN_FORMAT, :DEFAULT, val) }
+    { call(:r_COLUMN_FORMAT, :DEFAULT, val) }
 
-  r_opt_STORAGE :
-    { call(:r_opt_STORAGE, :empty, val) }
-  | STORAGE S DISK S
-    { call(:r_opt_STORAGE, :DISK, val) }
+  r_STORAGE :
+    STORAGE S DISK S
+    { call(:r_STORAGE, :DISK, val) }
   | STORAGE S MEMORY S
-    { call(:r_opt_STORAGE, :MEMORY, val) }
+    { call(:r_STORAGE, :MEMORY, val) }
   | STORAGE S DEFAULT S
-    { call(:r_opt_STORAGE, :DEFAULT, val) }
+    { call(:r_STORAGE, :DEFAULT, val) }
 
   r_REFERENCES_definition :
     REFERENCES S r_tbl_name left_paren r_comma_separated_index_col_name
@@ -592,10 +597,9 @@ rule
   | ON S UPDATE S r_reference_option
     { call(:r_opt_ON_DELETE_and_UPDATE, :UPDATE, val) }
 
-  r_opt_COLUMN_ON_UPDATE :
-    { call(:r_opt_COLUMN_ON_UPDATE, :empty, val) }
-  | ON S UPDATE S literal
-    { call(:r_opt_COLUMN_ON_UPDATE, :UPDATE, val) }
+  r_COLUMN_ON_UPDATE :
+    ON S UPDATE S literal
+    { call(:r_COLUMN_ON_UPDATE, :UPDATE, val) }
 
   r_RESTRICT_or_CASCADE :
     RESTRICT S
@@ -864,6 +868,12 @@ rule
     { call(:r_comma_separated_string, :base, val) }
   | r_comma_separated_string comma string
     { call(:r_comma_separated_string, :inc, val) }
+
+  r_space_separated_column_attribute :
+    r_column_attribute
+    { call(:r_space_separated_column_attribute, :base, val) }
+  | r_space_separated_column_attribute r_column_attribute
+    { call(:r_space_separated_column_attribute, :inc, val) }
 
   # ==================================
   # ======= ALL THE NAME THING =======
@@ -1283,8 +1293,8 @@ end
   end
 
 ---- inner
-  def initialize
-    #@yydebug = true
+  def initialize(debug: false)
+    @yydebug = debug
     @phooks = Hash.new
     @pstate = Hash.new
   end
