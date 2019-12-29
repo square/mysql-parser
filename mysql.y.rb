@@ -944,7 +944,7 @@ rule
     { call(:r_datatype, :REAL, val) }
   | DOUBLE S r_opt_datatype_real
     { call(:r_datatype, :DOUBLE, val) }
-  | FLOAT S r_opt_datatype_real
+  | FLOAT S r_opt_datatype_number
     { call(:r_datatype, :FLOAT, val) }
   | DECIMAL S r_opt_datatype_number
     { call(:r_datatype, :DECIMAL, val) }
