@@ -349,7 +349,7 @@ rule 344 r_datatype: INTEGER S r_opt_datatype_int
 rule 345 r_datatype: BIGINT S r_opt_datatype_int
 rule 346 r_datatype: REAL S r_opt_datatype_real
 rule 347 r_datatype: DOUBLE S r_opt_datatype_real
-rule 348 r_datatype: FLOAT S r_opt_datatype_real
+rule 348 r_datatype: FLOAT S r_opt_datatype_number
 rule 349 r_datatype: DECIMAL S r_opt_datatype_number
 rule 350 r_datatype: NUMERIC S r_opt_datatype_number
 rule 351 r_datatype: DATE S r_opt_datatype_int
@@ -956,7 +956,7 @@ rule 594 dot: ACTION
     on right: 165
     on left : 170 171
   r_opt_datatype_number (305)
-    on right: 349 350
+    on right: 348 349 350
     on left : 173 174 175
   r_length_int (306)
     on right: 174 180 359
@@ -977,7 +977,7 @@ rule 594 dot: ACTION
     on right: 176 177
     on left : 187 188
   r_opt_datatype_real (312)
-    on right: 346 347 348
+    on right: 346 347
     on left : 177
   r_opt_length_real (313)
     on right: 177
@@ -4339,7 +4339,7 @@ state 319
 
 state 320
 
- 348) r_datatype : FLOAT _ S r_opt_datatype_real
+ 348) r_datatype : FLOAT _ S r_opt_datatype_number
 
   S_SPACE       shift, and go to state 3
 
@@ -5595,15 +5595,15 @@ state 461
 
 state 462
 
- 348) r_datatype : FLOAT S _ r_opt_datatype_real
+ 348) r_datatype : FLOAT S _ r_opt_datatype_number
 
   S_LEFT_PAREN  shift, and go to state 169
-  $default      reduce using rule 181 (r_opt_length_real)
+  $default      reduce using rule 173 (r_opt_datatype_number)
 
-  r_opt_length_real  go to state 597
-  r_length_real  go to state 598
-  left_paren    go to state 599
-  r_opt_datatype_real  go to state 602
+  r_length_int  go to state 602
+  r_length_real  go to state 603
+  left_paren    go to state 604
+  r_opt_datatype_number  go to state 605
 
 state 463
 
@@ -5612,9 +5612,9 @@ state 463
   S_LEFT_PAREN  shift, and go to state 169
   $default      reduce using rule 173 (r_opt_datatype_number)
 
-  r_length_int  go to state 603
-  r_length_real  go to state 604
-  left_paren    go to state 605
+  r_length_int  go to state 602
+  r_length_real  go to state 603
+  left_paren    go to state 604
   r_opt_datatype_number  go to state 606
 
 state 464
@@ -5624,9 +5624,9 @@ state 464
   S_LEFT_PAREN  shift, and go to state 169
   $default      reduce using rule 173 (r_opt_datatype_number)
 
-  r_length_int  go to state 603
-  r_length_real  go to state 604
-  left_paren    go to state 605
+  r_length_int  go to state 602
+  r_length_real  go to state 603
+  left_paren    go to state 604
   r_opt_datatype_number  go to state 607
 
 state 465
@@ -7092,26 +7092,19 @@ state 601
 
 state 602
 
- 348) r_datatype : FLOAT S r_opt_datatype_real _
-
-  $default      reduce using rule 348 (r_datatype)
-
-
-state 603
-
  174) r_opt_datatype_number : r_length_int _
 
   $default      reduce using rule 174 (r_opt_datatype_number)
 
 
-state 604
+state 603
 
  175) r_opt_datatype_number : r_length_real _
 
   $default      reduce using rule 175 (r_opt_datatype_number)
 
 
-state 605
+state 604
 
  183) r_length_int : left_paren _ nat right_paren
  184) r_length_real : left_paren _ nat comma nat right_paren
@@ -7122,6 +7115,13 @@ state 605
 
   nat           go to state 901
   binary        go to state 500
+
+state 605
+
+ 348) r_datatype : FLOAT S r_opt_datatype_number _
+
+  $default      reduce using rule 348 (r_datatype)
+
 
 state 606
 
