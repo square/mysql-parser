@@ -92,6 +92,7 @@ rule
 :A_NIL TABLE\b { [:TABLE, text] }
 :A_NIL SUBPARTITION\b { [:SUBPARTITION, text] }
 :A_NIL STORAGE\b { [:STORAGE, text] }
+:A_NIL SRID\b { [:SRID, text] }
 :A_NIL SQL\b { [:SQL, text] }
 :A_NIL SPATIAL\b { [:SPATIAL, text] }
 :A_NIL SMALLINT\b { [:SMALLINT, text] }
@@ -142,6 +143,7 @@ rule
 :A_NIL LONGTEXT\b { [:LONGTEXT, text] }
 :A_NIL LONGBLOB\b { [:LONGBLOB, text] }
 :A_NIL LOCAL\b { [:LOCAL, text] }
+:A_NIL LINESTRING\b { [:LINESTRING, text] }
 :A_NIL LIKE\b { [:LIKE, text] }
 :A_NIL LESS\b { [:LESS, text] }
 :A_NIL LATIN1\b { [:LATIN1, text] }

@@ -260,8 +260,14 @@ Address varchar ( 255 ) , City varchar ( 255 ) ) ")
     end
 
     it 'tests for linestring srid' do
-      @result = @evaluator.parse("ALTER TABLE bogus ADD COLUMN something_geometric LINESTRING SRID 0 NOT NULL")
-      test.to eq(" ALTER TABLE bogus ADD COLUMN something_geometric LINESTRING SRID 0 NOT NULL ")
+      @result = @evaluator.parse("ALTER TABLE bogus ADD COLUMN geom linestring SRID 0 NOT NULL")
+      test.to eq(" ALTER TABLE bogus ADD COLUMN geom linestring SRID 0 NOT NULL ")
+    end
+
+    it 'test SRID attribute only on spatial columns' do
+      expect {
+        @evaluator.parse("ALTER TABLE bogus ADD COLUMN id bigint SRID 0 NOT NULL")
+      }.to raise_error(Racc::ParseError)
     end
 
     it 'tests for spatial index' do

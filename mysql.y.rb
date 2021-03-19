@@ -489,6 +489,10 @@ rule
     r_opt_BINARY r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val
     { call(:r_opt_datatype_char, nil, val) }
 
+  r_opt_datatype_linestring :
+    r_opt_SRID_with_val
+    { call(:r_opt_datatype_linestring, nil, val) }
+
   r_opt_length_int :
     { call(:r_opt_length_int, :empty, val) }
   | r_length_int
@@ -636,6 +640,11 @@ rule
     { call(:opt_COLLATE_with_val, :empty, val) }
   | COLLATE S r_collation_name
     { call(:opt_COLLATE_with_val, :body, val) }
+
+  r_opt_SRID_with_val :
+    { call(:r_opt_SRID_with_val, :empty, val) }
+  | SRID S integer
+    { call(:r_opt_SRID_with_val, :body, val) }
 
   r_opt_pos_column :
     { call(:r_opt_pos_column, :empty, val) }
@@ -990,6 +999,8 @@ rule
   | ENUM S left_paren r_comma_separated_string right_paren
     r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val
     { call(:r_datatype, :ENUM, val) }
+  | LINESTRING S r_opt_datatype_linestring
+    { call(:r_datatype, :LINESTRING, val) }
   | raw_ident # spatial type, incomplete grammar
     { call(:r_datatype, :spatial, val) }
 
@@ -1147,6 +1158,7 @@ rule
   | S_AT { call(:dot, :S_AT, val) }
   | SUBPARTITION { call(:dot, :SUBPARTITION, val) }
   | STORAGE { call(:dot, :STORAGE, val) }
+  | SRID { call(:dot, :SRID, val) }
   | SQL { call(:dot, :SQL, val) }
   | SPATIAL { call(:dot, :SPATIAL, val) }
   | SMALLINT { call(:dot, :SMALLINT, val) }
@@ -1198,6 +1210,7 @@ rule
   | LONGTEXT { call(:dot, :LONGTEXT, val) }
   | LONGBLOB { call(:dot, :LONGBLOB, val) }
   | LOCAL { call(:dot, :LOCAL, val) }
+  | LINESTRING { call(:dot, :LINESTRING, val) }
   | LIKE { call(:dot, :LIKE, val) }
   | LESS { call(:dot, :LESS, val) }
   | LATIN1 { call(:dot, :LATIN1, val) }
