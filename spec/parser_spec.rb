@@ -258,5 +258,15 @@ Address varchar ( 255 ) , City varchar ( 255 ) ) ")
       @result = @evaluator.parse("DROP INDEX abc ON bogus")
       test.to eq(" DROP INDEX abc ON bogus ")
     end
+
+    it 'tests for linestring srid' do
+      @result = @evaluator.parse("ALTER TABLE bogus ADD COLUMN something_geometric LINESTRING SRID 0 NOT NULL")
+      test.to eq(" ALTER TABLE bogus ADD COLUMN something_geometric LINESTRING SRID 0 NOT NULL ")
+    end
+
+    it 'tests for spatial index' do
+      @result = @evaluator.parse("ALTER TABLE bogus ADD SPATIAL INDEX sptl_idx (geo_col)")
+      test.to eq(" ALTER TABLE bogus ADD SPATIAL INDEX sptl_idx ( geo_col ) ")
+    end
   end
 end
