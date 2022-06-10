@@ -188,6 +188,17 @@ LastName varchar ( 255 ) , FirstName varchar ( 255 ) , \
 Address varchar ( 255 ) , City varchar ( 255 ) ) ")
     end
 
+    it 'tests for CURRENT_TIMESTAMP with pricision' do
+      @result = @evaluator.parse("CREATE TABLE t1
+(
+ts timestamp(6) DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+dt datetime(6) DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+)")
+
+      test.to eq(" CREATE TABLE t1 ( ts timestamp ( 6 ) DEFAULT CURRENT_TIMESTAMP ( 6 ) ON UPDATE CURRENT_TIMESTAMP ( 6 ) , \
+dt datetime ( 6 ) DEFAULT CURRENT_TIMESTAMP ( 6 ) ON UPDATE CURRENT_TIMESTAMP ( 6 ) ) ")
+    end
+
     it 'tests for empty backtick' do
       @result = @evaluator.parse("    DROP TABLE ``")
       test.to eq(" DROP TABLE `` ")

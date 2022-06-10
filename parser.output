@@ -1,4 +1,6 @@
+state 951 contains 18 reduce/reduce conflicts
 
+rule 397 (current_timestamp) never reduced
 
 -------- Grammar --------
 
@@ -386,7 +388,7 @@ rule 381 literal: value
 rule 382 value: null
 rule 383 value: number
 rule 384 value: string
-rule 385 value: CURRENT_TIMESTAMP S
+rule 385 value: current_timestamp
 rule 386 string: S_SINGLEQUOTE_IN opt_string_in_quote S_SINGLEQUOTE_OUT S
 rule 387 string: S_DOUBLEQUOTE_IN opt_string_in_quote S_DOUBLEQUOTE_OUT S
 rule 388 opt_string_in_quote: 
@@ -398,204 +400,206 @@ rule 393 binary: S_ZERO S
 rule 394 binary: S_ONE S
 rule 395 integer: nat
 rule 396 integer: negative_integer
-rule 397 negative_integer: S_MINUS S_ONE S
-rule 398 negative_integer: S_MINUS S_NAT S
-rule 399 nat: S_NAT S
-rule 400 nat: binary
-rule 401 null: NULL S
-rule 402 ident: raw_ident
-rule 403 ident: S_BACKTICK_IN opt_ident_in_backtick S_BACKTICK_OUT S
-rule 404 opt_ident_in_backtick: 
-rule 405 opt_ident_in_backtick: opt_ident_in_backtick S_IDENT_IN_BACKTICK
-rule 406 raw_ident: S_IDENT_NORMAL S
-rule 407 S: S_SPACE
-rule 408 star: dot
-rule 409 star: star dot
-rule 410 dot: ZEROFILL
-rule 411 dot: YEAR
-rule 412 dot: WITH
-rule 413 dot: VIEW
-rule 414 dot: VARCHAR
-rule 415 dot: VARBINARY
-rule 416 dot: VALUES
-rule 417 dot: UTF8MB4
-rule 418 dot: UTF8MB3
-rule 419 dot: UTF8
-rule 420 dot: USING
-rule 421 dot: UPDATE
-rule 422 dot: UNSIGNED
-rule 423 dot: UNIQUE
-rule 424 dot: UNION
-rule 425 dot: UNDEFINED
-rule 426 dot: TRUNCATE
-rule 427 dot: TO
-rule 428 dot: TINYTEXT
-rule 429 dot: TINYINT
-rule 430 dot: TINYBLOB
-rule 431 dot: TIMESTAMP
-rule 432 dot: TIME
-rule 433 dot: THAN
-rule 434 dot: TEXT
-rule 435 dot: TEMPTABLE
-rule 436 dot: TEMPORARY
-rule 437 dot: TABLESPACE
-rule 438 dot: TABLE
-rule 439 dot: S_ZERO
-rule 440 dot: S_STRING_IN_SINGLEQUOTE
-rule 441 dot: S_STRING_IN_QUOTE
-rule 442 dot: S_SPACE
-rule 443 dot: S_SINGLEQUOTE_OUT
-rule 444 dot: S_SINGLEQUOTE_IN
-rule 445 dot: S_RIGHT_PAREN
-rule 446 dot: S_ONE
-rule 447 dot: S_NAT
-rule 448 dot: S_MINUS
-rule 449 dot: S_LEFT_PAREN
-rule 450 dot: S_IDENT_NORMAL
-rule 451 dot: S_IDENT_IN_BACKTICK
-rule 452 dot: S_FLOAT
-rule 453 dot: S_EQUAL
-rule 454 dot: S_DOUBLEQUOTE_OUT
-rule 455 dot: S_DOUBLEQUOTE_IN
-rule 456 dot: S_DOT
-rule 457 dot: S_COMMA
-rule 458 dot: S_BACKTICK_OUT
-rule 459 dot: S_BACKTICK_IN
-rule 460 dot: S_AT
-rule 461 dot: SUBPARTITION
-rule 462 dot: STORAGE
-rule 463 dot: SQL
-rule 464 dot: SPATIAL
-rule 465 dot: SMALLINT
-rule 466 dot: SIMPLE
-rule 467 dot: SET
-rule 468 dot: SELECT
-rule 469 dot: SECURITY
-rule 470 dot: ROW_FORMAT
-rule 471 dot: RESTRICT
-rule 472 dot: REPLACE
-rule 473 dot: REPAIR
-rule 474 dot: REORGANIZE
-rule 475 dot: RENAME
-rule 476 dot: REMOVE
-rule 477 dot: REFERENCES
-rule 478 dot: REDUNDANT
-rule 479 dot: REBUILD
-rule 480 dot: REAL
-rule 481 dot: PRIMARY
-rule 482 dot: PASSWORD
-rule 483 dot: PARTITIONING
-rule 484 dot: PARTITION
-rule 485 dot: PARTIAL
-rule 486 dot: PARSER
-rule 487 dot: PACK_KEYS
-rule 488 dot: ORDER
-rule 489 dot: OR
-rule 490 dot: OPTION
-rule 491 dot: OPTIMIZE
-rule 492 dot: ONLINE
-rule 493 dot: ON
-rule 494 dot: OFFLINE
-rule 495 dot: NUMERIC
-rule 496 dot: NULL
-rule 497 dot: NOT
-rule 498 dot: NODEGROUP
-rule 499 dot: NO
-rule 500 dot: MODIFY
-rule 501 dot: MIN_ROWS
-rule 502 dot: MERGE
-rule 503 dot: MEMORY
-rule 504 dot: MEDIUMTEXT
-rule 505 dot: MEDIUMINT
-rule 506 dot: MEDIUMBLOB
-rule 507 dot: MAX_ROWS
-rule 508 dot: MAXVALUE
-rule 509 dot: MATCH
-rule 510 dot: L_CHARACTER_SET
-rule 511 dot: LONGTEXT
-rule 512 dot: LONGBLOB
-rule 513 dot: LOCAL
-rule 514 dot: LIKE
-rule 515 dot: LESS
-rule 516 dot: LATIN1
-rule 517 dot: LAST
-rule 518 dot: KEY_BLOCK_SIZE
-rule 519 dot: KEYS
-rule 520 dot: KEY
-rule 521 dot: INVOKER
-rule 522 dot: INTO
-rule 523 dot: INTEGER
-rule 524 dot: INT
-rule 525 dot: INSERT_METHOD
-rule 526 dot: INNODB
-rule 527 dot: INDEX
-rule 528 dot: IN
-rule 529 dot: IMPORT
-rule 530 dot: IGNORE
-rule 531 dot: IF
-rule 532 dot: HASH
-rule 533 dot: FULLTEXT
-rule 534 dot: FULL
-rule 535 dot: FOREIGN
-rule 536 dot: FLOAT
-rule 537 dot: FIXED
-rule 538 dot: FIRST
-rule 539 dot: EXISTS
-rule 540 dot: ENUM
-rule 541 dot: ENGINE
-rule 542 dot: ENABLE
-rule 543 dot: DYNAMIC
-rule 544 dot: DROP
-rule 545 dot: DOUBLE
-rule 546 dot: DISK
-rule 547 dot: DISCARD
-rule 548 dot: DISABLE
-rule 549 dot: DIRECTORY
-rule 550 dot: DESC
-rule 551 dot: DELETE
-rule 552 dot: DELAY_KEY_WRITE
-rule 553 dot: DEFINER
-rule 554 dot: DEFAULT
-rule 555 dot: DECIMAL
-rule 556 dot: DATETIME
-rule 557 dot: DATE
-rule 558 dot: DATA
-rule 559 dot: CURRENT_USER
-rule 560 dot: CURRENT_TIMESTAMP
-rule 561 dot: CREATE
-rule 562 dot: CONVERT
-rule 563 dot: CONSTRAINT
-rule 564 dot: CONNECTION
-rule 565 dot: COMPRESSED
-rule 566 dot: COMPACT
-rule 567 dot: COMMENT
-rule 568 dot: COLUMN_FORMAT
-rule 569 dot: COLUMN
-rule 570 dot: COLLATE
-rule 571 dot: COALESCE
-rule 572 dot: CHECKSUM
-rule 573 dot: CHECK
-rule 574 dot: CHAR
-rule 575 dot: CHANGE
-rule 576 dot: CASCADED
-rule 577 dot: CASCADE
-rule 578 dot: BY
-rule 579 dot: BTREE
-rule 580 dot: BLOB
-rule 581 dot: BIT
-rule 582 dot: BINARY
-rule 583 dot: BIGINT
-rule 584 dot: AVG_ROW_LENGTH
-rule 585 dot: AUTO_INCREMENT
-rule 586 dot: ASC
-rule 587 dot: AS
-rule 588 dot: ANALYZE
-rule 589 dot: ALTER
-rule 590 dot: ALL
-rule 591 dot: ALGORITHM
-rule 592 dot: AFTER
-rule 593 dot: ADD
-rule 594 dot: ACTION
+rule 397 current_timestamp: CURRENT_TIMESTAMP S
+rule 398 current_timestamp: CURRENT_TIMESTAMP S r_opt_datatype_int
+rule 399 negative_integer: S_MINUS S_ONE S
+rule 400 negative_integer: S_MINUS S_NAT S
+rule 401 nat: S_NAT S
+rule 402 nat: binary
+rule 403 null: NULL S
+rule 404 ident: raw_ident
+rule 405 ident: S_BACKTICK_IN opt_ident_in_backtick S_BACKTICK_OUT S
+rule 406 opt_ident_in_backtick: 
+rule 407 opt_ident_in_backtick: opt_ident_in_backtick S_IDENT_IN_BACKTICK
+rule 408 raw_ident: S_IDENT_NORMAL S
+rule 409 S: S_SPACE
+rule 410 star: dot
+rule 411 star: star dot
+rule 412 dot: ZEROFILL
+rule 413 dot: YEAR
+rule 414 dot: WITH
+rule 415 dot: VIEW
+rule 416 dot: VARCHAR
+rule 417 dot: VARBINARY
+rule 418 dot: VALUES
+rule 419 dot: UTF8MB4
+rule 420 dot: UTF8MB3
+rule 421 dot: UTF8
+rule 422 dot: USING
+rule 423 dot: UPDATE
+rule 424 dot: UNSIGNED
+rule 425 dot: UNIQUE
+rule 426 dot: UNION
+rule 427 dot: UNDEFINED
+rule 428 dot: TRUNCATE
+rule 429 dot: TO
+rule 430 dot: TINYTEXT
+rule 431 dot: TINYINT
+rule 432 dot: TINYBLOB
+rule 433 dot: TIMESTAMP
+rule 434 dot: TIME
+rule 435 dot: THAN
+rule 436 dot: TEXT
+rule 437 dot: TEMPTABLE
+rule 438 dot: TEMPORARY
+rule 439 dot: TABLESPACE
+rule 440 dot: TABLE
+rule 441 dot: S_ZERO
+rule 442 dot: S_STRING_IN_SINGLEQUOTE
+rule 443 dot: S_STRING_IN_QUOTE
+rule 444 dot: S_SPACE
+rule 445 dot: S_SINGLEQUOTE_OUT
+rule 446 dot: S_SINGLEQUOTE_IN
+rule 447 dot: S_RIGHT_PAREN
+rule 448 dot: S_ONE
+rule 449 dot: S_NAT
+rule 450 dot: S_MINUS
+rule 451 dot: S_LEFT_PAREN
+rule 452 dot: S_IDENT_NORMAL
+rule 453 dot: S_IDENT_IN_BACKTICK
+rule 454 dot: S_FLOAT
+rule 455 dot: S_EQUAL
+rule 456 dot: S_DOUBLEQUOTE_OUT
+rule 457 dot: S_DOUBLEQUOTE_IN
+rule 458 dot: S_DOT
+rule 459 dot: S_COMMA
+rule 460 dot: S_BACKTICK_OUT
+rule 461 dot: S_BACKTICK_IN
+rule 462 dot: S_AT
+rule 463 dot: SUBPARTITION
+rule 464 dot: STORAGE
+rule 465 dot: SQL
+rule 466 dot: SPATIAL
+rule 467 dot: SMALLINT
+rule 468 dot: SIMPLE
+rule 469 dot: SET
+rule 470 dot: SELECT
+rule 471 dot: SECURITY
+rule 472 dot: ROW_FORMAT
+rule 473 dot: RESTRICT
+rule 474 dot: REPLACE
+rule 475 dot: REPAIR
+rule 476 dot: REORGANIZE
+rule 477 dot: RENAME
+rule 478 dot: REMOVE
+rule 479 dot: REFERENCES
+rule 480 dot: REDUNDANT
+rule 481 dot: REBUILD
+rule 482 dot: REAL
+rule 483 dot: PRIMARY
+rule 484 dot: PASSWORD
+rule 485 dot: PARTITIONING
+rule 486 dot: PARTITION
+rule 487 dot: PARTIAL
+rule 488 dot: PARSER
+rule 489 dot: PACK_KEYS
+rule 490 dot: ORDER
+rule 491 dot: OR
+rule 492 dot: OPTION
+rule 493 dot: OPTIMIZE
+rule 494 dot: ONLINE
+rule 495 dot: ON
+rule 496 dot: OFFLINE
+rule 497 dot: NUMERIC
+rule 498 dot: NULL
+rule 499 dot: NOT
+rule 500 dot: NODEGROUP
+rule 501 dot: NO
+rule 502 dot: MODIFY
+rule 503 dot: MIN_ROWS
+rule 504 dot: MERGE
+rule 505 dot: MEMORY
+rule 506 dot: MEDIUMTEXT
+rule 507 dot: MEDIUMINT
+rule 508 dot: MEDIUMBLOB
+rule 509 dot: MAX_ROWS
+rule 510 dot: MAXVALUE
+rule 511 dot: MATCH
+rule 512 dot: L_CHARACTER_SET
+rule 513 dot: LONGTEXT
+rule 514 dot: LONGBLOB
+rule 515 dot: LOCAL
+rule 516 dot: LIKE
+rule 517 dot: LESS
+rule 518 dot: LATIN1
+rule 519 dot: LAST
+rule 520 dot: KEY_BLOCK_SIZE
+rule 521 dot: KEYS
+rule 522 dot: KEY
+rule 523 dot: INVOKER
+rule 524 dot: INTO
+rule 525 dot: INTEGER
+rule 526 dot: INT
+rule 527 dot: INSERT_METHOD
+rule 528 dot: INNODB
+rule 529 dot: INDEX
+rule 530 dot: IN
+rule 531 dot: IMPORT
+rule 532 dot: IGNORE
+rule 533 dot: IF
+rule 534 dot: HASH
+rule 535 dot: FULLTEXT
+rule 536 dot: FULL
+rule 537 dot: FOREIGN
+rule 538 dot: FLOAT
+rule 539 dot: FIXED
+rule 540 dot: FIRST
+rule 541 dot: EXISTS
+rule 542 dot: ENUM
+rule 543 dot: ENGINE
+rule 544 dot: ENABLE
+rule 545 dot: DYNAMIC
+rule 546 dot: DROP
+rule 547 dot: DOUBLE
+rule 548 dot: DISK
+rule 549 dot: DISCARD
+rule 550 dot: DISABLE
+rule 551 dot: DIRECTORY
+rule 552 dot: DESC
+rule 553 dot: DELETE
+rule 554 dot: DELAY_KEY_WRITE
+rule 555 dot: DEFINER
+rule 556 dot: DEFAULT
+rule 557 dot: DECIMAL
+rule 558 dot: DATETIME
+rule 559 dot: DATE
+rule 560 dot: DATA
+rule 561 dot: CURRENT_USER
+rule 562 dot: CURRENT_TIMESTAMP
+rule 563 dot: CREATE
+rule 564 dot: CONVERT
+rule 565 dot: CONSTRAINT
+rule 566 dot: CONNECTION
+rule 567 dot: COMPRESSED
+rule 568 dot: COMPACT
+rule 569 dot: COMMENT
+rule 570 dot: COLUMN_FORMAT
+rule 571 dot: COLUMN
+rule 572 dot: COLLATE
+rule 573 dot: COALESCE
+rule 574 dot: CHECKSUM
+rule 575 dot: CHECK
+rule 576 dot: CHAR
+rule 577 dot: CHANGE
+rule 578 dot: CASCADED
+rule 579 dot: CASCADE
+rule 580 dot: BY
+rule 581 dot: BTREE
+rule 582 dot: BLOB
+rule 583 dot: BIT
+rule 584 dot: BINARY
+rule 585 dot: BIGINT
+rule 586 dot: AVG_ROW_LENGTH
+rule 587 dot: AUTO_INCREMENT
+rule 588 dot: ASC
+rule 589 dot: AS
+rule 590 dot: ANALYZE
+rule 591 dot: ALTER
+rule 592 dot: ALL
+rule 593 dot: ALGORITHM
+rule 594 dot: AFTER
+rule 595 dot: ADD
+rule 596 dot: ACTION
 
 ------- Symbols -------
 
@@ -608,8 +612,8 @@ rule 594 dot: ACTION
     on right: 
     on left : 1
   S (189)
-    on right: 1 10 14 16 17 18 20 21 23 24 25 27 30 31 32 36 37 40 42 44 47 49 51 52 54 58 59 60 61 62 63 67 68 69 70 72 73 74 75 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 93 94 95 96 97 99 100 101 102 103 104 105 106 107 108 116 119 120 121 122 123 124 125 126 127 128 129 130 131 133 134 135 139 140 145 146 148 149 150 151 153 165 167 168 169 172 186 188 190 191 193 194 195 196 197 198 199 200 201 202 203 204 205 206 208 209 210 212 213 215 216 217 218 219 220 222 223 225 226 228 230 232 234 235 236 238 239 240 242 243 244 246 249 250 251 252 254 255 256 257 259 270 271 276 277 281 332 334 335 336 337 339 340 341 342 343 344 345 346 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 374 377 378 379 385 386 387 392 393 394 397 398 399 401 403 406
-    on left : 407
+    on right: 1 10 14 16 17 18 20 21 23 24 25 27 30 31 32 36 37 40 42 44 47 49 51 52 54 58 59 60 61 62 63 67 68 69 70 72 73 74 75 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 93 94 95 96 97 99 100 101 102 103 104 105 106 107 108 116 119 120 121 122 123 124 125 126 127 128 129 130 131 133 134 135 139 140 145 146 148 149 150 151 153 165 167 168 169 172 186 188 190 191 193 194 195 196 197 198 199 200 201 202 203 204 205 206 208 209 210 212 213 215 216 217 218 219 220 222 223 225 226 228 230 232 234 235 236 238 239 240 242 243 244 246 249 250 251 252 254 255 256 257 259 270 271 276 277 281 332 334 335 336 337 339 340 341 342 343 344 345 346 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 374 377 378 379 386 387 392 393 394 397 398 399 400 401 403 405 408
+    on left : 409
   r_commands (190)
     on right: 1
     on left : 2 3 4 5 6 7 8 9
@@ -656,8 +660,8 @@ rule 594 dot: ACTION
     on right: 10
     on left : 11 12
   star (205)
-    on right: 10 69 409
-    on left : 408 409
+    on right: 10 69 411
+    on left : 410 411
   left_paren (206)
     on right: 12 36 38 78 107 122 136 165 183 184 206 255 256 274 276 368 369
     on left : 378
@@ -837,9 +841,9 @@ rule 594 dot: ACTION
     on left : 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114
   nat (265)
     on right: 96 97 108 129 148 183 184 250 251 395
-    on left : 399 400
+    on left : 401 402
   binary (266)
-    on right: 99 101 237 400
+    on right: 99 101 237 402
     on left : 393 394
   r_NO_or_FIRST_or_LAST (267)
     on right: 102
@@ -965,7 +969,7 @@ rule 594 dot: ACTION
     on right: 175 182
     on left : 184
   r_opt_datatype_int (308)
-    on right: 340 341 342 343 344 345 351 352 353 354
+    on right: 340 341 342 343 344 345 351 352 353 354 398
     on left : 176
   r_opt_length_int (309)
     on right: 176 314 339 356 357 358
@@ -996,7 +1000,7 @@ rule 594 dot: ACTION
     on left : 374
   null (318)
     on right: 191 192 222 382
-    on left : 401
+    on left : 403
   value (319)
     on right: 193 381
     on left : 382 383 384 385
@@ -1083,221 +1087,224 @@ rule 594 dot: ACTION
     on left : 324 325 326
   ident (347)
     on right: 316 317 318 319 320 322 324 325 326 330 331 380
-    on left : 402 403
+    on left : 404 405
   raw_ident (348)
-    on right: 321 333 338 370 402
-    on left : 406
+    on right: 321 333 338 370 404
+    on left : 408
   r_user_name_part (349)
     on right: 327 328
     on left : 329 330
   number (350)
     on right: 371 383
     on left : 390 391
-  opt_string_in_quote (351)
+  current_timestamp (351)
+    on right: 385
+    on left : 397 398
+  opt_string_in_quote (352)
     on right: 386 387 389
     on left : 388 389
-  float (352)
+  float (353)
     on right: 391
     on left : 392
-  negative_integer (353)
+  negative_integer (354)
     on right: 396
-    on left : 397 398
-  opt_ident_in_backtick (354)
-    on right: 403 405
-    on left : 404 405
-  dot (355)
-    on right: 408 409
-    on left : 410 411 412 413 414 415 416 417 418 419 420 421 422 423 424 425 426 427 428 429 430 431 432 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449 450 451 452 453 454 455 456 457 458 459 460 461 462 463 464 465 466 467 468 469 470 471 472 473 474 475 476 477 478 479 480 481 482 483 484 485 486 487 488 489 490 491 492 493 494 495 496 497 498 499 500 501 502 503 504 505 506 507 508 509 510 511 512 513 514 515 516 517 518 519 520 521 522 523 524 525 526 527 528 529 530 531 532 533 534 535 536 537 538 539 540 541 542 543 544 545 546 547 548 549 550 551 552 553 554 555 556 557 558 559 560 561 562 563 564 565 566 567 568 569 570 571 572 573 574 575 576 577 578 579 580 581 582 583 584 585 586 587 588 589 590 591 592 593 594
+    on left : 399 400
+  opt_ident_in_backtick (355)
+    on right: 405 407
+    on left : 406 407
+  dot (356)
+    on right: 410 411
+    on left : 412 413 414 415 416 417 418 419 420 421 422 423 424 425 426 427 428 429 430 431 432 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449 450 451 452 453 454 455 456 457 458 459 460 461 462 463 464 465 466 467 468 469 470 471 472 473 474 475 476 477 478 479 480 481 482 483 484 485 486 487 488 489 490 491 492 493 494 495 496 497 498 499 500 501 502 503 504 505 506 507 508 509 510 511 512 513 514 515 516 517 518 519 520 521 522 523 524 525 526 527 528 529 530 531 532 533 534 535 536 537 538 539 540 541 542 543 544 545 546 547 548 549 550 551 552 553 554 555 556 557 558 559 560 561 562 563 564 565 566 567 568 569 570 571 572 573 574 575 576 577 578 579 580 581 582 583 584 585 586 587 588 589 590 591 592 593 594 595 596
 
 **Terminals, with rules where they appear
 
   $end (0) 
   error (1) 
-  CREATE (2) 10 32 165 561
-  VIEW (3) 10 25 413
-  AS (4) 10 225 228 587
-  OR (5) 14 489
-  REPLACE (6) 14 281 472
-  ALGORITHM (7) 16 17 18 591
-  UNDEFINED (8) 16 425
-  MERGE (9) 17 502
-  TEMPTABLE (10) 18 435
-  DEFINER (11) 20 21 23 553
-  CURRENT_USER (12) 21 559
-  SQL (13) 23 24 463
-  SECURITY (14) 23 24 469
-  INVOKER (15) 24 521
-  DROP (16) 25 30 82 83 89 91 123 151 172 544
-  IF (17) 27 44 531
-  EXISTS (18) 27 44 539
-  TABLE (19) 30 32 42 49 438
-  TRUNCATE (20) 31 130 426
-  LIKE (21) 36 37 514
-  TEMPORARY (22) 40 436
-  NOT (23) 44 191 497
-  CHECK (24) 47 127 573
-  ALTER (25) 49 80 589
-  ONLINE (26) 51 492
-  OFFLINE (27) 52 494
-  IGNORE (28) 54 280 530
-  DEFAULT (29) 58 150 151 193 202 205 236 244 246 554
-  DYNAMIC (30) 59 201 543
-  COMPRESSED (31) 60 565
-  FIXED (32) 61 200 537
-  REDUNDANT (33) 62 478
-  COMPACT (34) 63 566
-  REMOVE (35) 67 476
-  PARTITIONING (36) 67 483
-  PARTITION (37) 68 122 123 124 125 126 127 128 129 130 131 252 484
-  BY (38) 68 93 578
-  SELECT (39) 69 468
-  PRIMARY (40) 70 91 197 198 481
-  KEY (41) 70 75 83 91 140 196 198 520
-  UNIQUE (42) 72 167 195 196 423
-  FULLTEXT (43) 73 168 533
-  SPATIAL (44) 74 169 464
-  FOREIGN (45) 75 83 535
-  ADD (46) 77 78 79 122 593
-  CHANGE (47) 81 575
-  DISABLE (48) 84 548
-  KEYS (49) 84 85 519
-  ENABLE (50) 85 542
-  RENAME (51) 86 475
-  CONVERT (52) 87 562
-  TO (53) 87 226 427
-  L_CHARACTER_SET (54) 87 135 230 510
-  COLLATE (55) 88 116 232 570
-  MODIFY (56) 90 500
-  ORDER (57) 93 488
-  DATA (58) 94 558
-  DIRECTORY (59) 94 95 549
-  INDEX (60) 95 139 165 172 527
-  AUTO_INCREMENT (61) 96 194 585
-  AVG_ROW_LENGTH (62) 97 584
-  CHECKSUM (63) 99 572
-  CONNECTION (64) 100 564
-  DELAY_KEY_WRITE (65) 101 552
-  INSERT_METHOD (66) 102 525
-  PACK_KEYS (67) 103 487
-  PASSWORD (68) 104 482
-  ROW_FORMAT (69) 105 470
-  TABLESPACE (70) 106 120 121 270 437
-  UNION (71) 107 424
-  KEY_BLOCK_SIZE (72) 108 148 518
-  NODEGROUP (73) 119 498
-  DISCARD (74) 120 547
-  IMPORT (75) 121 529
-  REBUILD (76) 124 479
-  OPTIMIZE (77) 125 491
-  ANALYZE (78) 126 588
-  REPAIR (79) 128 473
-  COALESCE (80) 129 571
-  REORGANIZE (81) 131 474
-  CONSTRAINT (82) 133 134 563
-  USING (83) 145 146 420
-  BTREE (84) 145 579
-  HASH (85) 146 532
-  WITH (86) 149 412
-  PARSER (87) 149 486
-  SET (88) 150 222 368 467
-  COLUMN (89) 153 569
-  ON (90) 165 172 215 216 217 218 493
-  UNSIGNED (91) 186 422
-  ZEROFILL (92) 188 410
-  BINARY (93) 190 358 582
-  COMMENT (94) 199 249 567
-  COLUMN_FORMAT (95) 200 201 202 568
-  STORAGE (96) 203 204 205 242 243 244 259 462
-  DISK (97) 203 242 546
-  MEMORY (98) 204 243 503
-  REFERENCES (99) 206 477
-  MATCH (100) 208 209 210 509
-  FULL (101) 208 534
-  PARTIAL (102) 209 485
-  SIMPLE (103) 210 466
-  ASC (104) 212 586
-  DESC (105) 213 550
-  DELETE (106) 215 216 551
-  UPDATE (107) 216 217 218 421
-  RESTRICT (108) 219 471
-  CASCADE (109) 220 577
-  NO (110) 223 238 499
-  ACTION (111) 223 594
-  FIRST (112) 234 239 538
-  AFTER (113) 235 592
-  LAST (114) 240 517
-  MAX_ROWS (115) 250 507
-  MIN_ROWS (116) 251 501
-  VALUES (117) 254 255 256 416
-  LESS (118) 254 255 515
-  THAN (119) 254 255 433
-  MAXVALUE (120) 254 508
-  IN (121) 256 528
-  ENGINE (122) 257 259 541
-  SUBPARTITION (123) 271 461
-  INTO (124) 276 522
-  ALL (125) 277 590
-  S_IDENT_NORMAL (126) 325 406 450
-  S_DOT (127) 325 326 456
-  S_AT (128) 328 460
-  INNODB (129) 332 526
-  LATIN1 (130) 334 516
-  UTF8 (131) 335 419
-  UTF8MB4 (132) 336 417
-  UTF8MB3 (133) 337 418
-  BIT (134) 339 581
-  TINYINT (135) 340 429
-  SMALLINT (136) 341 465
-  MEDIUMINT (137) 342 505
-  INT (138) 343 524
-  INTEGER (139) 344 523
-  BIGINT (140) 345 583
-  REAL (141) 346 480
-  DOUBLE (142) 347 545
-  FLOAT (143) 348 536
-  DECIMAL (144) 349 555
-  NUMERIC (145) 350 495
-  DATE (146) 351 557
-  TIME (147) 352 432
-  TIMESTAMP (148) 353 431
-  DATETIME (149) 354 556
-  YEAR (150) 355 411
-  CHAR (151) 356 574
-  VARCHAR (152) 357 414
-  VARBINARY (153) 359 415
-  TINYBLOB (154) 360 430
-  BLOB (155) 361 580
-  MEDIUMBLOB (156) 362 506
-  LONGBLOB (157) 363 512
-  TINYTEXT (158) 364 428
-  TEXT (159) 365 434
-  MEDIUMTEXT (160) 366 504
-  LONGTEXT (161) 367 511
-  ENUM (162) 369 540
-  S_COMMA (163) 374 457
-  S_EQUAL (164) 377 453
-  S_LEFT_PAREN (165) 378 449
-  S_RIGHT_PAREN (166) 379 445
-  CURRENT_TIMESTAMP (167) 385 560
-  S_SINGLEQUOTE_IN (168) 386 444
-  S_SINGLEQUOTE_OUT (169) 386 443
-  S_DOUBLEQUOTE_IN (170) 387 455
-  S_DOUBLEQUOTE_OUT (171) 387 454
-  S_STRING_IN_QUOTE (172) 389 441
-  S_FLOAT (173) 392 452
-  S_ZERO (174) 393 439
-  S_ONE (175) 394 397 446
-  S_MINUS (176) 397 398 448
-  S_NAT (177) 398 399 447
-  NULL (178) 401 496
-  S_BACKTICK_IN (179) 403 459
-  S_BACKTICK_OUT (180) 403 458
-  S_IDENT_IN_BACKTICK (181) 405 451
-  S_SPACE (182) 407 442
-  S_STRING_IN_SINGLEQUOTE (183) 440
-  OPTION (184) 490
-  LOCAL (185) 513
-  CASCADED (186) 576
+  CREATE (2) 10 32 165 563
+  VIEW (3) 10 25 415
+  AS (4) 10 225 228 589
+  OR (5) 14 491
+  REPLACE (6) 14 281 474
+  ALGORITHM (7) 16 17 18 593
+  UNDEFINED (8) 16 427
+  MERGE (9) 17 504
+  TEMPTABLE (10) 18 437
+  DEFINER (11) 20 21 23 555
+  CURRENT_USER (12) 21 561
+  SQL (13) 23 24 465
+  SECURITY (14) 23 24 471
+  INVOKER (15) 24 523
+  DROP (16) 25 30 82 83 89 91 123 151 172 546
+  IF (17) 27 44 533
+  EXISTS (18) 27 44 541
+  TABLE (19) 30 32 42 49 440
+  TRUNCATE (20) 31 130 428
+  LIKE (21) 36 37 516
+  TEMPORARY (22) 40 438
+  NOT (23) 44 191 499
+  CHECK (24) 47 127 575
+  ALTER (25) 49 80 591
+  ONLINE (26) 51 494
+  OFFLINE (27) 52 496
+  IGNORE (28) 54 280 532
+  DEFAULT (29) 58 150 151 193 202 205 236 244 246 556
+  DYNAMIC (30) 59 201 545
+  COMPRESSED (31) 60 567
+  FIXED (32) 61 200 539
+  REDUNDANT (33) 62 480
+  COMPACT (34) 63 568
+  REMOVE (35) 67 478
+  PARTITIONING (36) 67 485
+  PARTITION (37) 68 122 123 124 125 126 127 128 129 130 131 252 486
+  BY (38) 68 93 580
+  SELECT (39) 69 470
+  PRIMARY (40) 70 91 197 198 483
+  KEY (41) 70 75 83 91 140 196 198 522
+  UNIQUE (42) 72 167 195 196 425
+  FULLTEXT (43) 73 168 535
+  SPATIAL (44) 74 169 466
+  FOREIGN (45) 75 83 537
+  ADD (46) 77 78 79 122 595
+  CHANGE (47) 81 577
+  DISABLE (48) 84 550
+  KEYS (49) 84 85 521
+  ENABLE (50) 85 544
+  RENAME (51) 86 477
+  CONVERT (52) 87 564
+  TO (53) 87 226 429
+  L_CHARACTER_SET (54) 87 135 230 512
+  COLLATE (55) 88 116 232 572
+  MODIFY (56) 90 502
+  ORDER (57) 93 490
+  DATA (58) 94 560
+  DIRECTORY (59) 94 95 551
+  INDEX (60) 95 139 165 172 529
+  AUTO_INCREMENT (61) 96 194 587
+  AVG_ROW_LENGTH (62) 97 586
+  CHECKSUM (63) 99 574
+  CONNECTION (64) 100 566
+  DELAY_KEY_WRITE (65) 101 554
+  INSERT_METHOD (66) 102 527
+  PACK_KEYS (67) 103 489
+  PASSWORD (68) 104 484
+  ROW_FORMAT (69) 105 472
+  TABLESPACE (70) 106 120 121 270 439
+  UNION (71) 107 426
+  KEY_BLOCK_SIZE (72) 108 148 520
+  NODEGROUP (73) 119 500
+  DISCARD (74) 120 549
+  IMPORT (75) 121 531
+  REBUILD (76) 124 481
+  OPTIMIZE (77) 125 493
+  ANALYZE (78) 126 590
+  REPAIR (79) 128 475
+  COALESCE (80) 129 573
+  REORGANIZE (81) 131 476
+  CONSTRAINT (82) 133 134 565
+  USING (83) 145 146 422
+  BTREE (84) 145 581
+  HASH (85) 146 534
+  WITH (86) 149 414
+  PARSER (87) 149 488
+  SET (88) 150 222 368 469
+  COLUMN (89) 153 571
+  ON (90) 165 172 215 216 217 218 495
+  UNSIGNED (91) 186 424
+  ZEROFILL (92) 188 412
+  BINARY (93) 190 358 584
+  COMMENT (94) 199 249 569
+  COLUMN_FORMAT (95) 200 201 202 570
+  STORAGE (96) 203 204 205 242 243 244 259 464
+  DISK (97) 203 242 548
+  MEMORY (98) 204 243 505
+  REFERENCES (99) 206 479
+  MATCH (100) 208 209 210 511
+  FULL (101) 208 536
+  PARTIAL (102) 209 487
+  SIMPLE (103) 210 468
+  ASC (104) 212 588
+  DESC (105) 213 552
+  DELETE (106) 215 216 553
+  UPDATE (107) 216 217 218 423
+  RESTRICT (108) 219 473
+  CASCADE (109) 220 579
+  NO (110) 223 238 501
+  ACTION (111) 223 596
+  FIRST (112) 234 239 540
+  AFTER (113) 235 594
+  LAST (114) 240 519
+  MAX_ROWS (115) 250 509
+  MIN_ROWS (116) 251 503
+  VALUES (117) 254 255 256 418
+  LESS (118) 254 255 517
+  THAN (119) 254 255 435
+  MAXVALUE (120) 254 510
+  IN (121) 256 530
+  ENGINE (122) 257 259 543
+  SUBPARTITION (123) 271 463
+  INTO (124) 276 524
+  ALL (125) 277 592
+  S_IDENT_NORMAL (126) 325 408 452
+  S_DOT (127) 325 326 458
+  S_AT (128) 328 462
+  INNODB (129) 332 528
+  LATIN1 (130) 334 518
+  UTF8 (131) 335 421
+  UTF8MB4 (132) 336 419
+  UTF8MB3 (133) 337 420
+  BIT (134) 339 583
+  TINYINT (135) 340 431
+  SMALLINT (136) 341 467
+  MEDIUMINT (137) 342 507
+  INT (138) 343 526
+  INTEGER (139) 344 525
+  BIGINT (140) 345 585
+  REAL (141) 346 482
+  DOUBLE (142) 347 547
+  FLOAT (143) 348 538
+  DECIMAL (144) 349 557
+  NUMERIC (145) 350 497
+  DATE (146) 351 559
+  TIME (147) 352 434
+  TIMESTAMP (148) 353 433
+  DATETIME (149) 354 558
+  YEAR (150) 355 413
+  CHAR (151) 356 576
+  VARCHAR (152) 357 416
+  VARBINARY (153) 359 417
+  TINYBLOB (154) 360 432
+  BLOB (155) 361 582
+  MEDIUMBLOB (156) 362 508
+  LONGBLOB (157) 363 514
+  TINYTEXT (158) 364 430
+  TEXT (159) 365 436
+  MEDIUMTEXT (160) 366 506
+  LONGTEXT (161) 367 513
+  ENUM (162) 369 542
+  S_COMMA (163) 374 459
+  S_EQUAL (164) 377 455
+  S_LEFT_PAREN (165) 378 451
+  S_RIGHT_PAREN (166) 379 447
+  S_SINGLEQUOTE_IN (167) 386 446
+  S_SINGLEQUOTE_OUT (168) 386 445
+  S_DOUBLEQUOTE_IN (169) 387 457
+  S_DOUBLEQUOTE_OUT (170) 387 456
+  S_STRING_IN_QUOTE (171) 389 443
+  S_FLOAT (172) 392 454
+  S_ZERO (173) 393 441
+  S_ONE (174) 394 399 448
+  CURRENT_TIMESTAMP (175) 397 398 562
+  S_MINUS (176) 399 400 450
+  S_NAT (177) 400 401 449
+  NULL (178) 403 498
+  S_BACKTICK_IN (179) 405 461
+  S_BACKTICK_OUT (180) 405 460
+  S_IDENT_IN_BACKTICK (181) 407 453
+  S_SPACE (182) 409 444
+  S_STRING_IN_SINGLEQUOTE (183) 442
+  OPTION (184) 492
+  LOCAL (185) 515
+  CASCADED (186) 578
 
 --------- State ---------
 
@@ -1336,9 +1343,9 @@ state 2
 
 state 3
 
- 407) S : S_SPACE _
+ 409) S : S_SPACE _
 
-  $default      reduce using rule 407 (S)
+  $default      reduce using rule 409 (S)
 
 
 state 4
@@ -1754,7 +1761,7 @@ state 52
 state 53
 
  325) r_tbl_name_int : S_IDENT_NORMAL _ S_DOT ident
- 406) raw_ident : S_IDENT_NORMAL _ S
+ 408) raw_ident : S_IDENT_NORMAL _ S
 
   S_DOT         shift, and go to state 73
   S_SPACE       shift, and go to state 3
@@ -1773,16 +1780,16 @@ state 54
 
 state 55
 
- 402) ident : raw_ident _
+ 404) ident : raw_ident _
 
-  $default      reduce using rule 402 (ident)
+  $default      reduce using rule 404 (ident)
 
 
 state 56
 
- 403) ident : S_BACKTICK_IN _ opt_ident_in_backtick S_BACKTICK_OUT S
+ 405) ident : S_BACKTICK_IN _ opt_ident_in_backtick S_BACKTICK_OUT S
 
-  $default      reduce using rule 404 (opt_ident_in_backtick)
+  $default      reduce using rule 406 (opt_ident_in_backtick)
 
   opt_ident_in_backtick  go to state 77
 
@@ -1936,9 +1943,9 @@ state 73
 
 state 74
 
- 406) raw_ident : S_IDENT_NORMAL S _
+ 408) raw_ident : S_IDENT_NORMAL S _
 
-  $default      reduce using rule 406 (raw_ident)
+  $default      reduce using rule 408 (raw_ident)
 
 
 state 75
@@ -1950,7 +1957,7 @@ state 75
 
 state 76
 
- 406) raw_ident : S_IDENT_NORMAL _ S
+ 408) raw_ident : S_IDENT_NORMAL _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -1958,8 +1965,8 @@ state 76
 
 state 77
 
- 403) ident : S_BACKTICK_IN opt_ident_in_backtick _ S_BACKTICK_OUT S
- 405) opt_ident_in_backtick : opt_ident_in_backtick _ S_IDENT_IN_BACKTICK
+ 405) ident : S_BACKTICK_IN opt_ident_in_backtick _ S_BACKTICK_OUT S
+ 407) opt_ident_in_backtick : opt_ident_in_backtick _ S_IDENT_IN_BACKTICK
 
   S_BACKTICK_OUT  shift, and go to state 97
   S_IDENT_IN_BACKTICK  shift, and go to state 98
@@ -2135,7 +2142,7 @@ state 96
 
 state 97
 
- 403) ident : S_BACKTICK_IN opt_ident_in_backtick S_BACKTICK_OUT _ S
+ 405) ident : S_BACKTICK_IN opt_ident_in_backtick S_BACKTICK_OUT _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -2143,9 +2150,9 @@ state 97
 
 state 98
 
- 405) opt_ident_in_backtick : opt_ident_in_backtick S_IDENT_IN_BACKTICK _
+ 407) opt_ident_in_backtick : opt_ident_in_backtick S_IDENT_IN_BACKTICK _
 
-  $default      reduce using rule 405 (opt_ident_in_backtick)
+  $default      reduce using rule 407 (opt_ident_in_backtick)
 
 
 state 99
@@ -2377,9 +2384,9 @@ state 119
 
 state 120
 
- 403) ident : S_BACKTICK_IN opt_ident_in_backtick S_BACKTICK_OUT S _
+ 405) ident : S_BACKTICK_IN opt_ident_in_backtick S_BACKTICK_OUT S _
 
-  $default      reduce using rule 403 (ident)
+  $default      reduce using rule 405 (ident)
 
 
 state 121
@@ -5480,7 +5487,7 @@ state 451
 
 state 452
 
- 401) null : NULL _ S
+ 403) null : NULL _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -5942,7 +5949,7 @@ state 498
 
 state 499
 
- 399) nat : S_NAT _ S
+ 401) nat : S_NAT _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -5950,9 +5957,9 @@ state 499
 
 state 500
 
- 400) nat : binary _
+ 402) nat : binary _
 
-  $default      reduce using rule 400 (nat)
+  $default      reduce using rule 402 (nat)
 
 
 state 501
@@ -6786,7 +6793,6 @@ state 568
   S_EQUAL       shift, and go to state 730
   S_LEFT_PAREN  shift, and go to state 726
   S_RIGHT_PAREN  shift, and go to state 722
-  CURRENT_TIMESTAMP  shift, and go to state 837
   S_SINGLEQUOTE_IN  shift, and go to state 721
   S_SINGLEQUOTE_OUT  shift, and go to state 720
   S_DOUBLEQUOTE_IN  shift, and go to state 732
@@ -6795,6 +6801,7 @@ state 568
   S_FLOAT       shift, and go to state 729
   S_ZERO        shift, and go to state 716
   S_ONE         shift, and go to state 723
+  CURRENT_TIMESTAMP  shift, and go to state 837
   S_MINUS       shift, and go to state 725
   S_NAT         shift, and go to state 724
   NULL          shift, and go to state 773
@@ -6883,13 +6890,13 @@ state 578
 
  193) r_DEFAULT_with_val : DEFAULT S _ value
 
-  CURRENT_TIMESTAMP  shift, and go to state 879
   S_SINGLEQUOTE_IN  shift, and go to state 129
   S_DOUBLEQUOTE_IN  shift, and go to state 130
   S_FLOAT       shift, and go to state 882
   S_ZERO        shift, and go to state 497
   S_ONE         shift, and go to state 498
-  S_MINUS       shift, and go to state 885
+  CURRENT_TIMESTAMP  shift, and go to state 885
+  S_MINUS       shift, and go to state 886
   S_NAT         shift, and go to state 499
   NULL          shift, and go to state 452
 
@@ -6897,6 +6904,7 @@ state 578
   null          go to state 876
   number        go to state 877
   string        go to state 878
+  current_timestamp  go to state 879
   integer       go to state 880
   float         go to state 881
   nat           go to state 883
@@ -6915,7 +6923,7 @@ state 580
  195) r_UNIQUE_or_PRIMARY : UNIQUE S _
  196) r_UNIQUE_or_PRIMARY : UNIQUE S _ KEY S
 
-  KEY           shift, and go to state 886
+  KEY           shift, and go to state 887
   $default      reduce using rule 195 (r_UNIQUE_or_PRIMARY)
 
 
@@ -6924,7 +6932,7 @@ state 581
  197) r_UNIQUE_or_PRIMARY : PRIMARY S _
  198) r_UNIQUE_or_PRIMARY : PRIMARY S _ KEY S
 
-  KEY           shift, and go to state 887
+  KEY           shift, and go to state 888
   $default      reduce using rule 197 (r_UNIQUE_or_PRIMARY)
 
 
@@ -6935,7 +6943,7 @@ state 582
   S_SINGLEQUOTE_IN  shift, and go to state 129
   S_DOUBLEQUOTE_IN  shift, and go to state 130
 
-  string        go to state 888
+  string        go to state 889
 
 state 583
 
@@ -6943,9 +6951,9 @@ state 583
  201) r_COLUMN_FORMAT : COLUMN_FORMAT S _ DYNAMIC S
  202) r_COLUMN_FORMAT : COLUMN_FORMAT S _ DEFAULT S
 
-  DEFAULT       shift, and go to state 891
-  DYNAMIC       shift, and go to state 890
-  FIXED         shift, and go to state 889
+  DEFAULT       shift, and go to state 892
+  DYNAMIC       shift, and go to state 891
+  FIXED         shift, and go to state 890
 
 
 state 584
@@ -6954,23 +6962,23 @@ state 584
  204) r_STORAGE : STORAGE S _ MEMORY S
  205) r_STORAGE : STORAGE S _ DEFAULT S
 
-  DEFAULT       shift, and go to state 894
-  DISK          shift, and go to state 892
-  MEMORY        shift, and go to state 893
+  DEFAULT       shift, and go to state 895
+  DISK          shift, and go to state 893
+  MEMORY        shift, and go to state 894
 
 
 state 585
 
  218) r_COLUMN_ON_UPDATE : ON S _ UPDATE S literal
 
-  UPDATE        shift, and go to state 895
+  UPDATE        shift, and go to state 896
 
 
 state 586
 
- 401) null : NULL S _
+ 403) null : NULL S _
 
-  $default      reduce using rule 401 (null)
+  $default      reduce using rule 403 (null)
 
 
 state 587
@@ -6988,7 +6996,7 @@ state 588
   S_ONE         shift, and go to state 498
   S_NAT         shift, and go to state 499
 
-  nat           go to state 896
+  nat           go to state 897
   binary        go to state 500
 
 state 589
@@ -7002,10 +7010,10 @@ state 590
 
  176) r_opt_datatype_int : r_opt_length_int _ r_opt_UNSIGNED r_opt_ZEROFILL
 
-  UNSIGNED      shift, and go to state 898
+  UNSIGNED      shift, and go to state 899
   $default      reduce using rule 185 (r_opt_UNSIGNED)
 
-  r_opt_UNSIGNED  go to state 897
+  r_opt_UNSIGNED  go to state 898
 
 state 591
 
@@ -7053,10 +7061,10 @@ state 597
 
  177) r_opt_datatype_real : r_opt_length_real _ r_opt_UNSIGNED r_opt_ZEROFILL
 
-  UNSIGNED      shift, and go to state 898
+  UNSIGNED      shift, and go to state 899
   $default      reduce using rule 185 (r_opt_UNSIGNED)
 
-  r_opt_UNSIGNED  go to state 899
+  r_opt_UNSIGNED  go to state 900
 
 state 598
 
@@ -7073,7 +7081,7 @@ state 599
   S_ONE         shift, and go to state 498
   S_NAT         shift, and go to state 499
 
-  nat           go to state 900
+  nat           go to state 901
   binary        go to state 500
 
 state 600
@@ -7113,7 +7121,7 @@ state 604
   S_ONE         shift, and go to state 498
   S_NAT         shift, and go to state 499
 
-  nat           go to state 901
+  nat           go to state 902
   binary        go to state 500
 
 state 605
@@ -7173,7 +7181,7 @@ state 612
   $default      reduce using rule 189 (r_opt_BINARY)
 
   r_opt_BINARY  go to state 616
-  r_opt_datatype_char  go to state 902
+  r_opt_datatype_char  go to state 903
 
 state 613
 
@@ -7183,7 +7191,7 @@ state 613
   $default      reduce using rule 189 (r_opt_BINARY)
 
   r_opt_BINARY  go to state 616
-  r_opt_datatype_char  go to state 903
+  r_opt_datatype_char  go to state 904
 
 state 614
 
@@ -7203,10 +7211,10 @@ state 616
 
  178) r_opt_datatype_char : r_opt_BINARY _ r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val
 
-  L_CHARACTER_SET  shift, and go to state 905
+  L_CHARACTER_SET  shift, and go to state 906
   $default      reduce using rule 229 (r_opt_CHARACTER_SET_with_val)
 
-  r_opt_CHARACTER_SET_with_val  go to state 904
+  r_opt_CHARACTER_SET_with_val  go to state 905
 
 state 617
 
@@ -7214,7 +7222,7 @@ state 617
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 906
+  S             go to state 907
 
 state 618
 
@@ -7251,8 +7259,8 @@ state 622
   S_SINGLEQUOTE_IN  shift, and go to state 129
   S_DOUBLEQUOTE_IN  shift, and go to state 130
 
-  string        go to state 907
-  r_comma_separated_string  go to state 908
+  string        go to state 908
+  r_comma_separated_string  go to state 909
 
 state 623
 
@@ -7261,8 +7269,8 @@ state 623
   S_SINGLEQUOTE_IN  shift, and go to state 129
   S_DOUBLEQUOTE_IN  shift, and go to state 130
 
-  string        go to state 907
-  r_comma_separated_string  go to state 909
+  string        go to state 908
+  r_comma_separated_string  go to state 910
 
 state 624
 
@@ -7270,7 +7278,7 @@ state 624
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 910
+  S             go to state 911
 
 state 625
 
@@ -7280,7 +7288,7 @@ state 625
   S_BACKTICK_IN  shift, and go to state 56
   $default      reduce using rule 141 (r_opt_index_name)
 
-  r_opt_index_name  go to state 911
+  r_opt_index_name  go to state 912
   r_index_name  go to state 347
   ident         go to state 95
   raw_ident     go to state 55
@@ -7291,7 +7299,7 @@ state 626
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 912
+  S             go to state 913
 
 state 627
 
@@ -7300,9 +7308,9 @@ state 627
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_comma_separated_index_col_name  go to state 913
-  r_index_col_name  go to state 914
-  r_col_name    go to state 915
+  r_comma_separated_index_col_name  go to state 914
+  r_index_col_name  go to state 915
+  r_col_name    go to state 916
   ident         go to state 234
   raw_ident     go to state 55
 
@@ -7313,7 +7321,7 @@ state 628
   USING         shift, and go to state 172
   $default      reduce using rule 143 (r_opt_index_type)
 
-  r_alter_index_opt  go to state 916
+  r_alter_index_opt  go to state 917
   r_opt_index_type  go to state 488
   r_index_type  go to state 171
 
@@ -7324,7 +7332,7 @@ state 629
   USING         shift, and go to state 172
   $default      reduce using rule 143 (r_opt_index_type)
 
-  r_alter_index_opt  go to state 917
+  r_alter_index_opt  go to state 918
   r_opt_index_type  go to state 488
   r_index_type  go to state 171
 
@@ -7335,7 +7343,7 @@ state 630
   S_SINGLEQUOTE_IN  shift, and go to state 129
   S_DOUBLEQUOTE_IN  shift, and go to state 130
 
-  string        go to state 918
+  string        go to state 919
 
 state 631
 
@@ -7344,7 +7352,7 @@ state 631
   S_SINGLEQUOTE_IN  shift, and go to state 129
   S_DOUBLEQUOTE_IN  shift, and go to state 130
 
-  string        go to state 919
+  string        go to state 920
 
 state 632
 
@@ -7362,9 +7370,9 @@ state 633
 
 state 634
 
- 399) nat : S_NAT S _
+ 401) nat : S_NAT S _
 
-  $default      reduce using rule 399 (nat)
+  $default      reduce using rule 401 (nat)
 
 
 state 635
@@ -7443,9 +7451,9 @@ state 645
  243) r_opt_STORAGE_option : STORAGE S _ MEMORY S
  244) r_opt_STORAGE_option : STORAGE S _ DEFAULT S
 
-  DEFAULT       shift, and go to state 922
-  DISK          shift, and go to state 920
-  MEMORY        shift, and go to state 921
+  DEFAULT       shift, and go to state 923
+  DISK          shift, and go to state 921
+  MEMORY        shift, and go to state 922
 
 
 state 646
@@ -7456,7 +7464,7 @@ state 646
   S_DOT         shift, and go to state 54
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_comma_separated_tbl_name  go to state 923
+  r_comma_separated_tbl_name  go to state 924
   r_tbl_name    go to state 118
   r_tbl_name_int  go to state 51
   ident         go to state 52
@@ -7489,7 +7497,7 @@ state 650
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 924
+  S             go to state 925
 
 state 651
 
@@ -7497,7 +7505,7 @@ state 651
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 925
+  S             go to state 926
 
 state 652
 
@@ -7505,7 +7513,7 @@ state 652
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 926
+  S             go to state 927
 
 state 653
 
@@ -7513,7 +7521,7 @@ state 653
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 927
+  S             go to state 928
 
 state 654
 
@@ -7536,9 +7544,9 @@ state 656
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_comma_separated_index_col_name  go to state 928
-  r_index_col_name  go to state 914
-  r_col_name    go to state 915
+  r_comma_separated_index_col_name  go to state 929
+  r_index_col_name  go to state 915
+  r_col_name    go to state 916
   ident         go to state 234
   raw_ident     go to state 55
 
@@ -7549,7 +7557,7 @@ state 657
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_comma_separated_col_name  go to state 929
+  r_comma_separated_col_name  go to state 930
   r_col_name    go to state 417
   ident         go to state 234
   raw_ident     go to state 55
@@ -7558,11 +7566,11 @@ state 658
 
   77) r_alter_specification : ADD S r_opt_COLUMN r_col_name r_column_definition _ r_opt_pos_column
 
-  FIRST         shift, and go to state 931
-  AFTER         shift, and go to state 932
+  FIRST         shift, and go to state 932
+  AFTER         shift, and go to state 933
   $default      reduce using rule 233 (r_opt_pos_column)
 
-  r_opt_pos_column  go to state 930
+  r_opt_pos_column  go to state 931
 
 state 659
 
@@ -7572,8 +7580,8 @@ state 659
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 933
-  comma         go to state 934
+  right_paren   go to state 934
+  comma         go to state 935
 
 state 660
 
@@ -7586,9 +7594,9 @@ state 661
 
  122) r_single_alter_specification : ADD S PARTITION S left_paren _ r_partition_definition right_paren
 
-  PARTITION     shift, and go to state 936
+  PARTITION     shift, and go to state 937
 
-  r_partition_definition  go to state 935
+  r_partition_definition  go to state 936
 
 state 662
 
@@ -7603,7 +7611,7 @@ state 663
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 937
+  S             go to state 938
 
 state 664
 
@@ -7611,7 +7619,7 @@ state 664
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 938
+  S             go to state 939
 
 state 665
 
@@ -7650,7 +7658,7 @@ state 665
   LONGTEXT      shift, and go to state 339
   ENUM          shift, and go to state 341
 
-  r_column_definition  go to state 939
+  r_column_definition  go to state 940
   r_datatype    go to state 310
   raw_ident     go to state 342
 
@@ -7660,7 +7668,7 @@ state 666
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 940
+  S             go to state 941
 
 state 667
 
@@ -7668,7 +7676,7 @@ state 667
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 941
+  S             go to state 942
 
 state 668
 
@@ -7678,7 +7686,7 @@ state 668
   S_COMMA       shift, and go to state 115
   $default      reduce using rule 123 (r_single_alter_specification)
 
-  comma         go to state 942
+  comma         go to state 943
 
 state 669
 
@@ -7700,7 +7708,7 @@ state 671
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 943
+  S             go to state 944
 
 state 672
 
@@ -7713,11 +7721,11 @@ state 673
 
   90) r_alter_specification : MODIFY S r_opt_COLUMN r_col_name r_column_definition _ r_opt_pos_column
 
-  FIRST         shift, and go to state 931
-  AFTER         shift, and go to state 932
+  FIRST         shift, and go to state 932
+  AFTER         shift, and go to state 933
   $default      reduce using rule 233 (r_opt_pos_column)
 
-  r_opt_pos_column  go to state 944
+  r_opt_pos_column  go to state 945
 
 state 674
 
@@ -7732,7 +7740,7 @@ state 675
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 945
+  S             go to state 946
 
 state 676
 
@@ -7742,7 +7750,7 @@ state 676
   S_COMMA       shift, and go to state 115
   $default      reduce using rule 278 (r_partition_name_list_or_ALL)
 
-  comma         go to state 942
+  comma         go to state 943
 
 state 677
 
@@ -7798,15 +7806,15 @@ state 684
  276) r_opt_partition_names_INTO_definitions : r_comma_separated_partition_name _ INTO S left_paren r_comma_separated_partition_definition right_paren
  293) r_comma_separated_partition_name : r_comma_separated_partition_name _ comma r_partition_name
 
-  INTO          shift, and go to state 946
+  INTO          shift, and go to state 947
   S_COMMA       shift, and go to state 115
 
-  comma         go to state 942
+  comma         go to state 943
 
 state 685
 
   10) r_CREATE_VIEW : CREATE S r_opt_OR_REPLACE r_opt_ALGORITHM_with_val r_opt_DEFINER_with_val r_opt_SQL_SECURITY VIEW S r_view_name r_opt_COLUMN_list AS S star _
- 409) star : star _ dot
+ 411) star : star _ dot
 
   CREATE        shift, and go to state 838
   VIEW          shift, and go to state 690
@@ -7973,7 +7981,6 @@ state 685
   S_EQUAL       shift, and go to state 730
   S_LEFT_PAREN  shift, and go to state 726
   S_RIGHT_PAREN  shift, and go to state 722
-  CURRENT_TIMESTAMP  shift, and go to state 837
   S_SINGLEQUOTE_IN  shift, and go to state 721
   S_SINGLEQUOTE_OUT  shift, and go to state 720
   S_DOUBLEQUOTE_IN  shift, and go to state 732
@@ -7982,6 +7989,7 @@ state 685
   S_FLOAT       shift, and go to state 729
   S_ZERO        shift, and go to state 716
   S_ONE         shift, and go to state 723
+  CURRENT_TIMESTAMP  shift, and go to state 837
   S_MINUS       shift, and go to state 725
   S_NAT         shift, and go to state 724
   NULL          shift, and go to state 773
@@ -7995,1308 +8003,1308 @@ state 685
   CASCADED      shift, and go to state 853
   $default      reduce using rule 10 (r_CREATE_VIEW)
 
-  dot           go to state 947
+  dot           go to state 948
 
 state 686
 
- 408) star : dot _
+ 410) star : dot _
 
-  $default      reduce using rule 408 (star)
+  $default      reduce using rule 410 (star)
 
 
 state 687
 
- 410) dot : ZEROFILL _
-
-  $default      reduce using rule 410 (dot)
-
-
-state 688
-
- 411) dot : YEAR _
-
-  $default      reduce using rule 411 (dot)
-
-
-state 689
-
- 412) dot : WITH _
+ 412) dot : ZEROFILL _
 
   $default      reduce using rule 412 (dot)
 
 
-state 690
+state 688
 
- 413) dot : VIEW _
+ 413) dot : YEAR _
 
   $default      reduce using rule 413 (dot)
 
 
-state 691
+state 689
 
- 414) dot : VARCHAR _
+ 414) dot : WITH _
 
   $default      reduce using rule 414 (dot)
 
 
-state 692
+state 690
 
- 415) dot : VARBINARY _
+ 415) dot : VIEW _
 
   $default      reduce using rule 415 (dot)
 
 
-state 693
+state 691
 
- 416) dot : VALUES _
+ 416) dot : VARCHAR _
 
   $default      reduce using rule 416 (dot)
 
 
-state 694
+state 692
 
- 417) dot : UTF8MB4 _
+ 417) dot : VARBINARY _
 
   $default      reduce using rule 417 (dot)
 
 
-state 695
+state 693
 
- 418) dot : UTF8MB3 _
+ 418) dot : VALUES _
 
   $default      reduce using rule 418 (dot)
 
 
-state 696
+state 694
 
- 419) dot : UTF8 _
+ 419) dot : UTF8MB4 _
 
   $default      reduce using rule 419 (dot)
 
 
-state 697
+state 695
 
- 420) dot : USING _
+ 420) dot : UTF8MB3 _
 
   $default      reduce using rule 420 (dot)
 
 
-state 698
+state 696
 
- 421) dot : UPDATE _
+ 421) dot : UTF8 _
 
   $default      reduce using rule 421 (dot)
 
 
-state 699
+state 697
 
- 422) dot : UNSIGNED _
+ 422) dot : USING _
 
   $default      reduce using rule 422 (dot)
 
 
-state 700
+state 698
 
- 423) dot : UNIQUE _
+ 423) dot : UPDATE _
 
   $default      reduce using rule 423 (dot)
 
 
-state 701
+state 699
 
- 424) dot : UNION _
+ 424) dot : UNSIGNED _
 
   $default      reduce using rule 424 (dot)
 
 
-state 702
+state 700
 
- 425) dot : UNDEFINED _
+ 425) dot : UNIQUE _
 
   $default      reduce using rule 425 (dot)
 
 
-state 703
+state 701
 
- 426) dot : TRUNCATE _
+ 426) dot : UNION _
 
   $default      reduce using rule 426 (dot)
 
 
-state 704
+state 702
 
- 427) dot : TO _
+ 427) dot : UNDEFINED _
 
   $default      reduce using rule 427 (dot)
 
 
-state 705
+state 703
 
- 428) dot : TINYTEXT _
+ 428) dot : TRUNCATE _
 
   $default      reduce using rule 428 (dot)
 
 
-state 706
+state 704
 
- 429) dot : TINYINT _
+ 429) dot : TO _
 
   $default      reduce using rule 429 (dot)
 
 
-state 707
+state 705
 
- 430) dot : TINYBLOB _
+ 430) dot : TINYTEXT _
 
   $default      reduce using rule 430 (dot)
 
 
-state 708
+state 706
 
- 431) dot : TIMESTAMP _
+ 431) dot : TINYINT _
 
   $default      reduce using rule 431 (dot)
 
 
-state 709
+state 707
 
- 432) dot : TIME _
+ 432) dot : TINYBLOB _
 
   $default      reduce using rule 432 (dot)
 
 
-state 710
+state 708
 
- 433) dot : THAN _
+ 433) dot : TIMESTAMP _
 
   $default      reduce using rule 433 (dot)
 
 
-state 711
+state 709
 
- 434) dot : TEXT _
+ 434) dot : TIME _
 
   $default      reduce using rule 434 (dot)
 
 
-state 712
+state 710
 
- 435) dot : TEMPTABLE _
+ 435) dot : THAN _
 
   $default      reduce using rule 435 (dot)
 
 
-state 713
+state 711
 
- 436) dot : TEMPORARY _
+ 436) dot : TEXT _
 
   $default      reduce using rule 436 (dot)
 
 
-state 714
+state 712
 
- 437) dot : TABLESPACE _
+ 437) dot : TEMPTABLE _
 
   $default      reduce using rule 437 (dot)
 
 
-state 715
+state 713
 
- 438) dot : TABLE _
+ 438) dot : TEMPORARY _
 
   $default      reduce using rule 438 (dot)
 
 
-state 716
+state 714
 
- 439) dot : S_ZERO _
+ 439) dot : TABLESPACE _
 
   $default      reduce using rule 439 (dot)
 
 
-state 717
+state 715
 
- 440) dot : S_STRING_IN_SINGLEQUOTE _
+ 440) dot : TABLE _
 
   $default      reduce using rule 440 (dot)
 
 
-state 718
+state 716
 
- 441) dot : S_STRING_IN_QUOTE _
+ 441) dot : S_ZERO _
 
   $default      reduce using rule 441 (dot)
 
 
-state 719
+state 717
 
- 442) dot : S_SPACE _
+ 442) dot : S_STRING_IN_SINGLEQUOTE _
 
   $default      reduce using rule 442 (dot)
 
 
-state 720
+state 718
 
- 443) dot : S_SINGLEQUOTE_OUT _
+ 443) dot : S_STRING_IN_QUOTE _
 
   $default      reduce using rule 443 (dot)
 
 
-state 721
+state 719
 
- 444) dot : S_SINGLEQUOTE_IN _
+ 444) dot : S_SPACE _
 
   $default      reduce using rule 444 (dot)
 
 
-state 722
+state 720
 
- 445) dot : S_RIGHT_PAREN _
+ 445) dot : S_SINGLEQUOTE_OUT _
 
   $default      reduce using rule 445 (dot)
 
 
-state 723
+state 721
 
- 446) dot : S_ONE _
+ 446) dot : S_SINGLEQUOTE_IN _
 
   $default      reduce using rule 446 (dot)
 
 
-state 724
+state 722
 
- 447) dot : S_NAT _
+ 447) dot : S_RIGHT_PAREN _
 
   $default      reduce using rule 447 (dot)
 
 
-state 725
+state 723
 
- 448) dot : S_MINUS _
+ 448) dot : S_ONE _
 
   $default      reduce using rule 448 (dot)
 
 
-state 726
+state 724
 
- 449) dot : S_LEFT_PAREN _
+ 449) dot : S_NAT _
 
   $default      reduce using rule 449 (dot)
 
 
-state 727
+state 725
 
- 450) dot : S_IDENT_NORMAL _
+ 450) dot : S_MINUS _
 
   $default      reduce using rule 450 (dot)
 
 
-state 728
+state 726
 
- 451) dot : S_IDENT_IN_BACKTICK _
+ 451) dot : S_LEFT_PAREN _
 
   $default      reduce using rule 451 (dot)
 
 
-state 729
+state 727
 
- 452) dot : S_FLOAT _
+ 452) dot : S_IDENT_NORMAL _
 
   $default      reduce using rule 452 (dot)
 
 
-state 730
+state 728
 
- 453) dot : S_EQUAL _
+ 453) dot : S_IDENT_IN_BACKTICK _
 
   $default      reduce using rule 453 (dot)
 
 
-state 731
+state 729
 
- 454) dot : S_DOUBLEQUOTE_OUT _
+ 454) dot : S_FLOAT _
 
   $default      reduce using rule 454 (dot)
 
 
-state 732
+state 730
 
- 455) dot : S_DOUBLEQUOTE_IN _
+ 455) dot : S_EQUAL _
 
   $default      reduce using rule 455 (dot)
 
 
-state 733
+state 731
 
- 456) dot : S_DOT _
+ 456) dot : S_DOUBLEQUOTE_OUT _
 
   $default      reduce using rule 456 (dot)
 
 
-state 734
+state 732
 
- 457) dot : S_COMMA _
+ 457) dot : S_DOUBLEQUOTE_IN _
 
   $default      reduce using rule 457 (dot)
 
 
-state 735
+state 733
 
- 458) dot : S_BACKTICK_OUT _
+ 458) dot : S_DOT _
 
   $default      reduce using rule 458 (dot)
 
 
-state 736
+state 734
 
- 459) dot : S_BACKTICK_IN _
+ 459) dot : S_COMMA _
 
   $default      reduce using rule 459 (dot)
 
 
-state 737
+state 735
 
- 460) dot : S_AT _
+ 460) dot : S_BACKTICK_OUT _
 
   $default      reduce using rule 460 (dot)
 
 
-state 738
+state 736
 
- 461) dot : SUBPARTITION _
+ 461) dot : S_BACKTICK_IN _
 
   $default      reduce using rule 461 (dot)
 
 
-state 739
+state 737
 
- 462) dot : STORAGE _
+ 462) dot : S_AT _
 
   $default      reduce using rule 462 (dot)
 
 
-state 740
+state 738
 
- 463) dot : SQL _
+ 463) dot : SUBPARTITION _
 
   $default      reduce using rule 463 (dot)
 
 
-state 741
+state 739
 
- 464) dot : SPATIAL _
+ 464) dot : STORAGE _
 
   $default      reduce using rule 464 (dot)
 
 
-state 742
+state 740
 
- 465) dot : SMALLINT _
+ 465) dot : SQL _
 
   $default      reduce using rule 465 (dot)
 
 
-state 743
+state 741
 
- 466) dot : SIMPLE _
+ 466) dot : SPATIAL _
 
   $default      reduce using rule 466 (dot)
 
 
-state 744
+state 742
 
- 467) dot : SET _
+ 467) dot : SMALLINT _
 
   $default      reduce using rule 467 (dot)
 
 
-state 745
+state 743
 
- 468) dot : SELECT _
+ 468) dot : SIMPLE _
 
   $default      reduce using rule 468 (dot)
 
 
-state 746
+state 744
 
- 469) dot : SECURITY _
+ 469) dot : SET _
 
   $default      reduce using rule 469 (dot)
 
 
-state 747
+state 745
 
- 470) dot : ROW_FORMAT _
+ 470) dot : SELECT _
 
   $default      reduce using rule 470 (dot)
 
 
-state 748
+state 746
 
- 471) dot : RESTRICT _
+ 471) dot : SECURITY _
 
   $default      reduce using rule 471 (dot)
 
 
-state 749
+state 747
 
- 472) dot : REPLACE _
+ 472) dot : ROW_FORMAT _
 
   $default      reduce using rule 472 (dot)
 
 
-state 750
+state 748
 
- 473) dot : REPAIR _
+ 473) dot : RESTRICT _
 
   $default      reduce using rule 473 (dot)
 
 
-state 751
+state 749
 
- 474) dot : REORGANIZE _
+ 474) dot : REPLACE _
 
   $default      reduce using rule 474 (dot)
 
 
-state 752
+state 750
 
- 475) dot : RENAME _
+ 475) dot : REPAIR _
 
   $default      reduce using rule 475 (dot)
 
 
-state 753
+state 751
 
- 476) dot : REMOVE _
+ 476) dot : REORGANIZE _
 
   $default      reduce using rule 476 (dot)
 
 
-state 754
+state 752
 
- 477) dot : REFERENCES _
+ 477) dot : RENAME _
 
   $default      reduce using rule 477 (dot)
 
 
-state 755
+state 753
 
- 478) dot : REDUNDANT _
+ 478) dot : REMOVE _
 
   $default      reduce using rule 478 (dot)
 
 
-state 756
+state 754
 
- 479) dot : REBUILD _
+ 479) dot : REFERENCES _
 
   $default      reduce using rule 479 (dot)
 
 
-state 757
+state 755
 
- 480) dot : REAL _
+ 480) dot : REDUNDANT _
 
   $default      reduce using rule 480 (dot)
 
 
-state 758
+state 756
 
- 481) dot : PRIMARY _
+ 481) dot : REBUILD _
 
   $default      reduce using rule 481 (dot)
 
 
-state 759
+state 757
 
- 482) dot : PASSWORD _
+ 482) dot : REAL _
 
   $default      reduce using rule 482 (dot)
 
 
-state 760
+state 758
 
- 483) dot : PARTITIONING _
+ 483) dot : PRIMARY _
 
   $default      reduce using rule 483 (dot)
 
 
-state 761
+state 759
 
- 484) dot : PARTITION _
+ 484) dot : PASSWORD _
 
   $default      reduce using rule 484 (dot)
 
 
-state 762
+state 760
 
- 485) dot : PARTIAL _
+ 485) dot : PARTITIONING _
 
   $default      reduce using rule 485 (dot)
 
 
-state 763
+state 761
 
- 486) dot : PARSER _
+ 486) dot : PARTITION _
 
   $default      reduce using rule 486 (dot)
 
 
-state 764
+state 762
 
- 487) dot : PACK_KEYS _
+ 487) dot : PARTIAL _
 
   $default      reduce using rule 487 (dot)
 
 
-state 765
+state 763
 
- 488) dot : ORDER _
+ 488) dot : PARSER _
 
   $default      reduce using rule 488 (dot)
 
 
-state 766
+state 764
 
- 489) dot : OR _
+ 489) dot : PACK_KEYS _
 
   $default      reduce using rule 489 (dot)
 
 
-state 767
+state 765
 
- 490) dot : OPTION _
+ 490) dot : ORDER _
 
   $default      reduce using rule 490 (dot)
 
 
-state 768
+state 766
 
- 491) dot : OPTIMIZE _
+ 491) dot : OR _
 
   $default      reduce using rule 491 (dot)
 
 
-state 769
+state 767
 
- 492) dot : ONLINE _
+ 492) dot : OPTION _
 
   $default      reduce using rule 492 (dot)
 
 
-state 770
+state 768
 
- 493) dot : ON _
+ 493) dot : OPTIMIZE _
 
   $default      reduce using rule 493 (dot)
 
 
-state 771
+state 769
 
- 494) dot : OFFLINE _
+ 494) dot : ONLINE _
 
   $default      reduce using rule 494 (dot)
 
 
-state 772
+state 770
 
- 495) dot : NUMERIC _
+ 495) dot : ON _
 
   $default      reduce using rule 495 (dot)
 
 
-state 773
+state 771
 
- 496) dot : NULL _
+ 496) dot : OFFLINE _
 
   $default      reduce using rule 496 (dot)
 
 
-state 774
+state 772
 
- 497) dot : NOT _
+ 497) dot : NUMERIC _
 
   $default      reduce using rule 497 (dot)
 
 
-state 775
+state 773
 
- 498) dot : NODEGROUP _
+ 498) dot : NULL _
 
   $default      reduce using rule 498 (dot)
 
 
-state 776
+state 774
 
- 499) dot : NO _
+ 499) dot : NOT _
 
   $default      reduce using rule 499 (dot)
 
 
-state 777
+state 775
 
- 500) dot : MODIFY _
+ 500) dot : NODEGROUP _
 
   $default      reduce using rule 500 (dot)
 
 
-state 778
+state 776
 
- 501) dot : MIN_ROWS _
+ 501) dot : NO _
 
   $default      reduce using rule 501 (dot)
 
 
-state 779
+state 777
 
- 502) dot : MERGE _
+ 502) dot : MODIFY _
 
   $default      reduce using rule 502 (dot)
 
 
-state 780
+state 778
 
- 503) dot : MEMORY _
+ 503) dot : MIN_ROWS _
 
   $default      reduce using rule 503 (dot)
 
 
-state 781
+state 779
 
- 504) dot : MEDIUMTEXT _
+ 504) dot : MERGE _
 
   $default      reduce using rule 504 (dot)
 
 
-state 782
+state 780
 
- 505) dot : MEDIUMINT _
+ 505) dot : MEMORY _
 
   $default      reduce using rule 505 (dot)
 
 
-state 783
+state 781
 
- 506) dot : MEDIUMBLOB _
+ 506) dot : MEDIUMTEXT _
 
   $default      reduce using rule 506 (dot)
 
 
-state 784
+state 782
 
- 507) dot : MAX_ROWS _
+ 507) dot : MEDIUMINT _
 
   $default      reduce using rule 507 (dot)
 
 
-state 785
+state 783
 
- 508) dot : MAXVALUE _
+ 508) dot : MEDIUMBLOB _
 
   $default      reduce using rule 508 (dot)
 
 
-state 786
+state 784
 
- 509) dot : MATCH _
+ 509) dot : MAX_ROWS _
 
   $default      reduce using rule 509 (dot)
 
 
-state 787
+state 785
 
- 510) dot : L_CHARACTER_SET _
+ 510) dot : MAXVALUE _
 
   $default      reduce using rule 510 (dot)
 
 
-state 788
+state 786
 
- 511) dot : LONGTEXT _
+ 511) dot : MATCH _
 
   $default      reduce using rule 511 (dot)
 
 
-state 789
+state 787
 
- 512) dot : LONGBLOB _
+ 512) dot : L_CHARACTER_SET _
 
   $default      reduce using rule 512 (dot)
 
 
-state 790
+state 788
 
- 513) dot : LOCAL _
+ 513) dot : LONGTEXT _
 
   $default      reduce using rule 513 (dot)
 
 
-state 791
+state 789
 
- 514) dot : LIKE _
+ 514) dot : LONGBLOB _
 
   $default      reduce using rule 514 (dot)
 
 
-state 792
+state 790
 
- 515) dot : LESS _
+ 515) dot : LOCAL _
 
   $default      reduce using rule 515 (dot)
 
 
-state 793
+state 791
 
- 516) dot : LATIN1 _
+ 516) dot : LIKE _
 
   $default      reduce using rule 516 (dot)
 
 
-state 794
+state 792
 
- 517) dot : LAST _
+ 517) dot : LESS _
 
   $default      reduce using rule 517 (dot)
 
 
-state 795
+state 793
 
- 518) dot : KEY_BLOCK_SIZE _
+ 518) dot : LATIN1 _
 
   $default      reduce using rule 518 (dot)
 
 
-state 796
+state 794
 
- 519) dot : KEYS _
+ 519) dot : LAST _
 
   $default      reduce using rule 519 (dot)
 
 
-state 797
+state 795
 
- 520) dot : KEY _
+ 520) dot : KEY_BLOCK_SIZE _
 
   $default      reduce using rule 520 (dot)
 
 
-state 798
+state 796
 
- 521) dot : INVOKER _
+ 521) dot : KEYS _
 
   $default      reduce using rule 521 (dot)
 
 
-state 799
+state 797
 
- 522) dot : INTO _
+ 522) dot : KEY _
 
   $default      reduce using rule 522 (dot)
 
 
-state 800
+state 798
 
- 523) dot : INTEGER _
+ 523) dot : INVOKER _
 
   $default      reduce using rule 523 (dot)
 
 
-state 801
+state 799
 
- 524) dot : INT _
+ 524) dot : INTO _
 
   $default      reduce using rule 524 (dot)
 
 
-state 802
+state 800
 
- 525) dot : INSERT_METHOD _
+ 525) dot : INTEGER _
 
   $default      reduce using rule 525 (dot)
 
 
-state 803
+state 801
 
- 526) dot : INNODB _
+ 526) dot : INT _
 
   $default      reduce using rule 526 (dot)
 
 
-state 804
+state 802
 
- 527) dot : INDEX _
+ 527) dot : INSERT_METHOD _
 
   $default      reduce using rule 527 (dot)
 
 
-state 805
+state 803
 
- 528) dot : IN _
+ 528) dot : INNODB _
 
   $default      reduce using rule 528 (dot)
 
 
-state 806
+state 804
 
- 529) dot : IMPORT _
+ 529) dot : INDEX _
 
   $default      reduce using rule 529 (dot)
 
 
-state 807
+state 805
 
- 530) dot : IGNORE _
+ 530) dot : IN _
 
   $default      reduce using rule 530 (dot)
 
 
-state 808
+state 806
 
- 531) dot : IF _
+ 531) dot : IMPORT _
 
   $default      reduce using rule 531 (dot)
 
 
-state 809
+state 807
 
- 532) dot : HASH _
+ 532) dot : IGNORE _
 
   $default      reduce using rule 532 (dot)
 
 
-state 810
+state 808
 
- 533) dot : FULLTEXT _
+ 533) dot : IF _
 
   $default      reduce using rule 533 (dot)
 
 
-state 811
+state 809
 
- 534) dot : FULL _
+ 534) dot : HASH _
 
   $default      reduce using rule 534 (dot)
 
 
-state 812
+state 810
 
- 535) dot : FOREIGN _
+ 535) dot : FULLTEXT _
 
   $default      reduce using rule 535 (dot)
 
 
-state 813
+state 811
 
- 536) dot : FLOAT _
+ 536) dot : FULL _
 
   $default      reduce using rule 536 (dot)
 
 
-state 814
+state 812
 
- 537) dot : FIXED _
+ 537) dot : FOREIGN _
 
   $default      reduce using rule 537 (dot)
 
 
-state 815
+state 813
 
- 538) dot : FIRST _
+ 538) dot : FLOAT _
 
   $default      reduce using rule 538 (dot)
 
 
-state 816
+state 814
 
- 539) dot : EXISTS _
+ 539) dot : FIXED _
 
   $default      reduce using rule 539 (dot)
 
 
-state 817
+state 815
 
- 540) dot : ENUM _
+ 540) dot : FIRST _
 
   $default      reduce using rule 540 (dot)
 
 
-state 818
+state 816
 
- 541) dot : ENGINE _
+ 541) dot : EXISTS _
 
   $default      reduce using rule 541 (dot)
 
 
-state 819
+state 817
 
- 542) dot : ENABLE _
+ 542) dot : ENUM _
 
   $default      reduce using rule 542 (dot)
 
 
-state 820
+state 818
 
- 543) dot : DYNAMIC _
+ 543) dot : ENGINE _
 
   $default      reduce using rule 543 (dot)
 
 
-state 821
+state 819
 
- 544) dot : DROP _
+ 544) dot : ENABLE _
 
   $default      reduce using rule 544 (dot)
 
 
-state 822
+state 820
 
- 545) dot : DOUBLE _
+ 545) dot : DYNAMIC _
 
   $default      reduce using rule 545 (dot)
 
 
-state 823
+state 821
 
- 546) dot : DISK _
+ 546) dot : DROP _
 
   $default      reduce using rule 546 (dot)
 
 
-state 824
+state 822
 
- 547) dot : DISCARD _
+ 547) dot : DOUBLE _
 
   $default      reduce using rule 547 (dot)
 
 
-state 825
+state 823
 
- 548) dot : DISABLE _
+ 548) dot : DISK _
 
   $default      reduce using rule 548 (dot)
 
 
-state 826
+state 824
 
- 549) dot : DIRECTORY _
+ 549) dot : DISCARD _
 
   $default      reduce using rule 549 (dot)
 
 
-state 827
+state 825
 
- 550) dot : DESC _
+ 550) dot : DISABLE _
 
   $default      reduce using rule 550 (dot)
 
 
-state 828
+state 826
 
- 551) dot : DELETE _
+ 551) dot : DIRECTORY _
 
   $default      reduce using rule 551 (dot)
 
 
-state 829
+state 827
 
- 552) dot : DELAY_KEY_WRITE _
+ 552) dot : DESC _
 
   $default      reduce using rule 552 (dot)
 
 
-state 830
+state 828
 
- 553) dot : DEFINER _
+ 553) dot : DELETE _
 
   $default      reduce using rule 553 (dot)
 
 
-state 831
+state 829
 
- 554) dot : DEFAULT _
+ 554) dot : DELAY_KEY_WRITE _
 
   $default      reduce using rule 554 (dot)
 
 
-state 832
+state 830
 
- 555) dot : DECIMAL _
+ 555) dot : DEFINER _
 
   $default      reduce using rule 555 (dot)
 
 
-state 833
+state 831
 
- 556) dot : DATETIME _
+ 556) dot : DEFAULT _
 
   $default      reduce using rule 556 (dot)
 
 
-state 834
+state 832
 
- 557) dot : DATE _
+ 557) dot : DECIMAL _
 
   $default      reduce using rule 557 (dot)
 
 
-state 835
+state 833
 
- 558) dot : DATA _
+ 558) dot : DATETIME _
 
   $default      reduce using rule 558 (dot)
 
 
-state 836
+state 834
 
- 559) dot : CURRENT_USER _
+ 559) dot : DATE _
 
   $default      reduce using rule 559 (dot)
 
 
-state 837
+state 835
 
- 560) dot : CURRENT_TIMESTAMP _
+ 560) dot : DATA _
 
   $default      reduce using rule 560 (dot)
 
 
-state 838
+state 836
 
- 561) dot : CREATE _
+ 561) dot : CURRENT_USER _
 
   $default      reduce using rule 561 (dot)
 
 
-state 839
+state 837
 
- 562) dot : CONVERT _
+ 562) dot : CURRENT_TIMESTAMP _
 
   $default      reduce using rule 562 (dot)
 
 
-state 840
+state 838
 
- 563) dot : CONSTRAINT _
+ 563) dot : CREATE _
 
   $default      reduce using rule 563 (dot)
 
 
-state 841
+state 839
 
- 564) dot : CONNECTION _
+ 564) dot : CONVERT _
 
   $default      reduce using rule 564 (dot)
 
 
-state 842
+state 840
 
- 565) dot : COMPRESSED _
+ 565) dot : CONSTRAINT _
 
   $default      reduce using rule 565 (dot)
 
 
-state 843
+state 841
 
- 566) dot : COMPACT _
+ 566) dot : CONNECTION _
 
   $default      reduce using rule 566 (dot)
 
 
-state 844
+state 842
 
- 567) dot : COMMENT _
+ 567) dot : COMPRESSED _
 
   $default      reduce using rule 567 (dot)
 
 
-state 845
+state 843
 
- 568) dot : COLUMN_FORMAT _
+ 568) dot : COMPACT _
 
   $default      reduce using rule 568 (dot)
 
 
-state 846
+state 844
 
- 569) dot : COLUMN _
+ 569) dot : COMMENT _
 
   $default      reduce using rule 569 (dot)
 
 
-state 847
+state 845
 
- 570) dot : COLLATE _
+ 570) dot : COLUMN_FORMAT _
 
   $default      reduce using rule 570 (dot)
 
 
-state 848
+state 846
 
- 571) dot : COALESCE _
+ 571) dot : COLUMN _
 
   $default      reduce using rule 571 (dot)
 
 
-state 849
+state 847
 
- 572) dot : CHECKSUM _
+ 572) dot : COLLATE _
 
   $default      reduce using rule 572 (dot)
 
 
-state 850
+state 848
 
- 573) dot : CHECK _
+ 573) dot : COALESCE _
 
   $default      reduce using rule 573 (dot)
 
 
-state 851
+state 849
 
- 574) dot : CHAR _
+ 574) dot : CHECKSUM _
 
   $default      reduce using rule 574 (dot)
 
 
-state 852
+state 850
 
- 575) dot : CHANGE _
+ 575) dot : CHECK _
 
   $default      reduce using rule 575 (dot)
 
 
-state 853
+state 851
 
- 576) dot : CASCADED _
+ 576) dot : CHAR _
 
   $default      reduce using rule 576 (dot)
 
 
-state 854
+state 852
 
- 577) dot : CASCADE _
+ 577) dot : CHANGE _
 
   $default      reduce using rule 577 (dot)
 
 
-state 855
+state 853
 
- 578) dot : BY _
+ 578) dot : CASCADED _
 
   $default      reduce using rule 578 (dot)
 
 
-state 856
+state 854
 
- 579) dot : BTREE _
+ 579) dot : CASCADE _
 
   $default      reduce using rule 579 (dot)
 
 
-state 857
+state 855
 
- 580) dot : BLOB _
+ 580) dot : BY _
 
   $default      reduce using rule 580 (dot)
 
 
-state 858
+state 856
 
- 581) dot : BIT _
+ 581) dot : BTREE _
 
   $default      reduce using rule 581 (dot)
 
 
-state 859
+state 857
 
- 582) dot : BINARY _
+ 582) dot : BLOB _
 
   $default      reduce using rule 582 (dot)
 
 
-state 860
+state 858
 
- 583) dot : BIGINT _
+ 583) dot : BIT _
 
   $default      reduce using rule 583 (dot)
 
 
-state 861
+state 859
 
- 584) dot : AVG_ROW_LENGTH _
+ 584) dot : BINARY _
 
   $default      reduce using rule 584 (dot)
 
 
-state 862
+state 860
 
- 585) dot : AUTO_INCREMENT _
+ 585) dot : BIGINT _
 
   $default      reduce using rule 585 (dot)
 
 
-state 863
+state 861
 
- 586) dot : ASC _
+ 586) dot : AVG_ROW_LENGTH _
 
   $default      reduce using rule 586 (dot)
 
 
-state 864
+state 862
 
- 587) dot : AS _
+ 587) dot : AUTO_INCREMENT _
 
   $default      reduce using rule 587 (dot)
 
 
-state 865
+state 863
 
- 588) dot : ANALYZE _
+ 588) dot : ASC _
 
   $default      reduce using rule 588 (dot)
 
 
-state 866
+state 864
 
- 589) dot : ALTER _
+ 589) dot : AS _
 
   $default      reduce using rule 589 (dot)
 
 
-state 867
+state 865
 
- 590) dot : ALL _
+ 590) dot : ANALYZE _
 
   $default      reduce using rule 590 (dot)
 
 
-state 868
+state 866
 
- 591) dot : ALGORITHM _
+ 591) dot : ALTER _
 
   $default      reduce using rule 591 (dot)
 
 
-state 869
+state 867
 
- 592) dot : AFTER _
+ 592) dot : ALL _
 
   $default      reduce using rule 592 (dot)
 
 
-state 870
+state 868
 
- 593) dot : ADD _
+ 593) dot : ALGORITHM _
 
   $default      reduce using rule 593 (dot)
 
 
-state 871
+state 869
 
- 594) dot : ACTION _
+ 594) dot : AFTER _
 
   $default      reduce using rule 594 (dot)
+
+
+state 870
+
+ 595) dot : ADD _
+
+  $default      reduce using rule 595 (dot)
+
+
+state 871
+
+ 596) dot : ACTION _
+
+  $default      reduce using rule 596 (dot)
 
 
 state 872
@@ -9475,7 +9483,6 @@ state 873
   S_EQUAL       shift, and go to state 730
   S_LEFT_PAREN  shift, and go to state 726
   S_RIGHT_PAREN  shift, and go to state 722
-  CURRENT_TIMESTAMP  shift, and go to state 837
   S_SINGLEQUOTE_IN  shift, and go to state 721
   S_SINGLEQUOTE_OUT  shift, and go to state 720
   S_DOUBLEQUOTE_IN  shift, and go to state 732
@@ -9484,6 +9491,7 @@ state 873
   S_FLOAT       shift, and go to state 729
   S_ZERO        shift, and go to state 716
   S_ONE         shift, and go to state 723
+  CURRENT_TIMESTAMP  shift, and go to state 837
   S_MINUS       shift, and go to state 725
   S_NAT         shift, and go to state 724
   NULL          shift, and go to state 773
@@ -9496,7 +9504,7 @@ state 873
   LOCAL         shift, and go to state 790
   CASCADED      shift, and go to state 853
 
-  star          go to state 948
+  star          go to state 949
   dot           go to state 686
 
 state 874
@@ -9536,11 +9544,10 @@ state 878
 
 state 879
 
- 385) value : CURRENT_TIMESTAMP _ S
+ 385) value : current_timestamp _
 
-  S_SPACE       shift, and go to state 3
+  $default      reduce using rule 385 (value)
 
-  S             go to state 949
 
 state 880
 
@@ -9580,24 +9587,25 @@ state 884
 
 state 885
 
- 397) negative_integer : S_MINUS _ S_ONE S
- 398) negative_integer : S_MINUS _ S_NAT S
-
-  S_ONE         shift, and go to state 951
-  S_NAT         shift, and go to state 952
-
-
-state 886
-
- 196) r_UNIQUE_or_PRIMARY : UNIQUE S KEY _ S
+ 397) current_timestamp : CURRENT_TIMESTAMP _ S
+ 398) current_timestamp : CURRENT_TIMESTAMP _ S r_opt_datatype_int
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 953
+  S             go to state 951
+
+state 886
+
+ 399) negative_integer : S_MINUS _ S_ONE S
+ 400) negative_integer : S_MINUS _ S_NAT S
+
+  S_ONE         shift, and go to state 952
+  S_NAT         shift, and go to state 953
+
 
 state 887
 
- 198) r_UNIQUE_or_PRIMARY : PRIMARY S KEY _ S
+ 196) r_UNIQUE_or_PRIMARY : UNIQUE S KEY _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9605,22 +9613,22 @@ state 887
 
 state 888
 
- 199) r_COMMENT_with_val : COMMENT S string _
-
-  $default      reduce using rule 199 (r_COMMENT_with_val)
-
-
-state 889
-
- 200) r_COLUMN_FORMAT : COLUMN_FORMAT S FIXED _ S
+ 198) r_UNIQUE_or_PRIMARY : PRIMARY S KEY _ S
 
   S_SPACE       shift, and go to state 3
 
   S             go to state 955
 
+state 889
+
+ 199) r_COMMENT_with_val : COMMENT S string _
+
+  $default      reduce using rule 199 (r_COMMENT_with_val)
+
+
 state 890
 
- 201) r_COLUMN_FORMAT : COLUMN_FORMAT S DYNAMIC _ S
+ 200) r_COLUMN_FORMAT : COLUMN_FORMAT S FIXED _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9628,7 +9636,7 @@ state 890
 
 state 891
 
- 202) r_COLUMN_FORMAT : COLUMN_FORMAT S DEFAULT _ S
+ 201) r_COLUMN_FORMAT : COLUMN_FORMAT S DYNAMIC _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9636,7 +9644,7 @@ state 891
 
 state 892
 
- 203) r_STORAGE : STORAGE S DISK _ S
+ 202) r_COLUMN_FORMAT : COLUMN_FORMAT S DEFAULT _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9644,7 +9652,7 @@ state 892
 
 state 893
 
- 204) r_STORAGE : STORAGE S MEMORY _ S
+ 203) r_STORAGE : STORAGE S DISK _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9652,7 +9660,7 @@ state 893
 
 state 894
 
- 205) r_STORAGE : STORAGE S DEFAULT _ S
+ 204) r_STORAGE : STORAGE S MEMORY _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9660,7 +9668,7 @@ state 894
 
 state 895
 
- 218) r_COLUMN_ON_UPDATE : ON S UPDATE _ S literal
+ 205) r_STORAGE : STORAGE S DEFAULT _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9668,47 +9676,55 @@ state 895
 
 state 896
 
+ 218) r_COLUMN_ON_UPDATE : ON S UPDATE _ S literal
+
+  S_SPACE       shift, and go to state 3
+
+  S             go to state 962
+
+state 897
+
  183) r_length_int : left_paren nat _ right_paren
 
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 962
+  right_paren   go to state 963
 
-state 897
+state 898
 
  176) r_opt_datatype_int : r_opt_length_int r_opt_UNSIGNED _ r_opt_ZEROFILL
 
-  ZEROFILL      shift, and go to state 964
+  ZEROFILL      shift, and go to state 965
   $default      reduce using rule 187 (r_opt_ZEROFILL)
 
-  r_opt_ZEROFILL  go to state 963
+  r_opt_ZEROFILL  go to state 964
 
-state 898
+state 899
 
  186) r_opt_UNSIGNED : UNSIGNED _ S
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 965
+  S             go to state 966
 
-state 899
+state 900
 
  177) r_opt_datatype_real : r_opt_length_real r_opt_UNSIGNED _ r_opt_ZEROFILL
 
-  ZEROFILL      shift, and go to state 964
+  ZEROFILL      shift, and go to state 965
   $default      reduce using rule 187 (r_opt_ZEROFILL)
 
-  r_opt_ZEROFILL  go to state 966
+  r_opt_ZEROFILL  go to state 967
 
-state 900
+state 901
 
  184) r_length_real : left_paren nat _ comma nat right_paren
 
   S_COMMA       shift, and go to state 115
 
-  comma         go to state 967
+  comma         go to state 968
 
-state 901
+state 902
 
  183) r_length_int : left_paren nat _ right_paren
  184) r_length_real : left_paren nat _ comma nat right_paren
@@ -9716,55 +9732,55 @@ state 901
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 962
-  comma         go to state 967
+  right_paren   go to state 963
+  comma         go to state 968
 
-state 902
+state 903
 
  356) r_datatype : CHAR S r_opt_length_int r_opt_datatype_char _
 
   $default      reduce using rule 356 (r_datatype)
 
 
-state 903
+state 904
 
  357) r_datatype : VARCHAR S r_opt_length_int r_opt_datatype_char _
 
   $default      reduce using rule 357 (r_datatype)
 
 
-state 904
+state 905
 
  178) r_opt_datatype_char : r_opt_BINARY r_opt_CHARACTER_SET_with_val _ opt_COLLATE_with_val
 
-  COLLATE       shift, and go to state 969
+  COLLATE       shift, and go to state 970
   $default      reduce using rule 231 (opt_COLLATE_with_val)
 
-  opt_COLLATE_with_val  go to state 968
+  opt_COLLATE_with_val  go to state 969
 
-state 905
+state 906
 
  230) r_opt_CHARACTER_SET_with_val : L_CHARACTER_SET _ S r_charset_name
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 970
+  S             go to state 971
 
-state 906
+state 907
 
  190) r_opt_BINARY : BINARY S _
 
   $default      reduce using rule 190 (r_opt_BINARY)
 
 
-state 907
+state 908
 
  310) r_comma_separated_string : string _
 
   $default      reduce using rule 310 (r_comma_separated_string)
 
 
-state 908
+state 909
 
  311) r_comma_separated_string : r_comma_separated_string _ comma string
  368) r_datatype : SET S left_paren r_comma_separated_string _ right_paren r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val
@@ -9772,10 +9788,10 @@ state 908
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  comma         go to state 971
-  right_paren   go to state 972
+  comma         go to state 972
+  right_paren   go to state 973
 
-state 909
+state 910
 
  311) r_comma_separated_string : r_comma_separated_string _ comma string
  369) r_datatype : ENUM S left_paren r_comma_separated_string _ right_paren r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val
@@ -9783,23 +9799,12 @@ state 909
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  comma         go to state 971
-  right_paren   go to state 973
-
-state 910
-
-  70) r_shared_create_alter : r_opt_CONSTRAINT_with_val PRIMARY S KEY S _ r_alter_index_opt
-
-  USING         shift, and go to state 172
-  $default      reduce using rule 143 (r_opt_index_type)
-
-  r_alter_index_opt  go to state 974
-  r_opt_index_type  go to state 488
-  r_index_type  go to state 171
+  comma         go to state 972
+  right_paren   go to state 974
 
 state 911
 
-  72) r_shared_create_alter : r_opt_CONSTRAINT_with_val UNIQUE S r_opt_INDEX_or_KEY r_opt_index_name _ r_alter_index_opt
+  70) r_shared_create_alter : r_opt_CONSTRAINT_with_val PRIMARY S KEY S _ r_alter_index_opt
 
   USING         shift, and go to state 172
   $default      reduce using rule 143 (r_opt_index_type)
@@ -9810,18 +9815,29 @@ state 911
 
 state 912
 
+  72) r_shared_create_alter : r_opt_CONSTRAINT_with_val UNIQUE S r_opt_INDEX_or_KEY r_opt_index_name _ r_alter_index_opt
+
+  USING         shift, and go to state 172
+  $default      reduce using rule 143 (r_opt_index_type)
+
+  r_alter_index_opt  go to state 976
+  r_opt_index_type  go to state 488
+  r_index_type  go to state 171
+
+state 913
+
   75) r_shared_create_alter : r_opt_CONSTRAINT_with_val FOREIGN S KEY S _ r_opt_index_name r_alter_index_opt r_REFERENCES_definition
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
   $default      reduce using rule 141 (r_opt_index_name)
 
-  r_opt_index_name  go to state 976
+  r_opt_index_name  go to state 977
   r_index_name  go to state 347
   ident         go to state 95
   raw_ident     go to state 55
 
-state 913
+state 914
 
  136) r_alter_index_opt : r_opt_index_type left_paren r_comma_separated_index_col_name _ right_paren r_opt_space_separated_index_option
  287) r_comma_separated_index_col_name : r_comma_separated_index_col_name _ comma r_index_col_name
@@ -9829,17 +9845,17 @@ state 913
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 977
-  comma         go to state 978
+  right_paren   go to state 978
+  comma         go to state 979
 
-state 914
+state 915
 
  286) r_comma_separated_index_col_name : r_index_col_name _
 
   $default      reduce using rule 286 (r_comma_separated_index_col_name)
 
 
-state 915
+state 916
 
  314) r_index_col_name : r_col_name _ r_opt_length_int r_opt_ASC_or_DESC
 
@@ -9848,47 +9864,39 @@ state 915
 
   r_length_int  go to state 587
   left_paren    go to state 588
-  r_opt_length_int  go to state 979
+  r_opt_length_int  go to state 980
 
-state 916
+state 917
 
   73) r_shared_create_alter : FULLTEXT S r_opt_INDEX_or_KEY r_opt_index_name r_alter_index_opt _
 
   $default      reduce using rule 73 (r_shared_create_alter)
 
 
-state 917
+state 918
 
   74) r_shared_create_alter : SPATIAL S r_opt_INDEX_or_KEY r_opt_index_name r_alter_index_opt _
 
   $default      reduce using rule 74 (r_shared_create_alter)
 
 
-state 918
+state 919
 
   94) r_DATA_DIRECTORY_equal_with_val : DATA S DIRECTORY S opt_equal string _
 
   $default      reduce using rule 94 (r_DATA_DIRECTORY_equal_with_val)
 
 
-state 919
+state 920
 
   95) r_INDEX_DIRECTORY_equal_with_val : INDEX S DIRECTORY S opt_equal string _
 
   $default      reduce using rule 95 (r_INDEX_DIRECTORY_equal_with_val)
 
 
-state 920
-
- 242) r_opt_STORAGE_option : STORAGE S DISK _ S
-
-  S_SPACE       shift, and go to state 3
-
-  S             go to state 980
-
 state 921
 
- 243) r_opt_STORAGE_option : STORAGE S MEMORY _ S
+ 242) r_opt_STORAGE_option : STORAGE S DISK _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9896,7 +9904,7 @@ state 921
 
 state 922
 
- 244) r_opt_STORAGE_option : STORAGE S DEFAULT _ S
+ 243) r_opt_STORAGE_option : STORAGE S MEMORY _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9904,44 +9912,52 @@ state 922
 
 state 923
 
+ 244) r_opt_STORAGE_option : STORAGE S DEFAULT _ S
+
+  S_SPACE       shift, and go to state 3
+
+  S             go to state 983
+
+state 924
+
  107) r_shared_table_option : UNION S opt_equal left_paren opt_equal r_comma_separated_tbl_name _ right_paren
  285) r_comma_separated_tbl_name : r_comma_separated_tbl_name _ comma r_tbl_name
 
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 983
+  right_paren   go to state 984
   comma         go to state 180
 
-state 924
+state 925
 
  334) r_charset_name : LATIN1 S _
 
   $default      reduce using rule 334 (r_charset_name)
 
 
-state 925
+state 926
 
  335) r_charset_name : UTF8 S _
 
   $default      reduce using rule 335 (r_charset_name)
 
 
-state 926
+state 927
 
  336) r_charset_name : UTF8MB4 S _
 
   $default      reduce using rule 336 (r_charset_name)
 
 
-state 927
+state 928
 
  337) r_charset_name : UTF8MB3 S _
 
   $default      reduce using rule 337 (r_charset_name)
 
 
-state 928
+state 929
 
  165) r_CREATE_INDEX : CREATE S r_opt_ONLINE_OFFLINE r_opt_UNIQUE_or_FULLTEXT_or_SPATIAL INDEX S r_index_name r_opt_index_type ON S r_tbl_name left_paren r_comma_separated_index_col_name _ right_paren r_opt_index_option
  287) r_comma_separated_index_col_name : r_comma_separated_index_col_name _ comma r_index_col_name
@@ -9949,10 +9965,10 @@ state 928
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 984
-  comma         go to state 978
+  right_paren   go to state 985
+  comma         go to state 979
 
-state 929
+state 930
 
   93) r_opt_after_alter : ORDER S BY S r_comma_separated_col_name _
  283) r_comma_separated_col_name : r_comma_separated_col_name _ comma r_col_name
@@ -9962,24 +9978,16 @@ state 929
 
   comma         go to state 570
 
-state 930
+state 931
 
   77) r_alter_specification : ADD S r_opt_COLUMN r_col_name r_column_definition r_opt_pos_column _
 
   $default      reduce using rule 77 (r_alter_specification)
 
 
-state 931
-
- 234) r_opt_pos_column : FIRST _ S
-
-  S_SPACE       shift, and go to state 3
-
-  S             go to state 985
-
 state 932
 
- 235) r_opt_pos_column : AFTER _ S r_col_name
+ 234) r_opt_pos_column : FIRST _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -9987,12 +9995,20 @@ state 932
 
 state 933
 
+ 235) r_opt_pos_column : AFTER _ S r_col_name
+
+  S_SPACE       shift, and go to state 3
+
+  S             go to state 987
+
+state 934
+
   78) r_alter_specification : ADD S r_opt_COLUMN left_paren r_comma_separated_add_col right_paren _
 
   $default      reduce using rule 78 (r_alter_specification)
 
 
-state 934
+state 935
 
  289) r_comma_separated_add_col : r_comma_separated_add_col comma _ r_col_name_with_definition
 
@@ -10000,80 +10016,80 @@ state 934
   S_BACKTICK_IN  shift, and go to state 56
 
   r_col_name    go to state 225
-  r_col_name_with_definition  go to state 987
+  r_col_name_with_definition  go to state 988
   ident         go to state 234
   raw_ident     go to state 55
 
-state 935
+state 936
 
  122) r_single_alter_specification : ADD S PARTITION S left_paren r_partition_definition _ right_paren
 
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 988
+  right_paren   go to state 989
 
-state 936
+state 937
 
  252) r_partition_definition : PARTITION _ S r_partition_name r_opt_partition_values r_partition_subpartition_share r_opt_subpartition_definition_list
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 989
-
-state 937
-
- 150) r_SET_or_DROP_DEFAULT : SET S _ DEFAULT S literal
-
-  DEFAULT       shift, and go to state 990
-
+  S             go to state 990
 
 state 938
 
- 151) r_SET_or_DROP_DEFAULT : DROP S _ DEFAULT S
+ 150) r_SET_or_DROP_DEFAULT : SET S _ DEFAULT S literal
 
   DEFAULT       shift, and go to state 991
 
 
 state 939
 
-  81) r_alter_specification : CHANGE S r_opt_COLUMN r_col_name r_col_name r_column_definition _ r_opt_pos_column
+ 151) r_SET_or_DROP_DEFAULT : DROP S _ DEFAULT S
 
-  FIRST         shift, and go to state 931
-  AFTER         shift, and go to state 932
-  $default      reduce using rule 233 (r_opt_pos_column)
+  DEFAULT       shift, and go to state 992
 
-  r_opt_pos_column  go to state 992
 
 state 940
+
+  81) r_alter_specification : CHANGE S r_opt_COLUMN r_col_name r_col_name r_column_definition _ r_opt_pos_column
+
+  FIRST         shift, and go to state 932
+  AFTER         shift, and go to state 933
+  $default      reduce using rule 233 (r_opt_pos_column)
+
+  r_opt_pos_column  go to state 993
+
+state 941
 
   83) r_alter_specification : DROP S FOREIGN S KEY S _ r_fk_symbol
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_fk_symbol   go to state 993
-  ident         go to state 994
+  r_fk_symbol   go to state 994
+  ident         go to state 995
   raw_ident     go to state 55
 
-state 941
+state 942
 
   91) r_alter_specification : DROP S PRIMARY S KEY S _
 
   $default      reduce using rule 91 (r_alter_specification)
 
 
-state 942
+state 943
 
  293) r_comma_separated_partition_name : r_comma_separated_partition_name comma _ r_partition_name
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_partition_name  go to state 995
+  r_partition_name  go to state 996
   ident         go to state 670
   raw_ident     go to state 55
 
-state 943
+state 944
 
   87) r_alter_specification : CONVERT S TO S L_CHARACTER_SET S _ r_charset_name opt_COLLATE_with_val
 
@@ -10083,42 +10099,42 @@ state 943
   UTF8MB4       shift, and go to state 652
   UTF8MB3       shift, and go to state 653
 
-  r_charset_name  go to state 996
+  r_charset_name  go to state 997
   raw_ident     go to state 654
 
-state 944
+state 945
 
   90) r_alter_specification : MODIFY S r_opt_COLUMN r_col_name r_column_definition r_opt_pos_column _
 
   $default      reduce using rule 90 (r_alter_specification)
 
 
-state 945
+state 946
 
  277) r_partition_name_list_or_ALL : ALL S _
 
   $default      reduce using rule 277 (r_partition_name_list_or_ALL)
 
 
-state 946
+state 947
 
  276) r_opt_partition_names_INTO_definitions : r_comma_separated_partition_name INTO _ S left_paren r_comma_separated_partition_definition right_paren
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 997
-
-state 947
-
- 409) star : star dot _
-
-  $default      reduce using rule 409 (star)
-
+  S             go to state 998
 
 state 948
 
+ 411) star : star dot _
+
+  $default      reduce using rule 411 (star)
+
+
+state 949
+
   69) r_select_statement : r_opt_IGNORE_or_REPLACE r_opt_AS SELECT S star _
- 409) star : star _ dot
+ 411) star : star _ dot
 
   CREATE        shift, and go to state 838
   VIEW          shift, and go to state 690
@@ -10285,7 +10301,6 @@ state 948
   S_EQUAL       shift, and go to state 730
   S_LEFT_PAREN  shift, and go to state 726
   S_RIGHT_PAREN  shift, and go to state 722
-  CURRENT_TIMESTAMP  shift, and go to state 837
   S_SINGLEQUOTE_IN  shift, and go to state 721
   S_SINGLEQUOTE_OUT  shift, and go to state 720
   S_DOUBLEQUOTE_IN  shift, and go to state 732
@@ -10294,6 +10309,7 @@ state 948
   S_FLOAT       shift, and go to state 729
   S_ZERO        shift, and go to state 716
   S_ONE         shift, and go to state 723
+  CURRENT_TIMESTAMP  shift, and go to state 837
   S_MINUS       shift, and go to state 725
   S_NAT         shift, and go to state 724
   NULL          shift, and go to state 773
@@ -10307,14 +10323,7 @@ state 948
   CASCADED      shift, and go to state 853
   $default      reduce using rule 69 (r_select_statement)
 
-  dot           go to state 947
-
-state 949
-
- 385) value : CURRENT_TIMESTAMP S _
-
-  $default      reduce using rule 385 (value)
-
+  dot           go to state 948
 
 state 950
 
@@ -10325,138 +10334,170 @@ state 950
 
 state 951
 
- 397) negative_integer : S_MINUS S_ONE _ S
+ 397) current_timestamp : CURRENT_TIMESTAMP S _
+ 398) current_timestamp : CURRENT_TIMESTAMP S _ r_opt_datatype_int
 
-  S_SPACE       shift, and go to state 3
+  S_LEFT_PAREN  shift, and go to state 169
+  $end          [reduce using rule 397 (current_timestamp)]
+  NOT           [reduce using rule 397 (current_timestamp)]
+  DEFAULT       [reduce using rule 397 (current_timestamp)]
+  REMOVE        [reduce using rule 397 (current_timestamp)]
+  PARTITION     [reduce using rule 397 (current_timestamp)]
+  PRIMARY       [reduce using rule 397 (current_timestamp)]
+  UNIQUE        [reduce using rule 397 (current_timestamp)]
+  ORDER         [reduce using rule 397 (current_timestamp)]
+  AUTO_INCREMENT  [reduce using rule 397 (current_timestamp)]
+  ON            [reduce using rule 397 (current_timestamp)]
+  COMMENT       [reduce using rule 397 (current_timestamp)]
+  COLUMN_FORMAT  [reduce using rule 397 (current_timestamp)]
+  STORAGE       [reduce using rule 397 (current_timestamp)]
+  FIRST         [reduce using rule 397 (current_timestamp)]
+  AFTER         [reduce using rule 397 (current_timestamp)]
+  S_COMMA       [reduce using rule 397 (current_timestamp)]
+  S_RIGHT_PAREN  [reduce using rule 397 (current_timestamp)]
+  NULL          [reduce using rule 397 (current_timestamp)]
+  $default      reduce using rule 179 (r_opt_length_int)
 
-  S             go to state 998
+  r_opt_length_int  go to state 590
+  r_length_int  go to state 587
+  left_paren    go to state 588
+  r_opt_datatype_int  go to state 999
 
 state 952
 
- 398) negative_integer : S_MINUS S_NAT _ S
+ 399) negative_integer : S_MINUS S_ONE _ S
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 999
+  S             go to state 1000
 
 state 953
+
+ 400) negative_integer : S_MINUS S_NAT _ S
+
+  S_SPACE       shift, and go to state 3
+
+  S             go to state 1001
+
+state 954
 
  196) r_UNIQUE_or_PRIMARY : UNIQUE S KEY S _
 
   $default      reduce using rule 196 (r_UNIQUE_or_PRIMARY)
 
 
-state 954
+state 955
 
  198) r_UNIQUE_or_PRIMARY : PRIMARY S KEY S _
 
   $default      reduce using rule 198 (r_UNIQUE_or_PRIMARY)
 
 
-state 955
+state 956
 
  200) r_COLUMN_FORMAT : COLUMN_FORMAT S FIXED S _
 
   $default      reduce using rule 200 (r_COLUMN_FORMAT)
 
 
-state 956
+state 957
 
  201) r_COLUMN_FORMAT : COLUMN_FORMAT S DYNAMIC S _
 
   $default      reduce using rule 201 (r_COLUMN_FORMAT)
 
 
-state 957
+state 958
 
  202) r_COLUMN_FORMAT : COLUMN_FORMAT S DEFAULT S _
 
   $default      reduce using rule 202 (r_COLUMN_FORMAT)
 
 
-state 958
+state 959
 
  203) r_STORAGE : STORAGE S DISK S _
 
   $default      reduce using rule 203 (r_STORAGE)
 
 
-state 959
+state 960
 
  204) r_STORAGE : STORAGE S MEMORY S _
 
   $default      reduce using rule 204 (r_STORAGE)
 
 
-state 960
+state 961
 
  205) r_STORAGE : STORAGE S DEFAULT S _
 
   $default      reduce using rule 205 (r_STORAGE)
 
 
-state 961
+state 962
 
  218) r_COLUMN_ON_UPDATE : ON S UPDATE S _ literal
 
-  CURRENT_TIMESTAMP  shift, and go to state 879
   S_SINGLEQUOTE_IN  shift, and go to state 129
   S_DOUBLEQUOTE_IN  shift, and go to state 130
   S_FLOAT       shift, and go to state 882
   S_ZERO        shift, and go to state 497
   S_ONE         shift, and go to state 498
-  S_MINUS       shift, and go to state 885
+  CURRENT_TIMESTAMP  shift, and go to state 885
+  S_MINUS       shift, and go to state 886
   S_NAT         shift, and go to state 499
   NULL          shift, and go to state 452
 
-  literal       go to state 1000
-  value         go to state 1001
+  literal       go to state 1002
+  value         go to state 1003
   null          go to state 876
   number        go to state 877
   string        go to state 878
+  current_timestamp  go to state 879
   integer       go to state 880
   float         go to state 881
   nat           go to state 883
   negative_integer  go to state 884
   binary        go to state 500
 
-state 962
+state 963
 
  183) r_length_int : left_paren nat right_paren _
 
   $default      reduce using rule 183 (r_length_int)
 
 
-state 963
+state 964
 
  176) r_opt_datatype_int : r_opt_length_int r_opt_UNSIGNED r_opt_ZEROFILL _
 
   $default      reduce using rule 176 (r_opt_datatype_int)
 
 
-state 964
+state 965
 
  188) r_opt_ZEROFILL : ZEROFILL _ S
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1002
+  S             go to state 1004
 
-state 965
+state 966
 
  186) r_opt_UNSIGNED : UNSIGNED S _
 
   $default      reduce using rule 186 (r_opt_UNSIGNED)
 
 
-state 966
+state 967
 
  177) r_opt_datatype_real : r_opt_length_real r_opt_UNSIGNED r_opt_ZEROFILL _
 
   $default      reduce using rule 177 (r_opt_datatype_real)
 
 
-state 967
+state 968
 
  184) r_length_real : left_paren nat comma _ nat right_paren
 
@@ -10464,25 +10505,25 @@ state 967
   S_ONE         shift, and go to state 498
   S_NAT         shift, and go to state 499
 
-  nat           go to state 1003
+  nat           go to state 1005
   binary        go to state 500
 
-state 968
+state 969
 
  178) r_opt_datatype_char : r_opt_BINARY r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val _
 
   $default      reduce using rule 178 (r_opt_datatype_char)
 
 
-state 969
+state 970
 
  232) opt_COLLATE_with_val : COLLATE _ S r_collation_name
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1004
+  S             go to state 1006
 
-state 970
+state 971
 
  230) r_opt_CHARACTER_SET_with_val : L_CHARACTER_SET S _ r_charset_name
 
@@ -10492,566 +10533,574 @@ state 970
   UTF8MB4       shift, and go to state 652
   UTF8MB3       shift, and go to state 653
 
-  r_charset_name  go to state 1005
+  r_charset_name  go to state 1007
   raw_ident     go to state 654
 
-state 971
+state 972
 
  311) r_comma_separated_string : r_comma_separated_string comma _ string
 
   S_SINGLEQUOTE_IN  shift, and go to state 129
   S_DOUBLEQUOTE_IN  shift, and go to state 130
 
-  string        go to state 1006
-
-state 972
-
- 368) r_datatype : SET S left_paren r_comma_separated_string right_paren _ r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val
-
-  L_CHARACTER_SET  shift, and go to state 905
-  $default      reduce using rule 229 (r_opt_CHARACTER_SET_with_val)
-
-  r_opt_CHARACTER_SET_with_val  go to state 1007
+  string        go to state 1008
 
 state 973
 
- 369) r_datatype : ENUM S left_paren r_comma_separated_string right_paren _ r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val
+ 368) r_datatype : SET S left_paren r_comma_separated_string right_paren _ r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val
 
-  L_CHARACTER_SET  shift, and go to state 905
+  L_CHARACTER_SET  shift, and go to state 906
   $default      reduce using rule 229 (r_opt_CHARACTER_SET_with_val)
 
-  r_opt_CHARACTER_SET_with_val  go to state 1008
+  r_opt_CHARACTER_SET_with_val  go to state 1009
 
 state 974
+
+ 369) r_datatype : ENUM S left_paren r_comma_separated_string right_paren _ r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val
+
+  L_CHARACTER_SET  shift, and go to state 906
+  $default      reduce using rule 229 (r_opt_CHARACTER_SET_with_val)
+
+  r_opt_CHARACTER_SET_with_val  go to state 1010
+
+state 975
 
   70) r_shared_create_alter : r_opt_CONSTRAINT_with_val PRIMARY S KEY S r_alter_index_opt _
 
   $default      reduce using rule 70 (r_shared_create_alter)
 
 
-state 975
+state 976
 
   72) r_shared_create_alter : r_opt_CONSTRAINT_with_val UNIQUE S r_opt_INDEX_or_KEY r_opt_index_name r_alter_index_opt _
 
   $default      reduce using rule 72 (r_shared_create_alter)
 
 
-state 976
+state 977
 
   75) r_shared_create_alter : r_opt_CONSTRAINT_with_val FOREIGN S KEY S r_opt_index_name _ r_alter_index_opt r_REFERENCES_definition
 
   USING         shift, and go to state 172
   $default      reduce using rule 143 (r_opt_index_type)
 
-  r_alter_index_opt  go to state 1009
+  r_alter_index_opt  go to state 1011
   r_opt_index_type  go to state 488
   r_index_type  go to state 171
 
-state 977
+state 978
 
  136) r_alter_index_opt : r_opt_index_type left_paren r_comma_separated_index_col_name right_paren _ r_opt_space_separated_index_option
 
   $default      reduce using rule 302 (r_opt_space_separated_index_option)
 
-  r_opt_space_separated_index_option  go to state 1010
+  r_opt_space_separated_index_option  go to state 1012
 
-state 978
+state 979
 
  287) r_comma_separated_index_col_name : r_comma_separated_index_col_name comma _ r_index_col_name
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_index_col_name  go to state 1011
-  r_col_name    go to state 915
+  r_index_col_name  go to state 1013
+  r_col_name    go to state 916
   ident         go to state 234
   raw_ident     go to state 55
 
-state 979
+state 980
 
  314) r_index_col_name : r_col_name r_opt_length_int _ r_opt_ASC_or_DESC
 
-  ASC           shift, and go to state 1012
-  DESC          shift, and go to state 1013
+  ASC           shift, and go to state 1014
+  DESC          shift, and go to state 1015
   $default      reduce using rule 211 (r_opt_ASC_or_DESC)
 
-  r_opt_ASC_or_DESC  go to state 1014
+  r_opt_ASC_or_DESC  go to state 1016
 
-state 980
+state 981
 
  242) r_opt_STORAGE_option : STORAGE S DISK S _
 
   $default      reduce using rule 242 (r_opt_STORAGE_option)
 
 
-state 981
+state 982
 
  243) r_opt_STORAGE_option : STORAGE S MEMORY S _
 
   $default      reduce using rule 243 (r_opt_STORAGE_option)
 
 
-state 982
+state 983
 
  244) r_opt_STORAGE_option : STORAGE S DEFAULT S _
 
   $default      reduce using rule 244 (r_opt_STORAGE_option)
 
 
-state 983
+state 984
 
  107) r_shared_table_option : UNION S opt_equal left_paren opt_equal r_comma_separated_tbl_name right_paren _
 
   $default      reduce using rule 107 (r_shared_table_option)
 
 
-state 984
+state 985
 
  165) r_CREATE_INDEX : CREATE S r_opt_ONLINE_OFFLINE r_opt_UNIQUE_or_FULLTEXT_or_SPATIAL INDEX S r_index_name r_opt_index_type ON S r_tbl_name left_paren r_comma_separated_index_col_name right_paren _ r_opt_index_option
 
-  KEY_BLOCK_SIZE  shift, and go to state 1016
+  KEY_BLOCK_SIZE  shift, and go to state 1018
   USING         shift, and go to state 172
-  WITH          shift, and go to state 1017
+  WITH          shift, and go to state 1019
   $default      reduce using rule 170 (r_opt_index_option)
 
-  r_index_type  go to state 1015
-  r_opt_index_option  go to state 1018
-  r_index_option  go to state 1019
+  r_index_type  go to state 1017
+  r_opt_index_option  go to state 1020
+  r_index_option  go to state 1021
 
-state 985
+state 986
 
  234) r_opt_pos_column : FIRST S _
 
   $default      reduce using rule 234 (r_opt_pos_column)
 
 
-state 986
+state 987
 
  235) r_opt_pos_column : AFTER S _ r_col_name
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_col_name    go to state 1020
+  r_col_name    go to state 1022
   ident         go to state 234
   raw_ident     go to state 55
 
-state 987
+state 988
 
  289) r_comma_separated_add_col : r_comma_separated_add_col comma r_col_name_with_definition _
 
   $default      reduce using rule 289 (r_comma_separated_add_col)
 
 
-state 988
+state 989
 
  122) r_single_alter_specification : ADD S PARTITION S left_paren r_partition_definition right_paren _
 
   $default      reduce using rule 122 (r_single_alter_specification)
 
 
-state 989
+state 990
 
  252) r_partition_definition : PARTITION S _ r_partition_name r_opt_partition_values r_partition_subpartition_share r_opt_subpartition_definition_list
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_partition_name  go to state 1021
+  r_partition_name  go to state 1023
   ident         go to state 670
   raw_ident     go to state 55
 
-state 990
+state 991
 
  150) r_SET_or_DROP_DEFAULT : SET S DEFAULT _ S literal
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1022
+  S             go to state 1024
 
-state 991
+state 992
 
  151) r_SET_or_DROP_DEFAULT : DROP S DEFAULT _ S
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1023
+  S             go to state 1025
 
-state 992
+state 993
 
   81) r_alter_specification : CHANGE S r_opt_COLUMN r_col_name r_col_name r_column_definition r_opt_pos_column _
 
   $default      reduce using rule 81 (r_alter_specification)
 
 
-state 993
+state 994
 
   83) r_alter_specification : DROP S FOREIGN S KEY S r_fk_symbol _
 
   $default      reduce using rule 83 (r_alter_specification)
 
 
-state 994
+state 995
 
  331) r_fk_symbol : ident _
 
   $default      reduce using rule 331 (r_fk_symbol)
 
 
-state 995
+state 996
 
  293) r_comma_separated_partition_name : r_comma_separated_partition_name comma r_partition_name _
 
   $default      reduce using rule 293 (r_comma_separated_partition_name)
 
 
-state 996
+state 997
 
   87) r_alter_specification : CONVERT S TO S L_CHARACTER_SET S r_charset_name _ opt_COLLATE_with_val
 
-  COLLATE       shift, and go to state 969
+  COLLATE       shift, and go to state 970
   $default      reduce using rule 231 (opt_COLLATE_with_val)
 
-  opt_COLLATE_with_val  go to state 1024
+  opt_COLLATE_with_val  go to state 1026
 
-state 997
+state 998
 
  276) r_opt_partition_names_INTO_definitions : r_comma_separated_partition_name INTO S _ left_paren r_comma_separated_partition_definition right_paren
 
   S_LEFT_PAREN  shift, and go to state 169
 
-  left_paren    go to state 1025
-
-state 998
-
- 397) negative_integer : S_MINUS S_ONE S _
-
-  $default      reduce using rule 397 (negative_integer)
-
+  left_paren    go to state 1027
 
 state 999
 
- 398) negative_integer : S_MINUS S_NAT S _
+ 398) current_timestamp : CURRENT_TIMESTAMP S r_opt_datatype_int _
 
-  $default      reduce using rule 398 (negative_integer)
+  $default      reduce using rule 398 (current_timestamp)
 
 
 state 1000
+
+ 399) negative_integer : S_MINUS S_ONE S _
+
+  $default      reduce using rule 399 (negative_integer)
+
+
+state 1001
+
+ 400) negative_integer : S_MINUS S_NAT S _
+
+  $default      reduce using rule 400 (negative_integer)
+
+
+state 1002
 
  218) r_COLUMN_ON_UPDATE : ON S UPDATE S literal _
 
   $default      reduce using rule 218 (r_COLUMN_ON_UPDATE)
 
 
-state 1001
+state 1003
 
  381) literal : value _
 
   $default      reduce using rule 381 (literal)
 
 
-state 1002
+state 1004
 
  188) r_opt_ZEROFILL : ZEROFILL S _
 
   $default      reduce using rule 188 (r_opt_ZEROFILL)
 
 
-state 1003
+state 1005
 
  184) r_length_real : left_paren nat comma nat _ right_paren
 
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 1026
+  right_paren   go to state 1028
 
-state 1004
+state 1006
 
  232) opt_COLLATE_with_val : COLLATE S _ r_collation_name
 
   S_IDENT_NORMAL  shift, and go to state 76
 
-  r_collation_name  go to state 1027
+  r_collation_name  go to state 1029
   raw_ident     go to state 648
 
-state 1005
+state 1007
 
  230) r_opt_CHARACTER_SET_with_val : L_CHARACTER_SET S r_charset_name _
 
   $default      reduce using rule 230 (r_opt_CHARACTER_SET_with_val)
 
 
-state 1006
+state 1008
 
  311) r_comma_separated_string : r_comma_separated_string comma string _
 
   $default      reduce using rule 311 (r_comma_separated_string)
 
 
-state 1007
+state 1009
 
  368) r_datatype : SET S left_paren r_comma_separated_string right_paren r_opt_CHARACTER_SET_with_val _ opt_COLLATE_with_val
 
-  COLLATE       shift, and go to state 969
+  COLLATE       shift, and go to state 970
   $default      reduce using rule 231 (opt_COLLATE_with_val)
 
-  opt_COLLATE_with_val  go to state 1028
+  opt_COLLATE_with_val  go to state 1030
 
-state 1008
+state 1010
 
  369) r_datatype : ENUM S left_paren r_comma_separated_string right_paren r_opt_CHARACTER_SET_with_val _ opt_COLLATE_with_val
 
-  COLLATE       shift, and go to state 969
+  COLLATE       shift, and go to state 970
   $default      reduce using rule 231 (opt_COLLATE_with_val)
 
-  opt_COLLATE_with_val  go to state 1029
+  opt_COLLATE_with_val  go to state 1031
 
-state 1009
+state 1011
 
   75) r_shared_create_alter : r_opt_CONSTRAINT_with_val FOREIGN S KEY S r_opt_index_name r_alter_index_opt _ r_REFERENCES_definition
 
-  REFERENCES    shift, and go to state 1031
+  REFERENCES    shift, and go to state 1033
 
-  r_REFERENCES_definition  go to state 1030
+  r_REFERENCES_definition  go to state 1032
 
-state 1010
+state 1012
 
  136) r_alter_index_opt : r_opt_index_type left_paren r_comma_separated_index_col_name right_paren r_opt_space_separated_index_option _
  303) r_opt_space_separated_index_option : r_opt_space_separated_index_option _ r_index_option
 
-  KEY_BLOCK_SIZE  shift, and go to state 1016
+  KEY_BLOCK_SIZE  shift, and go to state 1018
   USING         shift, and go to state 172
-  WITH          shift, and go to state 1017
+  WITH          shift, and go to state 1019
   $default      reduce using rule 136 (r_alter_index_opt)
 
-  r_index_type  go to state 1015
-  r_index_option  go to state 1032
+  r_index_type  go to state 1017
+  r_index_option  go to state 1034
 
-state 1011
+state 1013
 
  287) r_comma_separated_index_col_name : r_comma_separated_index_col_name comma r_index_col_name _
 
   $default      reduce using rule 287 (r_comma_separated_index_col_name)
 
 
-state 1012
+state 1014
 
  212) r_opt_ASC_or_DESC : ASC _ S
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1033
+  S             go to state 1035
 
-state 1013
+state 1015
 
  213) r_opt_ASC_or_DESC : DESC _ S
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1034
+  S             go to state 1036
 
-state 1014
+state 1016
 
  314) r_index_col_name : r_col_name r_opt_length_int r_opt_ASC_or_DESC _
 
   $default      reduce using rule 314 (r_index_col_name)
 
 
-state 1015
+state 1017
 
  147) r_index_option : r_index_type _
 
   $default      reduce using rule 147 (r_index_option)
 
 
-state 1016
+state 1018
 
  148) r_index_option : KEY_BLOCK_SIZE _ S opt_equal nat
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1035
+  S             go to state 1037
 
-state 1017
+state 1019
 
  149) r_index_option : WITH _ S PARSER S r_parser_name
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1036
+  S             go to state 1038
 
-state 1018
+state 1020
 
  165) r_CREATE_INDEX : CREATE S r_opt_ONLINE_OFFLINE r_opt_UNIQUE_or_FULLTEXT_or_SPATIAL INDEX S r_index_name r_opt_index_type ON S r_tbl_name left_paren r_comma_separated_index_col_name right_paren r_opt_index_option _
 
   $default      reduce using rule 165 (r_CREATE_INDEX)
 
 
-state 1019
+state 1021
 
  171) r_opt_index_option : r_index_option _
 
   $default      reduce using rule 171 (r_opt_index_option)
 
 
-state 1020
+state 1022
 
  235) r_opt_pos_column : AFTER S r_col_name _
 
   $default      reduce using rule 235 (r_opt_pos_column)
 
 
-state 1021
+state 1023
 
  252) r_partition_definition : PARTITION S r_partition_name _ r_opt_partition_values r_partition_subpartition_share r_opt_subpartition_definition_list
 
-  VALUES        shift, and go to state 1038
+  VALUES        shift, and go to state 1040
   $default      reduce using rule 253 (r_opt_partition_values)
 
-  r_opt_partition_values  go to state 1037
+  r_opt_partition_values  go to state 1039
 
-state 1022
+state 1024
 
  150) r_SET_or_DROP_DEFAULT : SET S DEFAULT S _ literal
 
-  CURRENT_TIMESTAMP  shift, and go to state 879
   S_SINGLEQUOTE_IN  shift, and go to state 129
   S_DOUBLEQUOTE_IN  shift, and go to state 130
   S_FLOAT       shift, and go to state 882
   S_ZERO        shift, and go to state 497
   S_ONE         shift, and go to state 498
-  S_MINUS       shift, and go to state 885
+  CURRENT_TIMESTAMP  shift, and go to state 885
+  S_MINUS       shift, and go to state 886
   S_NAT         shift, and go to state 499
   NULL          shift, and go to state 452
 
-  literal       go to state 1039
-  value         go to state 1001
+  literal       go to state 1041
+  value         go to state 1003
   null          go to state 876
   number        go to state 877
   string        go to state 878
+  current_timestamp  go to state 879
   integer       go to state 880
   float         go to state 881
   nat           go to state 883
   negative_integer  go to state 884
   binary        go to state 500
 
-state 1023
+state 1025
 
  151) r_SET_or_DROP_DEFAULT : DROP S DEFAULT S _
 
   $default      reduce using rule 151 (r_SET_or_DROP_DEFAULT)
 
 
-state 1024
+state 1026
 
   87) r_alter_specification : CONVERT S TO S L_CHARACTER_SET S r_charset_name opt_COLLATE_with_val _
 
   $default      reduce using rule 87 (r_alter_specification)
 
 
-state 1025
+state 1027
 
  276) r_opt_partition_names_INTO_definitions : r_comma_separated_partition_name INTO S left_paren _ r_comma_separated_partition_definition right_paren
 
-  PARTITION     shift, and go to state 936
+  PARTITION     shift, and go to state 937
 
-  r_comma_separated_partition_definition  go to state 1040
-  r_partition_definition  go to state 1041
+  r_comma_separated_partition_definition  go to state 1042
+  r_partition_definition  go to state 1043
 
-state 1026
+state 1028
 
  184) r_length_real : left_paren nat comma nat right_paren _
 
   $default      reduce using rule 184 (r_length_real)
 
 
-state 1027
+state 1029
 
  232) opt_COLLATE_with_val : COLLATE S r_collation_name _
 
   $default      reduce using rule 232 (opt_COLLATE_with_val)
 
 
-state 1028
+state 1030
 
  368) r_datatype : SET S left_paren r_comma_separated_string right_paren r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val _
 
   $default      reduce using rule 368 (r_datatype)
 
 
-state 1029
+state 1031
 
  369) r_datatype : ENUM S left_paren r_comma_separated_string right_paren r_opt_CHARACTER_SET_with_val opt_COLLATE_with_val _
 
   $default      reduce using rule 369 (r_datatype)
 
 
-state 1030
+state 1032
 
   75) r_shared_create_alter : r_opt_CONSTRAINT_with_val FOREIGN S KEY S r_opt_index_name r_alter_index_opt r_REFERENCES_definition _
 
   $default      reduce using rule 75 (r_shared_create_alter)
 
 
-state 1031
+state 1033
 
  206) r_REFERENCES_definition : REFERENCES _ S r_tbl_name left_paren r_comma_separated_index_col_name right_paren r_opt_MATCH r_opt_ON_DELETE_and_UPDATE
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1042
+  S             go to state 1044
 
-state 1032
+state 1034
 
  303) r_opt_space_separated_index_option : r_opt_space_separated_index_option r_index_option _
 
   $default      reduce using rule 303 (r_opt_space_separated_index_option)
 
 
-state 1033
+state 1035
 
  212) r_opt_ASC_or_DESC : ASC S _
 
   $default      reduce using rule 212 (r_opt_ASC_or_DESC)
 
 
-state 1034
+state 1036
 
  213) r_opt_ASC_or_DESC : DESC S _
 
   $default      reduce using rule 213 (r_opt_ASC_or_DESC)
 
 
-state 1035
+state 1037
 
  148) r_index_option : KEY_BLOCK_SIZE S _ opt_equal nat
 
   S_EQUAL       shift, and go to state 84
   $default      reduce using rule 375 (opt_equal)
 
-  opt_equal     go to state 1043
+  opt_equal     go to state 1045
   equal         go to state 358
 
-state 1036
+state 1038
 
  149) r_index_option : WITH S _ PARSER S r_parser_name
 
-  PARSER        shift, and go to state 1044
+  PARSER        shift, and go to state 1046
 
 
-state 1037
+state 1039
 
  252) r_partition_definition : PARTITION S r_partition_name r_opt_partition_values _ r_partition_subpartition_share r_opt_subpartition_definition_list
 
-  STORAGE       shift, and go to state 1046
+  STORAGE       shift, and go to state 1048
   ENGINE        shift, and go to state 167
   $default      reduce using rule 258 (r_opt_STORAGE_ENGINE_equal_with_val)
 
-  r_partition_subpartition_share  go to state 1045
-  r_ENGINE_equal_with_val  go to state 1047
-  r_opt_STORAGE_ENGINE_equal_with_val  go to state 1048
+  r_partition_subpartition_share  go to state 1047
+  r_ENGINE_equal_with_val  go to state 1049
+  r_opt_STORAGE_ENGINE_equal_with_val  go to state 1050
 
-state 1038
+state 1040
 
  254) r_opt_partition_values : VALUES _ S LESS S THAN S MAXVALUE S
  255) r_opt_partition_values : VALUES _ S LESS S THAN S left_paren expr right_paren
@@ -11059,16 +11108,16 @@ state 1038
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1049
+  S             go to state 1051
 
-state 1039
+state 1041
 
  150) r_SET_or_DROP_DEFAULT : SET S DEFAULT S literal _
 
   $default      reduce using rule 150 (r_SET_or_DROP_DEFAULT)
 
 
-state 1040
+state 1042
 
  276) r_opt_partition_names_INTO_definitions : r_comma_separated_partition_name INTO S left_paren r_comma_separated_partition_definition _ right_paren
  297) r_comma_separated_partition_definition : r_comma_separated_partition_definition _ comma r_partition_definition
@@ -11076,17 +11125,17 @@ state 1040
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 1050
-  comma         go to state 1051
+  right_paren   go to state 1052
+  comma         go to state 1053
 
-state 1041
+state 1043
 
  296) r_comma_separated_partition_definition : r_partition_definition _
 
   $default      reduce using rule 296 (r_comma_separated_partition_definition)
 
 
-state 1042
+state 1044
 
  206) r_REFERENCES_definition : REFERENCES S _ r_tbl_name left_paren r_comma_separated_index_col_name right_paren r_opt_MATCH r_opt_ON_DELETE_and_UPDATE
 
@@ -11094,12 +11143,12 @@ state 1042
   S_DOT         shift, and go to state 54
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_tbl_name    go to state 1052
+  r_tbl_name    go to state 1054
   r_tbl_name_int  go to state 51
   ident         go to state 52
   raw_ident     go to state 55
 
-state 1043
+state 1045
 
  148) r_index_option : KEY_BLOCK_SIZE S opt_equal _ nat
 
@@ -11107,203 +11156,203 @@ state 1043
   S_ONE         shift, and go to state 498
   S_NAT         shift, and go to state 499
 
-  nat           go to state 1053
+  nat           go to state 1055
   binary        go to state 500
 
-state 1044
+state 1046
 
  149) r_index_option : WITH S PARSER _ S r_parser_name
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1054
+  S             go to state 1056
 
-state 1045
+state 1047
 
  252) r_partition_definition : PARTITION S r_partition_name r_opt_partition_values r_partition_subpartition_share _ r_opt_subpartition_definition_list
 
   S_LEFT_PAREN  shift, and go to state 169
   $default      reduce using rule 273 (r_opt_subpartition_definition_list)
 
-  r_opt_subpartition_definition_list  go to state 1055
-  left_paren    go to state 1056
+  r_opt_subpartition_definition_list  go to state 1057
+  left_paren    go to state 1058
 
-state 1046
+state 1048
 
  259) r_opt_STORAGE_ENGINE_equal_with_val : STORAGE _ S ENGINE S opt_equal r_ENGINE_name
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1057
+  S             go to state 1059
 
-state 1047
+state 1049
 
  260) r_opt_STORAGE_ENGINE_equal_with_val : r_ENGINE_equal_with_val _
 
   $default      reduce using rule 260 (r_opt_STORAGE_ENGINE_equal_with_val)
 
 
-state 1048
+state 1050
 
  272) r_partition_subpartition_share : r_opt_STORAGE_ENGINE_equal_with_val _ r_opt_COMMENT_equal_with_val r_opt_DATA_DIRECTORY_equal_with_val r_opt_INDEX_DIRECTORY_equal_with_val r_opt_MAX_ROWS_equal_with_val r_opt_MIN_ROWS_equal_with_val r_opt_TABLESPACE_equal_with_val r_opt_NODEGROUP_equal_with_val
 
   COMMENT       shift, and go to state 164
   $default      reduce using rule 247 (r_opt_COMMENT_equal_with_val)
 
-  r_COMMENT_equal_with_val  go to state 1058
-  r_opt_COMMENT_equal_with_val  go to state 1059
+  r_COMMENT_equal_with_val  go to state 1060
+  r_opt_COMMENT_equal_with_val  go to state 1061
 
-state 1049
+state 1051
 
  254) r_opt_partition_values : VALUES S _ LESS S THAN S MAXVALUE S
  255) r_opt_partition_values : VALUES S _ LESS S THAN S left_paren expr right_paren
  256) r_opt_partition_values : VALUES S _ IN S left_paren r_comma_separated_integer right_paren
 
-  LESS          shift, and go to state 1060
-  IN            shift, and go to state 1061
+  LESS          shift, and go to state 1062
+  IN            shift, and go to state 1063
 
 
-state 1050
+state 1052
 
  276) r_opt_partition_names_INTO_definitions : r_comma_separated_partition_name INTO S left_paren r_comma_separated_partition_definition right_paren _
 
   $default      reduce using rule 276 (r_opt_partition_names_INTO_definitions)
 
 
-state 1051
+state 1053
 
  297) r_comma_separated_partition_definition : r_comma_separated_partition_definition comma _ r_partition_definition
 
-  PARTITION     shift, and go to state 936
+  PARTITION     shift, and go to state 937
 
-  r_partition_definition  go to state 1062
+  r_partition_definition  go to state 1064
 
-state 1052
+state 1054
 
  206) r_REFERENCES_definition : REFERENCES S r_tbl_name _ left_paren r_comma_separated_index_col_name right_paren r_opt_MATCH r_opt_ON_DELETE_and_UPDATE
 
   S_LEFT_PAREN  shift, and go to state 169
 
-  left_paren    go to state 1063
+  left_paren    go to state 1065
 
-state 1053
+state 1055
 
  148) r_index_option : KEY_BLOCK_SIZE S opt_equal nat _
 
   $default      reduce using rule 148 (r_index_option)
 
 
-state 1054
+state 1056
 
  149) r_index_option : WITH S PARSER S _ r_parser_name
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_parser_name  go to state 1064
-  ident         go to state 1065
+  r_parser_name  go to state 1066
+  ident         go to state 1067
   raw_ident     go to state 55
 
-state 1055
+state 1057
 
  252) r_partition_definition : PARTITION S r_partition_name r_opt_partition_values r_partition_subpartition_share r_opt_subpartition_definition_list _
 
   $default      reduce using rule 252 (r_partition_definition)
 
 
-state 1056
+state 1058
 
  274) r_opt_subpartition_definition_list : left_paren _ r_comma_separated_subpartition_definition right_paren
 
-  SUBPARTITION  shift, and go to state 1066
+  SUBPARTITION  shift, and go to state 1068
 
-  r_comma_separated_subpartition_definition  go to state 1067
-  r_subpartition_definition  go to state 1068
+  r_comma_separated_subpartition_definition  go to state 1069
+  r_subpartition_definition  go to state 1070
 
-state 1057
+state 1059
 
  259) r_opt_STORAGE_ENGINE_equal_with_val : STORAGE S _ ENGINE S opt_equal r_ENGINE_name
 
-  ENGINE        shift, and go to state 1069
+  ENGINE        shift, and go to state 1071
 
 
-state 1058
+state 1060
 
  248) r_opt_COMMENT_equal_with_val : r_COMMENT_equal_with_val _
 
   $default      reduce using rule 248 (r_opt_COMMENT_equal_with_val)
 
 
-state 1059
+state 1061
 
  272) r_partition_subpartition_share : r_opt_STORAGE_ENGINE_equal_with_val r_opt_COMMENT_equal_with_val _ r_opt_DATA_DIRECTORY_equal_with_val r_opt_INDEX_DIRECTORY_equal_with_val r_opt_MAX_ROWS_equal_with_val r_opt_MIN_ROWS_equal_with_val r_opt_TABLESPACE_equal_with_val r_opt_NODEGROUP_equal_with_val
 
   DATA          shift, and go to state 140
   $default      reduce using rule 261 (r_opt_DATA_DIRECTORY_equal_with_val)
 
-  r_DATA_DIRECTORY_equal_with_val  go to state 1070
-  r_opt_DATA_DIRECTORY_equal_with_val  go to state 1071
+  r_DATA_DIRECTORY_equal_with_val  go to state 1072
+  r_opt_DATA_DIRECTORY_equal_with_val  go to state 1073
 
-state 1060
+state 1062
 
  254) r_opt_partition_values : VALUES S LESS _ S THAN S MAXVALUE S
  255) r_opt_partition_values : VALUES S LESS _ S THAN S left_paren expr right_paren
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1072
+  S             go to state 1074
 
-state 1061
+state 1063
 
  256) r_opt_partition_values : VALUES S IN _ S left_paren r_comma_separated_integer right_paren
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1073
+  S             go to state 1075
 
-state 1062
+state 1064
 
  297) r_comma_separated_partition_definition : r_comma_separated_partition_definition comma r_partition_definition _
 
   $default      reduce using rule 297 (r_comma_separated_partition_definition)
 
 
-state 1063
+state 1065
 
  206) r_REFERENCES_definition : REFERENCES S r_tbl_name left_paren _ r_comma_separated_index_col_name right_paren r_opt_MATCH r_opt_ON_DELETE_and_UPDATE
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_comma_separated_index_col_name  go to state 1074
-  r_index_col_name  go to state 914
-  r_col_name    go to state 915
+  r_comma_separated_index_col_name  go to state 1076
+  r_index_col_name  go to state 915
+  r_col_name    go to state 916
   ident         go to state 234
   raw_ident     go to state 55
 
-state 1064
+state 1066
 
  149) r_index_option : WITH S PARSER S r_parser_name _
 
   $default      reduce using rule 149 (r_index_option)
 
 
-state 1065
+state 1067
 
  318) r_parser_name : ident _
 
   $default      reduce using rule 318 (r_parser_name)
 
 
-state 1066
+state 1068
 
  271) r_subpartition_definition : SUBPARTITION _ S r_logical_name r_partition_subpartition_share
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1075
+  S             go to state 1077
 
-state 1067
+state 1069
 
  274) r_opt_subpartition_definition_list : left_paren r_comma_separated_subpartition_definition _ right_paren
  295) r_comma_separated_subpartition_definition : r_comma_separated_subpartition_definition _ comma r_subpartition_definition
@@ -11311,58 +11360,58 @@ state 1067
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 1076
-  comma         go to state 1077
+  right_paren   go to state 1078
+  comma         go to state 1079
 
-state 1068
+state 1070
 
  294) r_comma_separated_subpartition_definition : r_subpartition_definition _
 
   $default      reduce using rule 294 (r_comma_separated_subpartition_definition)
 
 
-state 1069
+state 1071
 
  259) r_opt_STORAGE_ENGINE_equal_with_val : STORAGE S ENGINE _ S opt_equal r_ENGINE_name
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1078
+  S             go to state 1080
 
-state 1070
+state 1072
 
  262) r_opt_DATA_DIRECTORY_equal_with_val : r_DATA_DIRECTORY_equal_with_val _
 
   $default      reduce using rule 262 (r_opt_DATA_DIRECTORY_equal_with_val)
 
 
-state 1071
+state 1073
 
  272) r_partition_subpartition_share : r_opt_STORAGE_ENGINE_equal_with_val r_opt_COMMENT_equal_with_val r_opt_DATA_DIRECTORY_equal_with_val _ r_opt_INDEX_DIRECTORY_equal_with_val r_opt_MAX_ROWS_equal_with_val r_opt_MIN_ROWS_equal_with_val r_opt_TABLESPACE_equal_with_val r_opt_NODEGROUP_equal_with_val
 
   INDEX         shift, and go to state 141
   $default      reduce using rule 263 (r_opt_INDEX_DIRECTORY_equal_with_val)
 
-  r_INDEX_DIRECTORY_equal_with_val  go to state 1079
-  r_opt_INDEX_DIRECTORY_equal_with_val  go to state 1080
+  r_INDEX_DIRECTORY_equal_with_val  go to state 1081
+  r_opt_INDEX_DIRECTORY_equal_with_val  go to state 1082
 
-state 1072
+state 1074
 
  254) r_opt_partition_values : VALUES S LESS S _ THAN S MAXVALUE S
  255) r_opt_partition_values : VALUES S LESS S _ THAN S left_paren expr right_paren
 
-  THAN          shift, and go to state 1081
+  THAN          shift, and go to state 1083
 
 
-state 1073
+state 1075
 
  256) r_opt_partition_values : VALUES S IN S _ left_paren r_comma_separated_integer right_paren
 
   S_LEFT_PAREN  shift, and go to state 169
 
-  left_paren    go to state 1082
+  left_paren    go to state 1084
 
-state 1074
+state 1076
 
  206) r_REFERENCES_definition : REFERENCES S r_tbl_name left_paren r_comma_separated_index_col_name _ right_paren r_opt_MATCH r_opt_ON_DELETE_and_UPDATE
  287) r_comma_separated_index_col_name : r_comma_separated_index_col_name _ comma r_index_col_name
@@ -11370,159 +11419,159 @@ state 1074
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 1083
-  comma         go to state 978
+  right_paren   go to state 1085
+  comma         go to state 979
 
-state 1075
+state 1077
 
  271) r_subpartition_definition : SUBPARTITION S _ r_logical_name r_partition_subpartition_share
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_logical_name  go to state 1084
-  ident         go to state 1085
+  r_logical_name  go to state 1086
+  ident         go to state 1087
   raw_ident     go to state 55
 
-state 1076
+state 1078
 
  274) r_opt_subpartition_definition_list : left_paren r_comma_separated_subpartition_definition right_paren _
 
   $default      reduce using rule 274 (r_opt_subpartition_definition_list)
 
 
-state 1077
+state 1079
 
  295) r_comma_separated_subpartition_definition : r_comma_separated_subpartition_definition comma _ r_subpartition_definition
 
-  SUBPARTITION  shift, and go to state 1066
+  SUBPARTITION  shift, and go to state 1068
 
-  r_subpartition_definition  go to state 1086
+  r_subpartition_definition  go to state 1088
 
-state 1078
+state 1080
 
  259) r_opt_STORAGE_ENGINE_equal_with_val : STORAGE S ENGINE S _ opt_equal r_ENGINE_name
 
   S_EQUAL       shift, and go to state 84
   $default      reduce using rule 375 (opt_equal)
 
-  opt_equal     go to state 1087
+  opt_equal     go to state 1089
   equal         go to state 358
 
-state 1079
+state 1081
 
  264) r_opt_INDEX_DIRECTORY_equal_with_val : r_INDEX_DIRECTORY_equal_with_val _
 
   $default      reduce using rule 264 (r_opt_INDEX_DIRECTORY_equal_with_val)
 
 
-state 1080
+state 1082
 
  272) r_partition_subpartition_share : r_opt_STORAGE_ENGINE_equal_with_val r_opt_COMMENT_equal_with_val r_opt_DATA_DIRECTORY_equal_with_val r_opt_INDEX_DIRECTORY_equal_with_val _ r_opt_MAX_ROWS_equal_with_val r_opt_MIN_ROWS_equal_with_val r_opt_TABLESPACE_equal_with_val r_opt_NODEGROUP_equal_with_val
 
   MAX_ROWS      shift, and go to state 165
   $default      reduce using rule 265 (r_opt_MAX_ROWS_equal_with_val)
 
-  r_MAX_ROWS_equal_with_val  go to state 1088
-  r_opt_MAX_ROWS_equal_with_val  go to state 1089
+  r_MAX_ROWS_equal_with_val  go to state 1090
+  r_opt_MAX_ROWS_equal_with_val  go to state 1091
 
-state 1081
+state 1083
 
  254) r_opt_partition_values : VALUES S LESS S THAN _ S MAXVALUE S
  255) r_opt_partition_values : VALUES S LESS S THAN _ S left_paren expr right_paren
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1090
+  S             go to state 1092
 
-state 1082
+state 1084
 
  256) r_opt_partition_values : VALUES S IN S left_paren _ r_comma_separated_integer right_paren
 
   S_ZERO        shift, and go to state 497
   S_ONE         shift, and go to state 498
-  S_MINUS       shift, and go to state 885
+  S_MINUS       shift, and go to state 886
   S_NAT         shift, and go to state 499
 
-  r_comma_separated_integer  go to state 1091
-  integer       go to state 1092
+  r_comma_separated_integer  go to state 1093
+  integer       go to state 1094
   nat           go to state 883
   negative_integer  go to state 884
   binary        go to state 500
 
-state 1083
+state 1085
 
  206) r_REFERENCES_definition : REFERENCES S r_tbl_name left_paren r_comma_separated_index_col_name right_paren _ r_opt_MATCH r_opt_ON_DELETE_and_UPDATE
 
-  MATCH         shift, and go to state 1094
+  MATCH         shift, and go to state 1096
   $default      reduce using rule 207 (r_opt_MATCH)
 
-  r_opt_MATCH   go to state 1093
+  r_opt_MATCH   go to state 1095
 
-state 1084
+state 1086
 
  271) r_subpartition_definition : SUBPARTITION S r_logical_name _ r_partition_subpartition_share
 
-  STORAGE       shift, and go to state 1046
+  STORAGE       shift, and go to state 1048
   ENGINE        shift, and go to state 167
   $default      reduce using rule 258 (r_opt_STORAGE_ENGINE_equal_with_val)
 
-  r_ENGINE_equal_with_val  go to state 1047
-  r_partition_subpartition_share  go to state 1095
-  r_opt_STORAGE_ENGINE_equal_with_val  go to state 1048
+  r_ENGINE_equal_with_val  go to state 1049
+  r_partition_subpartition_share  go to state 1097
+  r_opt_STORAGE_ENGINE_equal_with_val  go to state 1050
 
-state 1085
+state 1087
 
  317) r_logical_name : ident _
 
   $default      reduce using rule 317 (r_logical_name)
 
 
-state 1086
+state 1088
 
  295) r_comma_separated_subpartition_definition : r_comma_separated_subpartition_definition comma r_subpartition_definition _
 
   $default      reduce using rule 295 (r_comma_separated_subpartition_definition)
 
 
-state 1087
+state 1089
 
  259) r_opt_STORAGE_ENGINE_equal_with_val : STORAGE S ENGINE S opt_equal _ r_ENGINE_name
 
   S_IDENT_NORMAL  shift, and go to state 76
   INNODB        shift, and go to state 530
 
-  r_ENGINE_name  go to state 1096
+  r_ENGINE_name  go to state 1098
   raw_ident     go to state 531
 
-state 1088
+state 1090
 
  266) r_opt_MAX_ROWS_equal_with_val : r_MAX_ROWS_equal_with_val _
 
   $default      reduce using rule 266 (r_opt_MAX_ROWS_equal_with_val)
 
 
-state 1089
+state 1091
 
  272) r_partition_subpartition_share : r_opt_STORAGE_ENGINE_equal_with_val r_opt_COMMENT_equal_with_val r_opt_DATA_DIRECTORY_equal_with_val r_opt_INDEX_DIRECTORY_equal_with_val r_opt_MAX_ROWS_equal_with_val _ r_opt_MIN_ROWS_equal_with_val r_opt_TABLESPACE_equal_with_val r_opt_NODEGROUP_equal_with_val
 
   MIN_ROWS      shift, and go to state 166
   $default      reduce using rule 267 (r_opt_MIN_ROWS_equal_with_val)
 
-  r_MIN_ROWS_equal_with_val  go to state 1097
-  r_opt_MIN_ROWS_equal_with_val  go to state 1098
+  r_MIN_ROWS_equal_with_val  go to state 1099
+  r_opt_MIN_ROWS_equal_with_val  go to state 1100
 
-state 1090
+state 1092
 
  254) r_opt_partition_values : VALUES S LESS S THAN S _ MAXVALUE S
  255) r_opt_partition_values : VALUES S LESS S THAN S _ left_paren expr right_paren
 
-  MAXVALUE      shift, and go to state 1099
+  MAXVALUE      shift, and go to state 1101
   S_LEFT_PAREN  shift, and go to state 169
 
-  left_paren    go to state 1100
+  left_paren    go to state 1102
 
-state 1091
+state 1093
 
  256) r_opt_partition_values : VALUES S IN S left_paren r_comma_separated_integer _ right_paren
  305) r_comma_separated_integer : r_comma_separated_integer _ comma integer
@@ -11530,26 +11579,26 @@ state 1091
   S_COMMA       shift, and go to state 115
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 1101
-  comma         go to state 1102
+  right_paren   go to state 1103
+  comma         go to state 1104
 
-state 1092
+state 1094
 
  304) r_comma_separated_integer : integer _
 
   $default      reduce using rule 304 (r_comma_separated_integer)
 
 
-state 1093
+state 1095
 
  206) r_REFERENCES_definition : REFERENCES S r_tbl_name left_paren r_comma_separated_index_col_name right_paren r_opt_MATCH _ r_opt_ON_DELETE_and_UPDATE
 
-  ON            shift, and go to state 1104
+  ON            shift, and go to state 1106
   $default      reduce using rule 214 (r_opt_ON_DELETE_and_UPDATE)
 
-  r_opt_ON_DELETE_and_UPDATE  go to state 1103
+  r_opt_ON_DELETE_and_UPDATE  go to state 1105
 
-state 1094
+state 1096
 
  208) r_opt_MATCH : MATCH _ S FULL S
  209) r_opt_MATCH : MATCH _ S PARTIAL S
@@ -11557,93 +11606,93 @@ state 1094
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1105
+  S             go to state 1107
 
-state 1095
+state 1097
 
  271) r_subpartition_definition : SUBPARTITION S r_logical_name r_partition_subpartition_share _
 
   $default      reduce using rule 271 (r_subpartition_definition)
 
 
-state 1096
+state 1098
 
  259) r_opt_STORAGE_ENGINE_equal_with_val : STORAGE S ENGINE S opt_equal r_ENGINE_name _
 
   $default      reduce using rule 259 (r_opt_STORAGE_ENGINE_equal_with_val)
 
 
-state 1097
+state 1099
 
  268) r_opt_MIN_ROWS_equal_with_val : r_MIN_ROWS_equal_with_val _
 
   $default      reduce using rule 268 (r_opt_MIN_ROWS_equal_with_val)
 
 
-state 1098
+state 1100
 
  272) r_partition_subpartition_share : r_opt_STORAGE_ENGINE_equal_with_val r_opt_COMMENT_equal_with_val r_opt_DATA_DIRECTORY_equal_with_val r_opt_INDEX_DIRECTORY_equal_with_val r_opt_MAX_ROWS_equal_with_val r_opt_MIN_ROWS_equal_with_val _ r_opt_TABLESPACE_equal_with_val r_opt_NODEGROUP_equal_with_val
 
-  TABLESPACE    shift, and go to state 1106
+  TABLESPACE    shift, and go to state 1108
   $default      reduce using rule 269 (r_opt_TABLESPACE_equal_with_val)
 
-  r_opt_TABLESPACE_equal_with_val  go to state 1107
+  r_opt_TABLESPACE_equal_with_val  go to state 1109
 
-state 1099
+state 1101
 
  254) r_opt_partition_values : VALUES S LESS S THAN S MAXVALUE _ S
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1108
+  S             go to state 1110
 
-state 1100
+state 1102
 
  255) r_opt_partition_values : VALUES S LESS S THAN S left_paren _ expr right_paren
 
   S_FLOAT       shift, and go to state 882
   S_ZERO        shift, and go to state 497
   S_ONE         shift, and go to state 498
-  S_MINUS       shift, and go to state 885
+  S_MINUS       shift, and go to state 886
   S_NAT         shift, and go to state 499
 
-  expr          go to state 1109
-  number        go to state 1110
+  expr          go to state 1111
+  number        go to state 1112
   integer       go to state 880
   float         go to state 881
   nat           go to state 883
   negative_integer  go to state 884
   binary        go to state 500
 
-state 1101
+state 1103
 
  256) r_opt_partition_values : VALUES S IN S left_paren r_comma_separated_integer right_paren _
 
   $default      reduce using rule 256 (r_opt_partition_values)
 
 
-state 1102
+state 1104
 
  305) r_comma_separated_integer : r_comma_separated_integer comma _ integer
 
   S_ZERO        shift, and go to state 497
   S_ONE         shift, and go to state 498
-  S_MINUS       shift, and go to state 885
+  S_MINUS       shift, and go to state 886
   S_NAT         shift, and go to state 499
 
-  integer       go to state 1111
+  integer       go to state 1113
   nat           go to state 883
   negative_integer  go to state 884
   binary        go to state 500
 
-state 1103
+state 1105
 
  206) r_REFERENCES_definition : REFERENCES S r_tbl_name left_paren r_comma_separated_index_col_name right_paren r_opt_MATCH r_opt_ON_DELETE_and_UPDATE _
 
   $default      reduce using rule 206 (r_REFERENCES_definition)
 
 
-state 1104
+state 1106
 
  215) r_opt_ON_DELETE_and_UPDATE : ON _ S DELETE S r_reference_option
  216) r_opt_ON_DELETE_and_UPDATE : ON _ S DELETE S r_reference_option ON S UPDATE S r_reference_option
@@ -11651,94 +11700,78 @@ state 1104
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1112
+  S             go to state 1114
 
-state 1105
+state 1107
 
  208) r_opt_MATCH : MATCH S _ FULL S
  209) r_opt_MATCH : MATCH S _ PARTIAL S
  210) r_opt_MATCH : MATCH S _ SIMPLE S
 
-  FULL          shift, and go to state 1113
-  PARTIAL       shift, and go to state 1114
-  SIMPLE        shift, and go to state 1115
+  FULL          shift, and go to state 1115
+  PARTIAL       shift, and go to state 1116
+  SIMPLE        shift, and go to state 1117
 
 
-state 1106
+state 1108
 
  270) r_opt_TABLESPACE_equal_with_val : TABLESPACE _ S opt_equal r_tablespace_name
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1116
+  S             go to state 1118
 
-state 1107
+state 1109
 
  272) r_partition_subpartition_share : r_opt_STORAGE_ENGINE_equal_with_val r_opt_COMMENT_equal_with_val r_opt_DATA_DIRECTORY_equal_with_val r_opt_INDEX_DIRECTORY_equal_with_val r_opt_MAX_ROWS_equal_with_val r_opt_MIN_ROWS_equal_with_val r_opt_TABLESPACE_equal_with_val _ r_opt_NODEGROUP_equal_with_val
 
-  NODEGROUP     shift, and go to state 1117
+  NODEGROUP     shift, and go to state 1119
   $default      reduce using rule 118 (r_opt_NODEGROUP_equal_with_val)
 
-  r_opt_NODEGROUP_equal_with_val  go to state 1118
+  r_opt_NODEGROUP_equal_with_val  go to state 1120
 
-state 1108
+state 1110
 
  254) r_opt_partition_values : VALUES S LESS S THAN S MAXVALUE S _
 
   $default      reduce using rule 254 (r_opt_partition_values)
 
 
-state 1109
+state 1111
 
  255) r_opt_partition_values : VALUES S LESS S THAN S left_paren expr _ right_paren
 
   S_RIGHT_PAREN  shift, and go to state 307
 
-  right_paren   go to state 1119
+  right_paren   go to state 1121
 
-state 1110
+state 1112
 
  371) expr : number _
 
   $default      reduce using rule 371 (expr)
 
 
-state 1111
+state 1113
 
  305) r_comma_separated_integer : r_comma_separated_integer comma integer _
 
   $default      reduce using rule 305 (r_comma_separated_integer)
 
 
-state 1112
+state 1114
 
  215) r_opt_ON_DELETE_and_UPDATE : ON S _ DELETE S r_reference_option
  216) r_opt_ON_DELETE_and_UPDATE : ON S _ DELETE S r_reference_option ON S UPDATE S r_reference_option
  217) r_opt_ON_DELETE_and_UPDATE : ON S _ UPDATE S r_reference_option
 
-  DELETE        shift, and go to state 1120
-  UPDATE        shift, and go to state 1121
+  DELETE        shift, and go to state 1122
+  UPDATE        shift, and go to state 1123
 
-
-state 1113
-
- 208) r_opt_MATCH : MATCH S FULL _ S
-
-  S_SPACE       shift, and go to state 3
-
-  S             go to state 1122
-
-state 1114
-
- 209) r_opt_MATCH : MATCH S PARTIAL _ S
-
-  S_SPACE       shift, and go to state 3
-
-  S             go to state 1123
 
 state 1115
 
- 210) r_opt_MATCH : MATCH S SIMPLE _ S
+ 208) r_opt_MATCH : MATCH S FULL _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -11746,17 +11779,15 @@ state 1115
 
 state 1116
 
- 270) r_opt_TABLESPACE_equal_with_val : TABLESPACE S _ opt_equal r_tablespace_name
+ 209) r_opt_MATCH : MATCH S PARTIAL _ S
 
-  S_EQUAL       shift, and go to state 84
-  $default      reduce using rule 375 (opt_equal)
+  S_SPACE       shift, and go to state 3
 
-  opt_equal     go to state 1125
-  equal         go to state 358
+  S             go to state 1125
 
 state 1117
 
- 119) r_opt_NODEGROUP_equal_with_val : NODEGROUP _ S
+ 210) r_opt_MATCH : MATCH S SIMPLE _ S
 
   S_SPACE       shift, and go to state 3
 
@@ -11764,218 +11795,236 @@ state 1117
 
 state 1118
 
+ 270) r_opt_TABLESPACE_equal_with_val : TABLESPACE S _ opt_equal r_tablespace_name
+
+  S_EQUAL       shift, and go to state 84
+  $default      reduce using rule 375 (opt_equal)
+
+  opt_equal     go to state 1127
+  equal         go to state 358
+
+state 1119
+
+ 119) r_opt_NODEGROUP_equal_with_val : NODEGROUP _ S
+
+  S_SPACE       shift, and go to state 3
+
+  S             go to state 1128
+
+state 1120
+
  272) r_partition_subpartition_share : r_opt_STORAGE_ENGINE_equal_with_val r_opt_COMMENT_equal_with_val r_opt_DATA_DIRECTORY_equal_with_val r_opt_INDEX_DIRECTORY_equal_with_val r_opt_MAX_ROWS_equal_with_val r_opt_MIN_ROWS_equal_with_val r_opt_TABLESPACE_equal_with_val r_opt_NODEGROUP_equal_with_val _
 
   $default      reduce using rule 272 (r_partition_subpartition_share)
 
 
-state 1119
+state 1121
 
  255) r_opt_partition_values : VALUES S LESS S THAN S left_paren expr right_paren _
 
   $default      reduce using rule 255 (r_opt_partition_values)
 
 
-state 1120
+state 1122
 
  215) r_opt_ON_DELETE_and_UPDATE : ON S DELETE _ S r_reference_option
  216) r_opt_ON_DELETE_and_UPDATE : ON S DELETE _ S r_reference_option ON S UPDATE S r_reference_option
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1127
+  S             go to state 1129
 
-state 1121
+state 1123
 
  217) r_opt_ON_DELETE_and_UPDATE : ON S UPDATE _ S r_reference_option
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1128
+  S             go to state 1130
 
-state 1122
+state 1124
 
  208) r_opt_MATCH : MATCH S FULL S _
 
   $default      reduce using rule 208 (r_opt_MATCH)
 
 
-state 1123
+state 1125
 
  209) r_opt_MATCH : MATCH S PARTIAL S _
 
   $default      reduce using rule 209 (r_opt_MATCH)
 
 
-state 1124
+state 1126
 
  210) r_opt_MATCH : MATCH S SIMPLE S _
 
   $default      reduce using rule 210 (r_opt_MATCH)
 
 
-state 1125
+state 1127
 
  270) r_opt_TABLESPACE_equal_with_val : TABLESPACE S opt_equal _ r_tablespace_name
 
   S_IDENT_NORMAL  shift, and go to state 76
   S_BACKTICK_IN  shift, and go to state 56
 
-  r_tablespace_name  go to state 1129
+  r_tablespace_name  go to state 1131
   ident         go to state 368
   raw_ident     go to state 55
 
-state 1126
+state 1128
 
  119) r_opt_NODEGROUP_equal_with_val : NODEGROUP S _
 
   $default      reduce using rule 119 (r_opt_NODEGROUP_equal_with_val)
 
 
-state 1127
+state 1129
 
  215) r_opt_ON_DELETE_and_UPDATE : ON S DELETE S _ r_reference_option
  216) r_opt_ON_DELETE_and_UPDATE : ON S DELETE S _ r_reference_option ON S UPDATE S r_reference_option
 
-  SET           shift, and go to state 1132
+  SET           shift, and go to state 1134
   RESTRICT      shift, and go to state 112
   CASCADE       shift, and go to state 113
-  NO            shift, and go to state 1133
+  NO            shift, and go to state 1135
 
-  r_reference_option  go to state 1130
-  r_RESTRICT_or_CASCADE  go to state 1131
+  r_reference_option  go to state 1132
+  r_RESTRICT_or_CASCADE  go to state 1133
 
-state 1128
+state 1130
 
  217) r_opt_ON_DELETE_and_UPDATE : ON S UPDATE S _ r_reference_option
 
-  SET           shift, and go to state 1132
+  SET           shift, and go to state 1134
   RESTRICT      shift, and go to state 112
   CASCADE       shift, and go to state 113
-  NO            shift, and go to state 1133
+  NO            shift, and go to state 1135
 
-  r_reference_option  go to state 1134
-  r_RESTRICT_or_CASCADE  go to state 1131
+  r_reference_option  go to state 1136
+  r_RESTRICT_or_CASCADE  go to state 1133
 
-state 1129
+state 1131
 
  270) r_opt_TABLESPACE_equal_with_val : TABLESPACE S opt_equal r_tablespace_name _
 
   $default      reduce using rule 270 (r_opt_TABLESPACE_equal_with_val)
 
 
-state 1130
+state 1132
 
  215) r_opt_ON_DELETE_and_UPDATE : ON S DELETE S r_reference_option _
  216) r_opt_ON_DELETE_and_UPDATE : ON S DELETE S r_reference_option _ ON S UPDATE S r_reference_option
 
-  ON            shift, and go to state 1135
+  ON            shift, and go to state 1137
   $default      reduce using rule 215 (r_opt_ON_DELETE_and_UPDATE)
 
 
-state 1131
+state 1133
 
  221) r_reference_option : r_RESTRICT_or_CASCADE _
 
   $default      reduce using rule 221 (r_reference_option)
 
 
-state 1132
+state 1134
 
  222) r_reference_option : SET _ S null
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1136
+  S             go to state 1138
 
-state 1133
+state 1135
 
  223) r_reference_option : NO _ S ACTION S
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1137
+  S             go to state 1139
 
-state 1134
+state 1136
 
  217) r_opt_ON_DELETE_and_UPDATE : ON S UPDATE S r_reference_option _
 
   $default      reduce using rule 217 (r_opt_ON_DELETE_and_UPDATE)
 
 
-state 1135
+state 1137
 
  216) r_opt_ON_DELETE_and_UPDATE : ON S DELETE S r_reference_option ON _ S UPDATE S r_reference_option
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1138
+  S             go to state 1140
 
-state 1136
+state 1138
 
  222) r_reference_option : SET S _ null
 
   NULL          shift, and go to state 452
 
-  null          go to state 1139
+  null          go to state 1141
 
-state 1137
+state 1139
 
  223) r_reference_option : NO S _ ACTION S
 
-  ACTION        shift, and go to state 1140
+  ACTION        shift, and go to state 1142
 
 
-state 1138
+state 1140
 
  216) r_opt_ON_DELETE_and_UPDATE : ON S DELETE S r_reference_option ON S _ UPDATE S r_reference_option
 
-  UPDATE        shift, and go to state 1141
+  UPDATE        shift, and go to state 1143
 
 
-state 1139
+state 1141
 
  222) r_reference_option : SET S null _
 
   $default      reduce using rule 222 (r_reference_option)
 
 
-state 1140
+state 1142
 
  223) r_reference_option : NO S ACTION _ S
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1142
+  S             go to state 1144
 
-state 1141
+state 1143
 
  216) r_opt_ON_DELETE_and_UPDATE : ON S DELETE S r_reference_option ON S UPDATE _ S r_reference_option
 
   S_SPACE       shift, and go to state 3
 
-  S             go to state 1143
+  S             go to state 1145
 
-state 1142
+state 1144
 
  223) r_reference_option : NO S ACTION S _
 
   $default      reduce using rule 223 (r_reference_option)
 
 
-state 1143
+state 1145
 
  216) r_opt_ON_DELETE_and_UPDATE : ON S DELETE S r_reference_option ON S UPDATE S _ r_reference_option
 
-  SET           shift, and go to state 1132
+  SET           shift, and go to state 1134
   RESTRICT      shift, and go to state 112
   CASCADE       shift, and go to state 113
-  NO            shift, and go to state 1133
+  NO            shift, and go to state 1135
 
-  r_reference_option  go to state 1144
-  r_RESTRICT_or_CASCADE  go to state 1131
+  r_reference_option  go to state 1146
+  r_RESTRICT_or_CASCADE  go to state 1133
 
-state 1144
+state 1146
 
  216) r_opt_ON_DELETE_and_UPDATE : ON S DELETE S r_reference_option ON S UPDATE S r_reference_option _
 

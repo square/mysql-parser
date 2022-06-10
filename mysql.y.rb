@@ -1021,10 +1021,10 @@ rule
   literal : value { call(:literal, nil, val) }
 
   value :
-    null                { call(:value, :literal, val) }
-  | number              { call(:value, :number, val) }
-  | string              { call(:value, :string, val) }
-  | CURRENT_TIMESTAMP S { call(:value, :CURRENT_TIMESTAMP, val) }
+    null              { call(:value, :literal, val) }
+  | number            { call(:value, :number, val) }
+  | string            { call(:value, :string, val) }
+  | current_timestamp { call(:value, :current_timestamp, val) }
 
   # # no rule uses it
   # string_expr :
@@ -1057,6 +1057,10 @@ rule
   integer :
     nat              { call(:integer, :nat, val) }
   | negative_integer { call(:integer, :neg, val) }
+
+  current_timestamp :
+    CURRENT_TIMESTAMP S { call(:current_timestamp, :CURRENT_TIMESTAMP, val) }
+  | CURRENT_TIMESTAMP S r_opt_datatype_int { call(:current_timestamp, :CURRENT_TIMESTAMP, val) }
 
   negative_integer :
     S_MINUS S_ONE S { call(:negative_integer, :one, val) } # TODO: space between?
